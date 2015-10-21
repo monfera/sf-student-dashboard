@@ -1,0 +1,307 @@
+@charset "UTF-8";
+
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+svg {
+    shape-rendering: geometricPrecision;
+}
+
+html {
+    overflow: hidden
+}
+
+body {
+    margin: 0px;
+}
+
+text {
+    cursor: default;
+}
+
+line.point-marker-v, line.point-marker-h {
+    stroke: red;
+}
+
+path {
+    fill: none;
+}
+
+
+/* GROUPS */
+
+/* Top groups */
+
+g.lastAssignmentScoresGroup {
+    text-anchor: end;
+}
+
+/* Rows */
+
+rect.rowBackground {
+    stroke: grey;
+    stroke-width: 2px;
+    stroke-opacity: 0.03;
+}
+
+rect.rowCaptureZone {
+    stroke: none;
+    fill: white;
+    fill-opacity: 0.001;
+}
+
+/* Interactions */
+
+.row *, .headerTitle, .headerText.interactive {
+    cursor: pointer;
+}
+
+.helpButton * {
+    cursor: help;
+}
+
+/**
+ * Cells
+ */
+
+/* Flags */
+g.flagGroup circle.nonNativeEnglish,
+g.namesGroup g.groupLegends g.english circle {
+    fill: rgb(252, 177, 86);
+}
+g.flagGroup circle.special,
+g.namesGroup g.groupLegends g.special circle  {
+    fill: rgb(237, 61, 44);
+}
+
+/* Course Grades */
+
+g.courseGradesGroup g.groupLegends g.previous line {
+    opacity: 0.1;
+    stroke: black;
+}
+
+/* Class Attendance */
+
+line.violationBaseline {
+    opacity: 0.2;
+}
+line.attendanceLine, g.classAttendanceGroup g.groupLegends line {
+    stroke: rgb(164, 55, 18);
+    stroke-width: 11;
+}
+
+/**
+ * Legends
+ */
+
+/* Legends in general */
+
+g.groupLegends text {
+    font-size: 10px;
+}
+
+g.groupLegends .legend1  {
+    fill: gray;
+}
+g.groupLegends .legend2 {
+    fill: rgb(226, 60, 180); /* Steve Magenta */
+}
+
+g.groupLegends rect.legendCaptureZone {
+    opacity: 0.0;
+    stroke: black;
+}
+
+/* Small column headings */
+
+g.smallColumnHeader text {
+    font-size: 12px;
+    text-anchor: end;
+}
+g.namesGroup g.smallColumnHeader text {
+    text-anchor: start;
+}
+
+/* Course grade legends */
+
+g.courseGradesGroup g.groupLegends g.current line {
+    stroke-width: 1;
+    stroke: black;
+}
+
+g.courseGradesGroup g.groupLegends g.target line {
+    stroke: red;
+    stroke-width: 1;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transform-origin: center;
+    transform-origin: center;
+}
+
+g.courseGradesGroup g.groupLegends g.previous line {
+    stroke-width: 8;
+}
+
+/* Attendance legends */
+
+g.classAttendanceGroup g.groupLegends line {
+    stroke-width: 8;
+}
+
+g.classAttendanceGroup g.groupLegends g.tardy line {
+    opacity: 0.1;
+}
+g.classAttendanceGroup g.groupLegends g.absent line {
+    opacity: 0.4;
+}
+g.classAttendanceGroup g.groupLegends g.referrals line {
+    opacity: 0.7;
+}
+g.classAttendanceGroup g.groupLegends g.detentions line {
+    opacity: 1;
+}
+
+/* Score legends */
+
+g.assignmentScoresGroup g.groupLegends g.above circle {
+    fill: green;
+}
+g.assignmentScoresGroup g.groupLegends g.below circle {
+    fill: red;
+}
+g.assignmentScoresGroup g.groupLegends g.current circle {
+    fill: grey;
+}
+g.assignmentScoresGroup g.groupLegends g.past circle {
+    fill: grey;
+    opacity: 0.3;
+}
+
+/* Benchmark legends */
+
+g.benchmarkGroup g.groupLegends line {
+    stroke-width: 2px;
+    -webkit-transform: scaleX(1.5) translateY(-1.5px);
+    transform: scaleX(1.5) translateY(-1.5px);
+}
+
+/**
+ * Background of charts
+ */
+
+rect.background {
+    fill: black;
+}
+
+/**
+ * Axes in general
+ */
+
+.tick text, .axisLegend, .legendText {
+    fill: rgb(96, 96, 96);
+    font-size: 10px;
+}
+
+.courseGradesGroup .tick text {
+    font-size: 12px;
+}
+
+.tick line, path.domain {
+    stroke: rgb(192, 192, 192);
+}
+
+text.axisLegend {
+}
+/**
+ * Column axes
+ */
+
+g.columnAxis {
+    font-size: 12px;
+}
+
+/**
+ * Distributions - histogram
+ */
+
+g.distributionsGroup g.gradeHistogram g.xAxis .tick line {
+    -webkit-transform: translateX(13px);
+    transform: translateX(13px);
+}
+
+g.distributionsGroup g.gradeHistogram rect.barAes {
+    fill: lightgray;
+}
+
+/**
+ * Distributions - boxplot
+ */
+
+g.distributionsGroup g.assignmentDistributions g.yAxis .tick line {
+    -webkit-transform: translateY(12px);
+    transform: translateY(12px);
+}
+
+g.distributionsGroup g.assignmentDistributions circle.bee {
+    /* fill: black; */
+    stroke: none;
+    opacity: 0.05;
+}
+
+g.distributionsGroup g.assignmentDistributions line.beeLine {
+    stroke-width: 1px;
+    stroke: chocolate;
+    opacity: 0.7;
+}
+
+g.distributionsGroup g.assignmentDistributions g.boxplot line.quintile2,
+g.distributionsGroup g.assignmentDistributions g.boxplot line.quintile4,
+g.distributionsGroup g.assignmentDistributions g.boxplot line.median {
+    stroke-width: 2px;
+    opacity: 0.67;
+}
+    /**
+     * Tser group
+     */
+
+g.tserGroup line.bar {
+    stroke: black;
+    stroke-width: 1.5px;
+}
+
+/**
+ * Benchmark group
+ */
+
+g.benchmarkGroup g.chart g.chartLine path.line {
+    stroke: inherit;
+    fill: none;
+}
+g.benchmarkGroup g.chart g.chartLine circle.linePoint {
+    fill: inherit;
+}
+
+g.benchmarkGroup g.xAxis .tick line {
+   -webkit-transform: translateX(38px);
+   transform: translateX(38px);
+}
+
+
+/**
+ * Median group
+ */
+
+g.medianGroup g.tableColumn text {
+    font-size: 14px;
+    text-anchor: end;
+}
