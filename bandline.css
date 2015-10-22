@@ -23,7 +23,7 @@ g.bands .band.s5 {fill: hsl(120, 100%, 38%); opacity: 1}
 g.bandLine .valueLine,
 g.sparkStrip .valueBox,
 g.sparkStrip .valuePoints {
-    stroke: hsl(300, 75%, 50%)
+    stroke: rgb(226, 60, 180)
 }
 
 g.bandLine .valueLine {
@@ -43,7 +43,7 @@ g.sparkStrip .valuePoints {
 }
 
 g.bandLine .valuePoints {
-    fill: hsl(300, 75%, 50%);
+    fill: rgb(226, 60, 180);
 }
 
 .valuePoints .point {
@@ -65,5 +65,5 @@ g.bandLine .valuePoints .point.low {
 g.bandLine .valuePoints .point.high {
     transform: scale(2.5);
     fill: white;
-    stroke: hsl(300, 75%, 50%);
+    stroke: rgb(226, 60, 180);
 }
