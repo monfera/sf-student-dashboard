@@ -1046,7 +1046,7 @@ function render() {
                         denseValues[index] = [new Date(day), day <= now ? 0 : null]
                     }
                     sparseValues.forEach(function(tuple) {
-                        denseValues[(tuple[0].valueOf() - baseDateValue) / (24 * 60 * 60 * 1000)][1] = tuple[1]
+                        denseValues[Math.round((tuple[0].valueOf() - baseDateValue) / (24 * 60 * 60 * 1000))][1] = tuple[1]
                     })
 
                     return {
