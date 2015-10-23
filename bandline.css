@@ -18,7 +18,7 @@ g.bands .band.s1 {fill-opacity: 0.1}
 g.bands .band.s2 {fill-opacity: 0.16}
 g.bands .band.s3 {fill-opacity: 0.22}
 g.bands .band.s4 {fill-opacity: 0.3}
-g.bands .band.s5 {fill: hsl(120, 100%, 38%); opacity: 1}
+g.bands .band.s5 {stroke: white; stroke-width: 1px; fill: none;} /* for more prominent color: hsl(120, 100%, 38%) */
 
 g.bandLine .valueLine,
 g.sparkStrip .valueBox,
