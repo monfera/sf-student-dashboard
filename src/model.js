@@ -413,9 +413,9 @@ function calculateScales() {
             .range(['lowOutlier', 'normal', 'highOutlier'])
     }
 
-    function meanLineBand(population) {
-        var mean = d3.mean(population)
-        return [mean, mean]
+    function medianLineBand(population) {
+        var median = d3.median(population)
+        return [median, median]
     }
 
     var assignmentScores = [].concat.apply([], dashboardData['Student Data'].map(property('assignmentScores')))
@@ -424,8 +424,8 @@ function calculateScales() {
     s.assignmentOutlierScale = makeOutlierScale(assignmentScores)
     s.assessmentOutlierScale = makeOutlierScale(assessmentScores)
 
-    s.assignmentBands = window2(bandThresholds).concat([meanLineBand(assignmentScores)])
-    s.assessmentBands = window2(bandThresholds).concat([meanLineBand(assessmentScores)])
+    s.assignmentBands = window2(bandThresholds).concat([medianLineBand(assignmentScores)])
+    s.assessmentBands = window2(bandThresholds).concat([medianLineBand(assessmentScores)])
 
     var assignmentScoreVerticalDomain = d3.extent(bandThresholds) // fixme adapt the scale for the actual score domain
 
