@@ -5,25 +5,25 @@
  */
 
 dashboardData['Student Data'] = dashboardData['Student Data']['Student Name'].map(function(name, i) {
-    var s = dashboardData['Student Data']
+    var d = dashboardData['Student Data']
     var studentModel = {
         key: name,
-        absentCount: s["Days Absent This Term Count"][i],
-        tardyCount:  s["Days Tardy This Term Count"][i],
+        absentCount: d["Days Absent This Term Count"][i],
+        tardyCount:  d["Days Tardy This Term Count"][i],
         absences: dashboardData['Absences'].filter(function(event) {return event[0] === name}).map(function(event) {return new Date(event[1])}),
         tardies: dashboardData['Tardies'].filter(function(event) {return event[0] === name}).map(function(event) {return new Date(event[1])}),
-        currentReferralCount: s["Disciplinary Referrals This Term Count"][i],
-        pastReferralCount: s["Disciplinary Referrals Last Term Count"][i],
-        currentDetentionCount: s["Detentions This Term Count"][i],
-        pastDetentionCount: s["Detentions Last Term Count"][i],
-        assignmentsLateCount: s["Assignments Completed Late Count"][i],
-        english: s["English Language Proficiency"][i] === 'Y',
-        special: s["Special Ed Status"][i] === 'Y',
-        problematic: s["Problematic"][i] === 'Y',
-        assignmentScores: s["scores"][i].slice(5),
-        meanAssignmentScore: d3.mean(s["scores"][i].slice(5).filter(identity)),
-        standardScores: s["scores"][i].slice(0, 5).reverse(),
-        grades: object(s["grades"][i].map(function(g, j) {
+        currentReferralCount: d["Disciplinary Referrals This Term Count"][i],
+        pastReferralCount: d["Disciplinary Referrals Last Term Count"][i],
+        currentDetentionCount: d["Detentions This Term Count"][i],
+        pastDetentionCount: d["Detentions Last Term Count"][i],
+        assignmentsLateCount: d["Assignments Completed Late Count"][i],
+        english: d["English Language Proficiency"][i] === 'Y',
+        special: d["Special Ed Status"][i] === 'Y',
+        problematic: d["Problematic"][i] === 'Y',
+        assignmentScores: d["scores"][i].slice(5),
+        meanAssignmentScore: d3.mean(d["scores"][i].slice(5).filter(identity)),
+        standardScores: d["scores"][i].slice(0, 5).reverse(),
+        grades: object(d["grades"][i].map(function(g, j) {
             function indexToKey(index) {
                 switch(index) {
                     case 0: return 'current'
@@ -429,7 +429,7 @@ function calculateScales() {
 
     var assignmentScoreVerticalDomain = d3.extent(bandThresholds) // fixme adapt the scale for the actual score domain
 
-    var assignmentScoreCount = 7
+    var assignmentScoreCount = 7 //  5 past assignments and 2 future assignments
 
     var assignmentScoreDomain = [0, assignmentScoreCount - 1]
 
