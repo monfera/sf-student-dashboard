@@ -58,11 +58,11 @@ g.bandLine .valuePoints .point {
     transform: scale(1.5);
 }
 
-g.bandLine .valuePoints .point.low {
+g.bandLine .valuePoints .point.lowOutlier {
     transform: scale(3);
 }
 
-g.bandLine .valuePoints .point.high {
+g.bandLine .valuePoints .point.highOutlier {
     transform: scale(2.5);
     fill: white;
     stroke: rgb(226, 60, 180);

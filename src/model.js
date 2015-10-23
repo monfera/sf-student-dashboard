@@ -395,16 +395,43 @@ function calculateScales() {
         .domain([0, 9]) // fixme adapt the scale for the actual number of scores
         .range(shamiksCellWidthRange)
 
+    var bandThresholds = [0.4, 0.6, 0.7, 0.8, 0.9, 1]
+
+    function sortedNumbers(population) {
+        return population.filter(defined).sort(d3.ascending)
+    }
+
+    function makeOutlierScale(population) {
+        var iqrDistanceMultiplier = 1 // Stephen Few's Introduction of Bandlines requires a multiplier of 1.5; we deviate here to show outliers on the dashboard
+        var values = sortedNumbers(population)
+        var iqr = [d3.quantile(values, 0.25), d3.quantile(values, 0.75)]
+        var midspread = iqr[1] - iqr[0]
+        return d3.scale.threshold()
+            .domain([
+                iqr[0] - iqrDistanceMultiplier * midspread,
+                iqr[1] + iqrDistanceMultiplier * midspread ])
+            .range(['lowOutlier', 'normal', 'highOutlier'])
+    }
+
+    function meanLineBand(population) {
+        var mean = d3.mean(population)
+        return [mean, mean]
+    }
+
+    var assignmentScores = [].concat.apply([], dashboardData['Student Data'].map(property('assignmentScores')))
+    var assessmentScores = [].concat.apply([], dashboardData['Student Data'].map(property('standardScores')))
+
+    s.assignmentOutlierScale = makeOutlierScale(assignmentScores)
+    s.assessmentOutlierScale = makeOutlierScale(assessmentScores)
+
+    s.assignmentBands = window2(bandThresholds).concat([meanLineBand(assignmentScores)])
+    s.assessmentBands = window2(bandThresholds).concat([meanLineBand(assessmentScores)])
+
+    var assignmentScoreVerticalDomain = d3.extent(bandThresholds) // fixme adapt the scale for the actual score domain
+
     var assignmentScoreCount = 7
 
     var assignmentScoreDomain = [0, assignmentScoreCount - 1]
-
-    var bands = [0.4, 0.6, 0.7, 0.8, 0.9, 1]
-    var lines = [[0.695, 0.705]]
-
-    s.bands = window2(bands).concat(lines)
-
-    var assignmentScoreVerticalDomain = d3.extent(bands) // fixme adapt the scale for the actual score domain
 
     s.assignmentScoreTemporalScale = d3.scale.linear()
         .domain(assignmentScoreDomain) // fixme adapt the scale for the actual number of scores
