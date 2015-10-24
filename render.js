@@ -10,7 +10,7 @@
 var duration = 200
 var UNICODE_UP_DOWN_ARROW = '\u21d5'
 
-function renderPetiteHeader(root, vm, fontSize) {
+function renderPetiteHeader(root, vm) {
     bind(root, 'petiteColumnHeader')
         .entered
         .attr('transform', translateY(-25))
@@ -29,10 +29,6 @@ function renderPetiteHeader(root, vm, fontSize) {
         .on('mouseup', resetTableSortOrder)
         .attr('x', value)
         .attr('opacity', 1)
-    root['petiteColumnHeader']['group']['headerText']
-        .entered
-        .filter(property('fontSize'))
-        .attr('font-size', property('fontSize'))
 }
 
 var s = calculateScales()
