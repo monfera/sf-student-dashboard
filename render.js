@@ -85,12 +85,12 @@ function render() {
 
     var topGroups = bind(dashboard, 'topGroups')
 
-    var assignmentScoresGroupX = 408.5
-    var classAssessmentGroupX = 747.5
+    var assignmentScoresGroupX = 200
+    var classAssessmentGroupX = 360
     var namesGroup = renderGroupHolder(topGroups, 'namesGroup', 0, 0)
     var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', classAssessmentGroupX - 230, 0)
     var assessmentScoresGroup = renderGroupHolder(topGroups, 'assessmentScoresGroup', classAssessmentGroupX, 0)
-    var assignmentScoresAggregateGroup = renderGroupHolder(topGroups, 'assignmentScoresAggregateGroup', 0, 866)
+    var assignmentScoresAggregateGroup = renderGroupHolder(topGroups, 'assignmentScoresAggregateGroup', assignmentScoresGroupX, 866)
 
 
     /**
@@ -131,7 +131,7 @@ function render() {
         .attr('fill-opacity', function(d) {return dashboardSettings.table.studentSelection.selectedStudents[d.key] ? 0.025 : 0})
         .entered
         .attr({
-            width: 1328 - 48,
+            width: 500,
             height: s.rowPitch,
             x: -46,
             y: - s.rowPitch / 2 + 0.5
@@ -204,9 +204,6 @@ function render() {
             }
             return [totalsRow]
         })
-            .entered
-            .attr('transform', translateX(408.5))
-            .attr('opacity', 1)
 
         var aggregateAssignmentBandLine = bandLine()
             .bands(s.assignmentBands)
