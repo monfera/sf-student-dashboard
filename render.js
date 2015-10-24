@@ -56,14 +56,6 @@ function render() {
     var dashboard = bind(root, 'dashboard', 'g', [dashboardData])
 
 
-    /**
-     * Main dashboard rectangle
-     */
-
-    var mainRectangleTop = bind(dashboard, 'mainRectangleTop', 'g')
-
-    var mainRectangleTopLeft = bind(mainRectangleTop, 'mainRectangleTop', 'g')
-
 
     /**
      * Headers
