@@ -35,9 +35,10 @@ function renderPetiteHeader(root, vm, fontSize) {
         .attr('font-size', property('fontSize'))
 }
 
+var s = calculateScales()
+
 function render() {
 
-    var s = calculateScales()
 
     /**
      * Root
@@ -54,7 +55,8 @@ function render() {
         .attr({viewBox: [0, 0, svgWidth, svgHeight].join(' ')})
 
     var dashboard = bind(root, 'dashboard', 'g', [dashboardData])
-
+    dashboard.entered
+        .attr('transform', translateY(38))
 
 
     /**
@@ -73,7 +75,6 @@ function render() {
         bind(group, fullClassName)
             .entered
             .classed('groupContents', true)
-            .attr('transform', translateY(y2))
 
         return {
             group: group[fullClassName],
@@ -89,11 +90,10 @@ function render() {
     var topGroups = bind(dashboard, 'topGroups')
 
     var assignmentScoresGroupX = 408.5
-    var topGroupContentsY = 38
     var classAssessmentGroupX = 747.5
-    var namesGroup = renderGroupHolder(topGroups, 'namesGroup', 0, 0, topGroupContentsY)
-    var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', classAssessmentGroupX - 230, 0, topGroupContentsY)
-    var assessmentScoresGroup = renderGroupHolder(topGroups, 'assessmentScoresGroup', classAssessmentGroupX, 0, topGroupContentsY)
+    var namesGroup = renderGroupHolder(topGroups, 'namesGroup', 0, 0)
+    var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', classAssessmentGroupX - 230, 0)
+    var assessmentScoresGroup = renderGroupHolder(topGroups, 'assessmentScoresGroup', classAssessmentGroupX, 0)
 
     /**
      * Aggregate row
