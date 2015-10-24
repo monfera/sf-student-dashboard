@@ -5,7 +5,6 @@
  */
 
 function setTableSortOrder(sortVariable) {
-    //if(d3.event) d3.event.stopPropagation()
     var sortSettings = dashboardSettings.table.sort
     if(sortSettings.lastTimedSort) {
         window.clearTimeout(sortSettings.lastTimedSort)
@@ -40,11 +39,6 @@ function resetTableSortOrder(d) {
         window.clearTimeout(d.delayed)
         delete d.delayed
     }
-}
-
-function setGroupLegendTableSortOrder(legendName) {
-    var variable = findWhere('legendAlias', legendName)(dashboardSettings.variables)
-    setTableSortOrder(variable)
 }
 
 function rowMouseDown(d) {
