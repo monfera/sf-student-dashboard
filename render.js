@@ -23,20 +23,11 @@ function calculateGlobals() {
 
     l = {
 
-        titleTextColor: 'rgb(96, 96, 96)',
-
-        mainTitleAnchor: 'beginning',
-        mainTitlePosition: [0, -10],
-        mainTitleFontSize: 18,
-        mainTitleText: 'First Period: Algebra 1',
-        mainTitleLetterSpacing: 0,
-
         mainTitleDecoratorColor: layoutGray,
         mainTitleDecoratorHeight: layout.mainRectangleTop,
         mainTitleDecoratorY: -layout.mainRectangleTop,
-        mainTitleDecoratorStrokeWidth: 0,
+        mainTitleDecoratorStrokeWidth: 0
 
-        groupTitleFontSize: 18
     }
 }
 
@@ -177,13 +168,6 @@ function render() {
             .entered
             .attr({
                 y: -6
-            })
-
-        bind(header, 'helpText', 'title')
-            .entered
-            .text(function() {
-                var variable = findWhere('headerAlias', text)(dashboardVariables)
-                return variable ? variable.helpText : ''
             })
 
         return header
