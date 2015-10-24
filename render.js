@@ -90,19 +90,7 @@ function render() {
     var namesGroup = renderGroupHolder(topGroups, 'namesGroup', 0, 0)
     var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', classAssessmentGroupX - 230, 0)
     var assessmentScoresGroup = renderGroupHolder(topGroups, 'assessmentScoresGroup', classAssessmentGroupX, 0)
-
-    /**
-     * Aggregate row
-     */
-
-    var aggregateGroupY = 926
-
-    var sideGroups = bind(dashboard, 'sideGroups')
-    sideGroups
-        .entered
-        .attr('transform', translate(0, aggregateGroupY))
-
-    var assignmentScoresAggregateGroup = renderGroupHolder(sideGroups, 'assignmentScoresAggregateGroup', 0, -21, 0)
+    var assignmentScoresAggregateGroup = renderGroupHolder(topGroups, 'assignmentScoresAggregateGroup', 0, 866)
 
 
     /**
