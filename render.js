@@ -37,12 +37,7 @@ function render() {
     var svgWidth = 1280
     var svgHeight = 1025
 
-    root
-        .style({
-            width: '100%',
-            height: '100%'
-        })
-        .attr({viewBox: [0, 0, svgWidth, svgHeight].join(' ')})
+    root.attr({viewBox: [0, 0, svgWidth, svgHeight].join(' ')})
 
     var dashboard = bind(root, 'dashboard', 'g', [dashboardData])
     dashboard.entered
@@ -136,12 +131,7 @@ function render() {
     bind(row['nameCell'], 'nameCellText', 'text')
         .entered
         .text(key)
-        .attr({
-            y: '0.5em'
-        })
-        .attr({
-            'transform': translateX(0)
-        })
+        .attr('y', '0.5em')
 
     var assignmentBandLine = bandLine()
         .bands(s.assignmentBands)
@@ -214,7 +204,7 @@ function render() {
                 width: 1328 - 48,
                 height: s.rowPitch,
                 x: -46,
-                y: - s.rowPitch / 2 + 0.5
+                y: - s.rowPitch / 2
             })
 
     })(assignmentScoresAggregateGroup.group)
