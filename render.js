@@ -28,10 +28,11 @@ var s = calculateScales()
 
 function render() {
 
-
     /**
      * Root
      */
+
+    var root = d3.selectAll('svg')
 
     var svgWidth = 1280
     var svgHeight = 1025
@@ -41,7 +42,6 @@ function render() {
     var dashboard = bind(root, 'dashboard', 'g', [dashboardData])
     dashboard.entered
         .attr('transform', translateY(38))
-
 
     /**
      * Headers
@@ -65,7 +65,6 @@ function render() {
             className: className
         }
     }
-
 
     /**
      * Top header rows
