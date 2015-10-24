@@ -107,9 +107,7 @@ function render() {
             height: l.mainTitleDecoratorHeight,
             x: -mainRectangleLeft - 2,
             y: l.mainTitleDecoratorY,
-            stroke: l.mainTitleDecoratorColor,
             fill: l.mainTitleDecoratorColor,
-            'stroke-width': l.mainTitleDecoratorStrokeWidth
         })
 
     var topOfRows = 45
