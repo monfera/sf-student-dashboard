@@ -10,7 +10,6 @@
 var duration = 200
 var UNICODE_UP_DOWN_ARROW = '\u21d5'
 var layoutGray = 'rgb(231, 231, 233)'
-var mainRectangleLeft = 48
 
 function renderPetiteHeader(root, vm, fontSize) {
     bind(root, 'petiteColumnHeader')
@@ -66,24 +65,19 @@ function render() {
     var mainRectangleTop = bind(dashboard, 'mainRectangleTop', 'g')
 
     var mainRectangleTopLeft = bind(mainRectangleTop, 'mainRectangleTop', 'g')
-    mainRectangleTopLeft
-        .entered
-        .attr({transform: translateX(mainRectangleLeft)})
 
 
     /**
      * Dashboard title and date
      */
 
-
     var topOfRows = 45
     var bottomOfRows = 896
     var bottomOfReport = 986
-    var leftOfColumns =  -mainRectangleLeft
-    var rightOfColumns = 1280 + leftOfColumns
+    var rightOfColumns = 1280
 
     bind(mainRectangleTopLeft, 'verticalGridBars', 'line', [
-        {key: 'student', value: leftOfColumns , size: 2},
+        {key: 'student', value: 0 , size: 2},
         {key: 'special', value: 143, size: 1},
         {key: 'grade', value: 194, size: 2},
         {key: 'assignments', value: 392, size: 2},
@@ -113,7 +107,6 @@ function render() {
         .attr({
             y1: value,
             y2: value,
-            x1: leftOfColumns,
             x2: rightOfColumns,
             'stroke-width': function(d) {return [1, 2, 4][d.size]},
             stroke: layoutGray
