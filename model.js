@@ -12,7 +12,6 @@ dashboardData['Student Data'] = dashboardData['Student Data']['Student Name'].ma
         meanAssignmentScore: d3.mean(d["scores"][i].slice(5).filter(identity)),
         standardScores: d["scores"][i].slice(0, 5).reverse()
     }
-    studentModel.allScores = studentModel.standardScores.concat(studentModel.assignmentScores)
     return studentModel
 })
 
@@ -215,7 +214,6 @@ function calculateScales() {
     s.scoreBandScale = d3.scale.ordinal()
         .domain(d3.range(6))
         .rangePoints([0, 100], 1)
-
 
     return s
 }
