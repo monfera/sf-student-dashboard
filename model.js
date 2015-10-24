@@ -469,7 +469,7 @@ function calculateScales() {
 
     s.assignmentScoreVerticalScaleLarge = d3.scale.linear()
         .domain(assignmentScoreVerticalDomain)
-        .range([s.rowBandRange , -s.rowBandRange])
+        .range([s.rowBandRange * 2 , -s.rowBandRange])
 
     s.assignmentScoreHorizontalScale = d3.scale.linear()
         .domain(assignmentScoreVerticalDomain)
