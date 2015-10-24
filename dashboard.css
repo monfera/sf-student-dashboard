@@ -52,83 +52,15 @@ rect.rowCaptureZone {
  */
 
 
-/* Attendance legends */
-
-g.classAttendanceGroup g.groupLegends line {
-    stroke-width: 8;
-}
-
-g.classAttendanceGroup g.groupLegends g.tardy line {
-    opacity: 0.1;
-}
-g.classAttendanceGroup g.groupLegends g.absent line {
-    opacity: 0.4;
-}
-g.classAttendanceGroup g.groupLegends g.referrals line {
-    opacity: 0.7;
-}
-g.classAttendanceGroup g.groupLegends g.detentions line {
-    opacity: 1;
-}
-
-/* Score legends */
-
-g.assignmentScoresGroup g.groupLegends g.above circle {
-    fill: green;
-}
-g.assignmentScoresGroup g.groupLegends g.below circle {
-    fill: red;
-}
-g.assignmentScoresGroup g.groupLegends g.current circle {
-    fill: grey;
-}
-g.assignmentScoresGroup g.groupLegends g.past circle {
-    fill: grey;
-    opacity: 0.3;
-}
-
-/* Benchmark legends */
-
-g.benchmarkGroup g.groupLegends line {
-    stroke-width: 2px;
-    -webkit-transform: scaleX(1.5) translateY(-1.5px);
-    transform: scaleX(1.5) translateY(-1.5px);
-}
-
-/**
- * Background of charts
- */
-
-rect.background {
-    fill: black;
-}
-
 /**
  * Axes in general
  */
 
-.tick text, .axisLegend, .legendText {
-    fill: rgb(96, 96, 96);
-    font-size: 10px;
-}
 
-.courseGradesGroup .tick text {
-    font-size: 12px;
-}
-
-.tick line, path.domain {
-    stroke: rgb(192, 192, 192);
-}
-
-text.axisLegend {
-}
 /**
  * Column axes
  */
 
-g.columnAxis {
-    font-size: 12px;
-}
 
 /**
  * Distributions - histogram

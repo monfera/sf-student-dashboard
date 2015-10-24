@@ -55,3 +55,12 @@ g.bandLine .valuePoints .point.highOutlier {
 .axes path.domain {
     fill: none;
 }
+
+.tick text {
+    fill: rgb(96, 96, 96);
+    font-size: 10px;
+}
+
+.tick line, path.domain {
+    stroke: rgb(192, 192, 192);
+}
