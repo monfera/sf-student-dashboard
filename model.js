@@ -19,6 +19,7 @@ var dashboardVariables = {
     name: {
         key: 'name',
         groupAlias: 'namesGroup',
+        petiteHeaderAlias: 'Name',
         headerAlias: 'Student',
         helpText: 'Student name\n[Click and hold for sorting]',
         smallHeaderAlias: 'Student name',

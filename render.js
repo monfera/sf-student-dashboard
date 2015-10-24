@@ -110,22 +110,12 @@ function render() {
         }
     }
 
-    /**
-     * Contents
-     */
-
-    var contents = bind(mainRectangleTopLeft, 'contents')
-    contents
-        .entered
-        .classed('globalContentPlacementY', true)
-        .attr('transform', translateY(24.5))
-
 
     /**
      * Top header rows
      */
 
-    var topGroups = bind(contents, 'topGroups')
+    var topGroups = bind(dashboard, 'topGroups')
 
     var assignmentScoresGroupX = 408.5
     var topGroupContentsY = 38
@@ -140,7 +130,7 @@ function render() {
 
     var aggregateGroupY = 926
 
-    var sideGroups = bind(contents, 'sideGroups')
+    var sideGroups = bind(dashboard, 'sideGroups')
     sideGroups
         .entered
         .attr('transform', translate(0, aggregateGroupY))
@@ -155,6 +145,12 @@ function render() {
     function offsetLegends(selection) {selection.entered.attr('transform', translate(2, -130))}
 
     bind(assignmentScoresGroup.legendGroup, 'groupLegends').call(offsetLegends)
+
+    renderPetiteHeader(namesGroup.group, [
+        {key: 'Name', value: 0, interactive: true}
+    ])
+
+
     renderPetiteHeader(assignmentScoresGroup.group, [
         {key: 'YTD', value: -90, interactive: true},
         {key: 'Spread', value: -21, interactive: true}
