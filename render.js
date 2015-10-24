@@ -217,7 +217,6 @@ function render() {
 
         bind(root, 'groupLegends').call(offsetLegends)
 
-        // fixme merge some properties (interactive, helpText) into the variable Model
         renderPetiteHeader(group.group, [
             {key: 'YTD', value: -90, interactive: true},
             {key: 'Spread', value: -21, interactive: true}
