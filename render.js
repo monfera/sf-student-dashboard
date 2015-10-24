@@ -29,9 +29,7 @@ function renderPetiteHeader(root, vm, fontSize) {
         .classed('interactive', property('interactive'))
         .on('mousedown', function(d) {setPetiteHeaderTableSortOrder(d.key, d)})
         .on('mouseup', resetTableSortOrder)
-        .attr({
-            x: value
-        })
+        .attr('x', value)
         .attr('opacity', 1)
     root['petiteColumnHeader']['group']['headerText']
         .entered
