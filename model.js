@@ -10,17 +10,7 @@ dashboardData['Student Data'] = dashboardData['Student Data']['Student Name'].ma
         key: name,
         assignmentScores: d["scores"][i].slice(5),
         meanAssignmentScore: d3.mean(d["scores"][i].slice(5).filter(identity)),
-        standardScores: d["scores"][i].slice(0, 5).reverse(),
-        grades: object(d["grades"][i].map(function(g, j) {
-            function indexToKey(index) {
-                switch(index) {
-                    case 0: return 'current'
-                    case 1: return 'goal'
-                    case 2: return 'previous'
-                }
-            }
-            return [indexToKey(j), g]
-        }))
+        standardScores: d["scores"][i].slice(0, 5).reverse()
     }
     studentModel.allScores = studentModel.standardScores.concat(studentModel.assignmentScores)
     return studentModel
@@ -56,6 +46,16 @@ var dashboardVariables = {
         variableType: 'cardinal',
         defaultOrder: 'descending',
         plucker: function(student) {return d3.deviation(student.assignmentScores.filter(identity))}
+    },
+    pastYearsMeanAssignmentScore: {
+        key: 'pastYearsMeanAssignmentScore',
+        legendAlias: 'Assessments',
+        petiteHeaderAlias: 'Last 5',
+        helpText: "Past 5 years' assignment scores\n[Click and hold for sorting based on the average]",
+        dataType: 'numeric',
+        variableType: 'cardinal',
+        defaultOrder: 'ascending',
+        plucker: function(student) {return d3.mean(student.standardScores)}
     },
     assignmentScoreTemplate: {
         key: 'assignmentScoreTemplate',
