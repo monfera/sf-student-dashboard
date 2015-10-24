@@ -10,12 +10,12 @@
 var duration = 200
 var UNICODE_UP_DOWN_ARROW = '\u21d5'
 
-function renderPetiteHeader(root, vm) {
-    bind(root, 'petiteColumnHeader')
+function renderHeader(root, vm) {
+    bind(root, 'columnHeader')
         .entered
         .attr('transform', translateY(-25))
-    bind(root['petiteColumnHeader'], 'group', 'g', vm)
-    bind(root['petiteColumnHeader']['group'], 'headerText', 'text')
+    bind(root['columnHeader'], 'group', 'g', vm)
+    bind(root['columnHeader']['group'], 'headerText', 'text')
         .text(function(d) {return sortedByThis('key', d.key) ? d.key + '' + UNICODE_UP_DOWN_ARROW : d.key})
         .entered
         .classed('interactive', property('interactive'))
@@ -86,17 +86,17 @@ function render() {
      * Legends
      */
 
-    renderPetiteHeader(namesGroup.group, [
+    renderHeader(namesGroup.group, [
         {key: 'Name', value: 0, interactive: true}
     ])
 
 
-    renderPetiteHeader(assignmentScoresGroup.group, [
+    renderHeader(assignmentScoresGroup.group, [
         {key: 'YTD', value: -90, interactive: true},
         {key: 'Spread', value: -21, interactive: true}
     ])
 
-    renderPetiteHeader(assessmentScoresGroup.group, [
+    renderHeader(assessmentScoresGroup.group, [
         {key: 'Last 5', value: 12, interactive: true}
     ])
 
