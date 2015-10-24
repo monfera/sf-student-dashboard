@@ -23,11 +23,6 @@ function setDelayedTableSortOrder(variable, d) {
     }, 300)
 }
 
-function setGroupHeaderTableSortOrder(className, d) {
-    var variable = findWhere('groupAlias', className)(dashboardSettings.variables)
-    setDelayedTableSortOrder(variable, d)
-}
-
 function setPetiteHeaderTableSortOrder(headerName, d) {
     var variable = findWhere('key', headerName)(dashboardSettings.variables)
     setDelayedTableSortOrder(variable, d)
