@@ -178,12 +178,7 @@ function render() {
             .attr({
                 y: -6
             })
-            .attr({
-                fill: l.titleTextColor,
-                'letter-spacing': 0,
-                'font-size': l.groupTitleFontSize,
-                opacity: aggregate ? 0 : 1
-            })
+
         bind(header, 'helpText', 'title')
             .entered
             .text(function() {

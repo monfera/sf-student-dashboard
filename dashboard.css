@@ -106,11 +106,6 @@ line.attendanceLine, g.classAttendanceGroup g.groupLegends line {
 
 /* Legends in general */
 
-g.dashboard {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-}
-
 g.groupLegends text {
     font-size: 10px;
 }
@@ -309,4 +304,27 @@ g.benchmarkGroup g.xAxis .tick line {
 g.medianGroup g.tableColumn text {
     font-size: 14px;
     text-anchor: end;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+g.dashboard {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+text.headerTitle {
+    letter-spacing: 0;
+    font-size: 18px;
 }
