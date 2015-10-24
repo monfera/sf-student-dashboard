@@ -23,7 +23,8 @@ g.bands .band.s5 {stroke: white; stroke-width: 1px; fill: none;} /* for more pro
 g.bandLine .valueLine,
 g.sparkStrip .valueBox,
 g.sparkStrip .valuePoints {
-    stroke: rgb(226, 60, 180)
+    stroke: rgb(226, 60, 180);
+    fill: none;
 }
 
 g.bandLine .valueLine {
@@ -49,4 +50,8 @@ g.bandLine .valuePoints {
 g.bandLine .valuePoints .point.highOutlier {
     fill: white;
     stroke: rgb(226, 60, 180);
+}
+
+.axes path.domain {
+    fill: none;
 }

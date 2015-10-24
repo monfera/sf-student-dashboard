@@ -30,22 +30,7 @@ text {
     cursor: default;
 }
 
-line.point-marker-v, line.point-marker-h {
-    stroke: red;
-}
 
-path {
-    fill: none;
-}
-
-
-/* GROUPS */
-
-/* Top groups */
-
-g.lastAssignmentScoresGroup {
-    text-anchor: end;
-}
 
 /* Rows */
 
@@ -61,92 +46,11 @@ rect.rowCaptureZone {
     cursor: pointer;
 }
 
-.helpButton * {
-    cursor: help;
-}
 
 /**
  * Cells
  */
 
-/* Flags */
-g.flagGroup circle.nonNativeEnglish,
-g.namesGroup g.groupLegends g.english circle {
-    fill: rgb(252, 177, 86);
-}
-g.flagGroup circle.special,
-g.namesGroup g.groupLegends g.special circle  {
-    fill: rgb(237, 61, 44);
-}
-
-/* Course Grades */
-
-g.courseGradesGroup g.groupLegends g.previous line {
-    opacity: 0.1;
-    stroke: black;
-}
-
-/* Class Attendance */
-
-line.violationBaseline {
-    opacity: 0.2;
-}
-line.attendanceLine, g.classAttendanceGroup g.groupLegends line {
-    stroke: rgb(164, 55, 18);
-    stroke-width: 11;
-}
-
-/**
- * Legends
- */
-
-/* Legends in general */
-
-g.groupLegends text {
-    font-size: 10px;
-}
-
-g.groupLegends .legend1  {
-    fill: gray;
-}
-g.groupLegends .legend2 {
-    fill: rgb(226, 60, 180); /* Steve Magenta */
-}
-
-g.groupLegends rect.legendCaptureZone {
-    opacity: 0.0;
-    stroke: black;
-}
-
-/* Small column headings */
-
-g.smallColumnHeader text {
-    font-size: 12px;
-    text-anchor: end;
-}
-g.namesGroup g.smallColumnHeader text {
-    text-anchor: start;
-}
-
-/* Course grade legends */
-
-g.courseGradesGroup g.groupLegends g.current line {
-    stroke-width: 1;
-    stroke: black;
-}
-
-g.courseGradesGroup g.groupLegends g.target line {
-    stroke: red;
-    stroke-width: 1;
-    -webkit-transform: rotate(90deg);
-    transform: rotate(90deg);
-    -webkit-transform-origin: center;
-    transform-origin: center;
-}
-
-g.courseGradesGroup g.groupLegends g.previous line {
-    stroke-width: 8;
-}
 
 /* Attendance legends */
 
