@@ -122,19 +122,18 @@ function render() {
     function rowTransform(d, i) {return translateY(i * s.rowPitch)()}
 
     row
-        .attr({'transform': rowTransform})
+        .attr('transform', rowTransform)
     rowSelection
         .transition().duration(duration * 4)
-        .attr({'transform': rowTransform})
+        .attr('transform', rowTransform)
 
     bind(rowSelection, 'rowBackground', 'rect')
         .attr('fill-opacity', function(d) {return dashboardSettings.table.studentSelection.selectedStudents[d.key] ? 0.025 : 0})
         .entered
         .attr({
-            width: 500,
+            width: 450,
             height: s.rowPitch,
-            x: -46,
-            y: - s.rowPitch / 2 + 0.5
+            y: - s.rowPitch / 2
         })
 
     bind(row, 'nameCell')
