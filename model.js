@@ -4,17 +4,6 @@
  * Copyright Robert Monfera
  */
 
-dashboardData['Student Data'] = dashboardData['Student Data']['Student Name'].map(function(name, i) {
-    var d = dashboardData['Student Data']
-    var studentModel = {
-        key: name,
-        assignmentScores: d["scores"][i].slice(5),
-        meanAssignmentScore: d3.mean(d["scores"][i].slice(5).filter(identity)),
-        standardScores: d["scores"][i].slice(0, 5).reverse()
-    }
-    return studentModel
-})
-
 var dashboardVariables = {
     name: {
         key: 'Name',

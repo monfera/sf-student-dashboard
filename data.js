@@ -7,197 +7,547 @@
  */
 
 var dashboardData = {
-    key: 'full-dashboard-data',
-    "Student Data": {
-        "Student Name": [
-            "Alison Perry",
-            "Amala Singh",
-            "Anthony Harper",
-            "Bae Kim",
-            "Blaine Harper",
-            "Brian Francis",
-            "Britta Jones",
-            "Christopher Murphy",
-            "David Chenowith",
-            "Donald Chase",
-            "Fariah Jackson",
-            "Fiona Reeves",
-            "Frederick Chandler",
-            "George Smith",
-            "Hannah Li",
-            "Holly Norton",
-            "Jaime Goss",
-            "James Martin",
-            "James Snow",
-            "Jose Domingo",
-            "Kirsten Holmes",
-            "Lawrence Parker",
-            "Maria Garcia",
-            "Nikolas Mikhailovich",
-            "Regan Potrero",
-            "Roshawn Dawson",
-            "Samuel Miller",
-            "Sarah Jameson",
-            "Scott Ortiz",
-            "Xu Mei"
+    "key": "full-dashboard-data",
+    "Student Data": [
+    {
+        "key": "Alison Perry",
+        "assignmentScores": [
+            0.87,
+            0.91,
+            0.98,
+            0.78,
+            0.91
         ],
-        scores: [
-            [0.85,	0.89,	0.84,	0.82,	0.85,	0.87,	0.91,	0.98,	0.78,	0.91],
-            [0.91,	0.94,	0.93,	0.89,	0.87,	0.90,	0.87,	0.93,	0.90,	0.99],
-            [0.62,	0.67,	0.70,	0.73,	0.79,	0.65,	0.79,	0.55,	0.70,	0.78],
-            [0.39,	0.71,	0.74,	0.78,	0.75,	0.46,	0.68,	0.71,	0.51,	0.61],
-            [0.71,	0.68,	0.73,	0.74,	0.69,	0.69,	0.73,	0.77,	0.81,	0.74],
-            [0.67,	0.66,	0.71,	0.78,	0.81,	0.57,	0.66,	0.70,	0.62,	0.69],
-            [0.85,	0.81,	0.82,	0.78,	0.75,	0.81,	0.87,	0.79,	0.80,	0.77],
-            [0.55,	0.49,	0.51,	0.58,	0.77,	0.55,	0.73,	0.70,	0.72,	0.78],
-            [0.80,	0.76,	0.82,	0.84,	0.85,	0.81,	0.88,	0.92,	0.84,	0.97],
-            [0.92,	0.89,	0.91,	0.96,	0.93,	0.97,	0.93,	0.90,	0.97,	0.95],
-            [0.84,	0.81,	0.81,	0.83,	0.80,	0.89,	0.92,	0.85,	0.84,	0.88],
-            [0.47,	0.41,	0.52,	0.47,	0.50,	0.61,	0.69,	0.54,	0.75,	0.64],
-            [0.41,	0.62,	0.64,	0.67,	0.51,	0.71,	0.65,	NaN,	0.60,	0.68],
-            [0.76,	0.71,	0.74,	0.73,	0.71,	0.78,	NaN,	0.81,	NaN,	0.76],
-            [0.94,	0.91,	0.94,	0.93,	0.95,	0.91,	0.93,	0.98,	NaN,	0.94],
-            [0.98,	0.99,	0.97,	0.97,	0.96,	0.98,	1.00,	0.97,	0.95,	1.00],
-            [0.82,	0.81,	0.78,	0.83,	0.84,	0.88,	0.81,	0.78,	0.85,	0.86],
-            [0.71,	0.74,	0.75,	0.75,	0.73,	0.71,	0.74,	0.69,	0.79,	0.75],
-            [0.91,	0.86,	0.90,	0.92,	0.90,	0.91,	0.94,	0.89,	0.99,	0.97],
-            [0.84,	0.90,	0.91,	0.89,	0.93,	0.87,	0.84,	0.89,	0.88,	0.84],
-            [0.67,	0.72,	0.73,	0.75,	0.77,	0.79,	0.70,	0.66,	0.71,	0.72],
-            [0.80,	0.79,	0.78,	0.83,	0.84,	0.81,	0.84,	0.88,	0.89,	0.91],
-            [0.72,	0.75,	0.76,	0.71,	0.76,	0.90,	0.81,	0.89,	0.82,	0.88],
-            [0.63,	0.57,	0.55,	0.64,	0.63,	0.66,	0.71,	0.73,	0.70,	0.79],
-            [0.67,	0.70,	0.68,	0.71,	0.73,	0.76,	0.79,	0.78,	0.89,	0.72],
-            [0.78,	0.79,	0.82,	0.80,	0.77,	0.64,	0.71,	0.75,	0.78,	0.71],
-            [0.81,	0.76,	0.83,	0.84,	0.81,	0.81,	0.88,	0.77,	0.91,	0.84],
-            [0.78,	0.85,	0.89,	0.92,	0.91,	0.87,	0.83,	0.92,	0.90,	0.89],
-            [0.82,	0.71,	0.74,	0.73,	0.78,	0.89,	0.78,	0.84,	0.79,	0.81],
-            [0.83,	0.86,	0.89,	0.88,	0.91,	0.92,	0.87,	0.65,	0.88,	0.85]
+        "meanAssignmentScore": 0.89,
+        "standardScores": [
+            0.85,
+            0.82,
+            0.84,
+            0.89,
+            0.85
         ]
     },
-    "Absences": [
-        ["Alison Perry",	"2012-02-09"],
-        ["Alison Perry",	"2012-03-05"],
-        ["Alison Perry",	"2012-03-06"],
-        ["Amala Singh",	"2012-01-30"],
-        ["Amala Singh",	"2012-02-17"],
-        ["Amala Singh",	"2012-02-23"],
-        ["Amala Singh",	"2012-02-24"],
-        ["Anthony Harper",	"2012-02-15"],
-        ["Anthony Harper",	"2012-03-13"],
-        ["Anthony Harper",	"2012-04-09"],
-        ["Bae Kim",	"2012-02-16"],
-        ["Bae Kim",	"2012-03-05"],
-        ["Bae Kim",	"2012-03-19"],
-        ["Bae Kim",	"2012-03-30"],
-        ["Bae Kim",	"2012-04-09"],
-        ["Bae Kim",	"2012-04-17"],
-        ["Blaine Harper",	"2012-01-09"],
-        ["Blaine Harper",	"2012-01-12"],
-        ["Blaine Harper",	"2012-02-15"],
-        ["Blaine Harper",	"2012-04-09"],
-        ["Brian Francis",	"2012-01-10"],
-        ["Brian Francis",	"2012-01-17"],
-        ["Brian Francis",	"2012-01-18"],
-        ["Brian Francis",	"2012-01-19"],
-        ["Brian Francis",	"2012-02-22"],
-        ["Brian Francis",	"2012-02-23"],
-        ["Brian Francis",	"2012-03-28"],
-        ["Brian Francis",	"2012-04-09"],
-        ["Brian Francis",	"2012-04-20"],
-        ["Britta Jones",	"2012-02-01"],
-        ["Britta Jones",	"2012-04-13"],
-        ["Christopher Murphy",	"2012-01-20"],
-        ["Christopher Murphy",	"2012-04-30"],
-        ["David Chenowith",	"2012-01-24"],
-        ["David Chenowith",	"2012-01-25"],
-        ["David Chenowith",	"2012-02-21"],
-        ["Fariah Jackson",	"2012-02-07"],
-        ["Fariah Jackson",	"2012-03-22"],
-        ["Fiona Reeves",	"2012-01-19"],
-        ["Fiona Reeves",	"2012-02-07"],
-        ["Fiona Reeves",	"2012-02-08"],
-        ["Fiona Reeves",	"2012-02-09"],
-        ["Fiona Reeves",	"2012-03-14"],
-        ["Fiona Reeves",	"2012-04-17"],
-        ["Fiona Reeves",	"2012-04-19"],
-        ["Fiona Reeves",	"2012-04-20"],
-        ["George Smith",	"2012-03-08"],
-        ["Hannah Li",	"2012-01-24"],
-        ["Jaime Goss",	"2012-02-08"],
-        ["Jaime Goss",	"2012-03-05"],
-        ["Jaime Goss",	"2012-04-09"],
-        ["Jame Goss",	"2012-03-12"],
-        ["James Martin",	"2012-01-18"],
-        ["James Martin",	"2012-04-26"],
-        ["James Martin",	"2012-04-27"],
-        ["James Martin",	"2012-04-30"],
-        ["James Snow",	"2012-02-09"],
-        ["Jose Domingo",	"2012-02-08"],
-        ["Jose Domingo",	"2012-03-13"],
-        ["Jose Domingo",	"2012-03-14"],
-        ["Kirsten Holmes",	"2012-03-13"],
-        ["Maria Garcia",	"2012-03-08"],
-        ["Maria Garcia",	"2012-03-09"],
-        ["Maria Garcia",	"2012-04-23"],
-        ["Nikolas Mikhailovich",	"2012-01-17"],
-        ["Regan Potrero",	"2012-03-06"],
-        ["Roshawn Dawson",	"2012-01-09"],
-        ["Roshawn Dawson",	"2012-01-10"],
-        ["Roshawn Dawson",	"2012-01-11"],
-        ["Roshawn Dawson",	"2012-01-12"],
-        ["Roshawn Dawson",	"2012-01-13"],
-        ["Roshawn Dawson",	"2012-04-17"],
-        ["Sarah Jameson",	"2012-02-07"],
-        ["Sarah Jameson",	"2012-03-27"],
-        ["Sarah Jameson",	"2012-04-17"],
-        ["Scott Ortiz",	"2012-03-14"],
-        ["Xu Mei",	"2012-03-08"],
-        ["Xu Mei",	"2012-04-16"]
-    ],
-    "Tardies": [
-        ["Amala Singh",	"2012-01-11"],
-        ["Bae Kim",	"2012-01-09"],
-        ["Bae Kim",	"2012-01-12"],
-        ["Bae Kim",	"2012-01-30"],
-        ["Bae Kim",	"2012-02-21"],
-        ["Bae Kim",	"2012-02-29"],
-        ["Bae Kim",	"2012-04-11"],
-        ["Bae Kim",	"2012-04-23"],
-        ["Bae Kim",	"2012-04-27"],
-        ["Blaine Harper",	"2012-03-19"],
-        ["Brian Francis",	"2012-01-11"],
-        ["Brian Francis",	"2012-02-09"],
-        ["Brian Francis",	"2012-04-17"],
-        ["Britta Jones",	"2012-01-11"],
-        ["Christopher Murphy",	"2012-02-09"],
-        ["Christopher Murphy",	"2012-03-06"],
-        ["Christopher Murphy",	"2012-03-30"],
-        ["David Chenowith",	"2012-01-31"],
-        ["David Chenowith",	"2012-02-15"],
-        ["David Chenowith",	"2012-02-22"],
-        ["David Chenowith",	"2012-04-12"],
-        ["David Chenowith",	"2012-04-23"],
-        ["George Smith",	"2012-01-13"],
-        ["George Smith",	"2012-04-19"],
-        ["George Smith",	"2012-04-30"],
-        ["Hannah Li",	"2012-01-25"],
-        ["Hannah Li",	"2012-03-19"],
-        ["Holly Norton",	"2012-02-21"],
-        ["Holly Norton",	"2012-03-09"],
-        ["James Martin",	"2012-01-26"],
-        ["James Martin",	"2012-03-21"],
-        ["Jose Domingo",	"2012-01-24"],
-        ["Maria Garcia",	"2012-01-14"],
-        ["Maria Garcia",	"2012-01-25"],
-        ["Maria Garcia",	"2012-04-10"],
-        ["Maria Garcia",	"2012-04-25"],
-        ["Nikolas Mikhailovich",	"2012-03-19"],
-        ["Regan Potrero",	"2012-01-25"],
-        ["Regan Potrero",	"2012-02-01"],
-        ["Samuel Miller",	"2012-02-27"],
-        ["Sarah Jameson",	"2012-01-19"],
-        ["Sarah Jameson",	"2012-02-08"],
-        ["Sarah Jameson",	"2012-03-06"],
-        ["Sarah Jameson",	"2012-04-23"]
-    ]
+    {
+        "key": "Amala Singh",
+        "assignmentScores": [
+            0.9,
+            0.87,
+            0.93,
+            0.9,
+            0.99
+        ],
+        "meanAssignmentScore": 0.918,
+        "standardScores": [
+            0.87,
+            0.89,
+            0.93,
+            0.94,
+            0.91
+        ]
+    },
+    {
+        "key": "Anthony Harper",
+        "assignmentScores": [
+            0.65,
+            0.79,
+            0.55,
+            0.7,
+            0.78
+        ],
+        "meanAssignmentScore": 0.694,
+        "standardScores": [
+            0.79,
+            0.73,
+            0.7,
+            0.67,
+            0.62
+        ]
+    },
+    {
+        "key": "Bae Kim",
+        "assignmentScores": [
+            0.46,
+            0.68,
+            0.71,
+            0.51,
+            0.61
+        ],
+        "meanAssignmentScore": 0.594,
+        "standardScores": [
+            0.75,
+            0.78,
+            0.74,
+            0.71,
+            0.39
+        ]
+    },
+    {
+        "key": "Blaine Harper",
+        "assignmentScores": [
+            0.69,
+            0.73,
+            0.77,
+            0.81,
+            0.74
+        ],
+        "meanAssignmentScore": 0.748,
+        "standardScores": [
+            0.69,
+            0.74,
+            0.73,
+            0.68,
+            0.71
+        ]
+    },
+    {
+        "key": "Brian Francis",
+        "assignmentScores": [
+            0.57,
+            0.66,
+            0.7,
+            0.62,
+            0.69
+        ],
+        "meanAssignmentScore": 0.648,
+        "standardScores": [
+            0.81,
+            0.78,
+            0.71,
+            0.66,
+            0.67
+        ]
+    },
+    {
+        "key": "Britta Jones",
+        "assignmentScores": [
+            0.81,
+            0.87,
+            0.79,
+            0.8,
+            0.77
+        ],
+        "meanAssignmentScore": 0.808,
+        "standardScores": [
+            0.75,
+            0.78,
+            0.82,
+            0.81,
+            0.85
+        ]
+    },
+    {
+        "key": "Christopher Murphy",
+        "assignmentScores": [
+            0.55,
+            0.73,
+            0.7,
+            0.72,
+            0.78
+        ],
+        "meanAssignmentScore": 0.696,
+        "standardScores": [
+            0.77,
+            0.58,
+            0.51,
+            0.49,
+            0.55
+        ]
+    },
+    {
+        "key": "David Chenowith",
+        "assignmentScores": [
+            0.81,
+            0.88,
+            0.92,
+            0.84,
+            0.97
+        ],
+        "meanAssignmentScore": 0.884,
+        "standardScores": [
+            0.85,
+            0.84,
+            0.82,
+            0.76,
+            0.8
+        ]
+    },
+    {
+        "key": "Donald Chase",
+        "assignmentScores": [
+            0.97,
+            0.93,
+            0.9,
+            0.97,
+            0.95
+        ],
+        "meanAssignmentScore": 0.944,
+        "standardScores": [
+            0.93,
+            0.96,
+            0.91,
+            0.89,
+            0.92
+        ]
+    },
+    {
+        "key": "Fariah Jackson",
+        "assignmentScores": [
+            0.89,
+            0.92,
+            0.85,
+            0.84,
+            0.88
+        ],
+        "meanAssignmentScore": 0.876,
+        "standardScores": [
+            0.8,
+            0.83,
+            0.81,
+            0.81,
+            0.84
+        ]
+    },
+    {
+        "key": "Fiona Reeves",
+        "assignmentScores": [
+            0.61,
+            0.69,
+            0.54,
+            0.75,
+            0.64
+        ],
+        "meanAssignmentScore": 0.646,
+        "standardScores": [
+            0.5,
+            0.47,
+            0.52,
+            0.41,
+            0.47
+        ]
+    },
+    {
+        "key": "Frederick Chandler",
+        "assignmentScores": [
+            0.71,
+            0.65,
+            null,
+            0.6,
+            0.68
+        ],
+        "meanAssignmentScore": 0.66,
+        "standardScores": [
+            0.51,
+            0.67,
+            0.64,
+            0.62,
+            0.41
+        ]
+    },
+    {
+        "key": "George Smith",
+        "assignmentScores": [
+            0.78,
+            null,
+            0.81,
+            null,
+            0.76
+        ],
+        "meanAssignmentScore": 0.7833333,
+        "standardScores": [
+            0.71,
+            0.73,
+            0.74,
+            0.71,
+            0.76
+        ]
+    },
+    {
+        "key": "Hannah Li",
+        "assignmentScores": [
+            0.91,
+            0.93,
+            0.98,
+            null,
+            0.94
+        ],
+        "meanAssignmentScore": 0.94,
+        "standardScores": [
+            0.95,
+            0.93,
+            0.94,
+            0.91,
+            0.94
+        ]
+    },
+    {
+        "key": "Holly Norton",
+        "assignmentScores": [
+            0.98,
+            1,
+            0.97,
+            0.95,
+            1
+        ],
+        "meanAssignmentScore": 0.98,
+        "standardScores": [
+            0.96,
+            0.97,
+            0.97,
+            0.99,
+            0.98
+        ]
+    },
+    {
+        "key": "Jaime Goss",
+        "assignmentScores": [
+            0.88,
+            0.81,
+            0.78,
+            0.85,
+            0.86
+        ],
+        "meanAssignmentScore": 0.836,
+        "standardScores": [
+            0.84,
+            0.83,
+            0.78,
+            0.81,
+            0.82
+        ]
+    },
+    {
+        "key": "James Martin",
+        "assignmentScores": [
+            0.71,
+            0.74,
+            0.69,
+            0.79,
+            0.75
+        ],
+        "meanAssignmentScore": 0.736,
+        "standardScores": [
+            0.73,
+            0.75,
+            0.75,
+            0.74,
+            0.71
+        ]
+    },
+    {
+        "key": "James Snow",
+        "assignmentScores": [
+            0.91,
+            0.94,
+            0.89,
+            0.99,
+            0.97
+        ],
+        "meanAssignmentScore": 0.94,
+        "standardScores": [
+            0.9,
+            0.92,
+            0.9,
+            0.86,
+            0.91
+        ]
+    },
+    {
+        "key": "Jose Domingo",
+        "assignmentScores": [
+            0.87,
+            0.84,
+            0.89,
+            0.88,
+            0.84
+        ],
+        "meanAssignmentScore": 0.864,
+        "standardScores": [
+            0.93,
+            0.89,
+            0.91,
+            0.9,
+            0.84
+        ]
+    },
+    {
+        "key": "Kirsten Holmes",
+        "assignmentScores": [
+            0.79,
+            0.7,
+            0.66,
+            0.71,
+            0.72
+        ],
+        "meanAssignmentScore": 0.716,
+        "standardScores": [
+            0.77,
+            0.75,
+            0.73,
+            0.72,
+            0.67
+        ]
+    },
+    {
+        "key": "Lawrence Parker",
+        "assignmentScores": [
+            0.81,
+            0.84,
+            0.88,
+            0.89,
+            0.91
+        ],
+        "meanAssignmentScore": 0.866,
+        "standardScores": [
+            0.84,
+            0.83,
+            0.78,
+            0.79,
+            0.8
+        ]
+    },
+    {
+        "key": "Maria Garcia",
+        "assignmentScores": [
+            0.9,
+            0.81,
+            0.89,
+            0.82,
+            0.88
+        ],
+        "meanAssignmentScore": 0.86,
+        "standardScores": [
+            0.76,
+            0.71,
+            0.76,
+            0.75,
+            0.72
+        ]
+    },
+    {
+        "key": "Nikolas Mikhailovich",
+        "assignmentScores": [
+            0.66,
+            0.71,
+            0.73,
+            0.7,
+            0.79
+        ],
+        "meanAssignmentScore": 0.718,
+        "standardScores": [
+            0.63,
+            0.64,
+            0.55,
+            0.57,
+            0.63
+        ]
+    },
+    {
+        "key": "Regan Potrero",
+        "assignmentScores": [
+            0.76,
+            0.79,
+            0.78,
+            0.89,
+            0.72
+        ],
+        "meanAssignmentScore": 0.788,
+        "standardScores": [
+            0.73,
+            0.71,
+            0.68,
+            0.7,
+            0.67
+        ]
+    },
+    {
+        "key": "Roshawn Dawson",
+        "assignmentScores": [
+            0.64,
+            0.71,
+            0.75,
+            0.78,
+            0.71
+        ],
+        "meanAssignmentScore": 0.718,
+        "standardScores": [
+            0.77,
+            0.8,
+            0.82,
+            0.79,
+            0.78
+        ]
+    },
+    {
+        "key": "Samuel Miller",
+        "assignmentScores": [
+            0.81,
+            0.88,
+            0.77,
+            0.91,
+            0.84
+        ],
+        "meanAssignmentScore": 0.842,
+        "standardScores": [
+            0.81,
+            0.84,
+            0.83,
+            0.76,
+            0.81
+        ]
+    },
+    {
+        "key": "Sarah Jameson",
+        "assignmentScores": [
+            0.87,
+            0.83,
+            0.92,
+            0.9,
+            0.89
+        ],
+        "meanAssignmentScore": 0.882,
+        "standardScores": [
+            0.91,
+            0.92,
+            0.89,
+            0.85,
+            0.78
+        ]
+    },
+    {
+        "key": "Scott Ortiz",
+        "assignmentScores": [
+            0.89,
+            0.78,
+            0.84,
+            0.79,
+            0.81
+        ],
+        "meanAssignmentScore": 0.822,
+        "standardScores": [
+            0.78,
+            0.73,
+            0.74,
+            0.71,
+            0.82
+        ]
+    },
+    {
+        "key": "Xu Mei",
+        "assignmentScores": [
+            0.92,
+            0.87,
+            0.65,
+            0.88,
+            0.85
+        ],
+        "meanAssignmentScore": 0.834,
+        "standardScores": [
+            0.91,
+            0.88,
+            0.89,
+            0.86,
+            0.83
+        ]
+    }
+]
 }
