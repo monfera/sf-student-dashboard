@@ -61,7 +61,7 @@ function render() {
      * Headers
      */
 
-    function renderGroupHolder(selection, className, title, x, y, y2, aggregate) {
+    function renderGroupHolder(selection, className, x, y, y2) {
 
         var group = bind(selection, className)
         group
@@ -91,9 +91,9 @@ function render() {
     var assignmentScoresGroupX = 408.5
     var topGroupContentsY = 38
     var classAssessmentGroupX = 747.5
-    var namesGroup = renderGroupHolder(topGroups, 'namesGroup', 'Student', 0, 0, topGroupContentsY)
-    var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', 'Assignments', classAssessmentGroupX - 230, 0, topGroupContentsY)
-    var assessmentScoresGroup = renderGroupHolder(topGroups, 'assessmentScoresGroup', 'Assessments', classAssessmentGroupX, 0, topGroupContentsY)
+    var namesGroup = renderGroupHolder(topGroups, 'namesGroup', 0, 0, topGroupContentsY)
+    var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', classAssessmentGroupX - 230, 0, topGroupContentsY)
+    var assessmentScoresGroup = renderGroupHolder(topGroups, 'assessmentScoresGroup', classAssessmentGroupX, 0, topGroupContentsY)
 
     /**
      * Aggregate row
@@ -106,7 +106,7 @@ function render() {
         .entered
         .attr('transform', translate(0, aggregateGroupY))
 
-    var assignmentScoresAggregateGroup = renderGroupHolder(sideGroups, 'assignmentScoresAggregateGroup', '', 0, -21, 0, true)
+    var assignmentScoresAggregateGroup = renderGroupHolder(sideGroups, 'assignmentScoresAggregateGroup', 0, -21, 0)
 
 
     /**
