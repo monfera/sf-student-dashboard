@@ -11,24 +11,7 @@ var duration = 200
 var UNICODE_UP_DOWN_ARROW = '\u21d5'
 var layoutGray = 'rgb(231, 231, 233)'
 var mainRectangleLeft = 48
-var mainRectangleWidth = 1260
 
-var layout, l
-
-function calculateGlobals() {
-
-    layout = {
-        mainRectangleTop: 38
-    }
-
-    l = {
-
-        mainTitleDecoratorColor: layoutGray,
-        mainTitleDecoratorHeight: layout.mainRectangleTop,
-        mainTitleDecoratorY: -layout.mainRectangleTop,
-
-    }
-}
 
 function renderPetiteHeader(root, vm, fontSize) {
     bind(root, 'petiteColumnHeader')
@@ -60,7 +43,6 @@ function renderPetiteHeader(root, vm, fontSize) {
 function render() {
 
     var s = calculateScales()
-    calculateGlobals()
 
     /**
      * Root
@@ -85,9 +67,6 @@ function render() {
      */
 
     var mainRectangleTop = bind(dashboard, 'mainRectangleTop', 'g')
-    mainRectangleTop
-        .entered
-        .attr({transform: translateY(layout.mainRectangleTop)})
 
     var mainRectangleTopLeft = bind(mainRectangleTop, 'mainRectangleTop', 'g')
     mainRectangleTopLeft
@@ -99,15 +78,6 @@ function render() {
      * Dashboard title and date
      */
 
-    bind(mainRectangleTopLeft, 'mainRectangleTopBar', 'rect')
-        .entered
-        .attr({
-            width: mainRectangleWidth + mainRectangleLeft - 24,
-            height: l.mainTitleDecoratorHeight,
-            x: -mainRectangleLeft - 2,
-            y: l.mainTitleDecoratorY,
-            fill: l.mainTitleDecoratorColor,
-        })
 
     var topOfRows = 45
     var bottomOfRows = 896
