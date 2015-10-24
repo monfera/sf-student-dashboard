@@ -23,7 +23,7 @@ function setDelayedTableSortOrder(variable, d) {
     }, 300)
 }
 
-function setPetiteHeaderTableSortOrder(headerName, d) {
+function setHeaderTableSortOrder(headerName, d) {
     var variable = findWhere('key', headerName)(dashboardSettings.variables)
     setDelayedTableSortOrder(variable, d)
 }

@@ -19,7 +19,7 @@ function renderHeader(root, vm) {
         .text(function(d) {return sortedByThis('key', d.key) ? d.key + '' + UNICODE_UP_DOWN_ARROW : d.key})
         .entered
         .classed('interactive', property('interactive'))
-        .on('mousedown', function(d) {setPetiteHeaderTableSortOrder(d.key, d)})
+        .on('mousedown', function(d) {setHeaderTableSortOrder(d.key, d)})
         .on('mouseup', resetTableSortOrder)
         .attr('x', value)
         .attr('opacity', 1)
