@@ -19,7 +19,6 @@ var dashboardVariables = {
     name: {
         key: 'name',
         petiteHeaderAlias: 'Name',
-        dataType: 'string',
         variableType: 'nominal',
         defaultOrder: 'ascending',
         plucker: key
@@ -27,7 +26,6 @@ var dashboardVariables = {
     meanAssignmentScore: {
         key: 'meanAssignmentScore',
         petiteHeaderAlias: 'YTD',
-        dataType: 'numeric',
         variableType: 'cardinal',
         defaultOrder: 'ascending',
         plucker: function(student) {return d3.mean(student.assignmentScores.filter(identity))}
@@ -35,7 +33,6 @@ var dashboardVariables = {
     assignmentSpread: {
         key: 'assignmentSpread',
         petiteHeaderAlias: 'Spread',
-        dataType: 'numeric',
         variableType: 'cardinal',
         defaultOrder: 'descending',
         plucker: function(student) {return d3.deviation(student.assignmentScores.filter(identity))}
@@ -43,7 +40,6 @@ var dashboardVariables = {
     pastYearsMeanAssignmentScore: {
         key: 'pastYearsMeanAssignmentScore',
         petiteHeaderAlias: 'Last 5',
-        dataType: 'numeric',
         variableType: 'cardinal',
         defaultOrder: 'ascending',
         plucker: function(student) {return d3.mean(student.standardScores)}
