@@ -700,6 +700,22 @@ function render() {
             y: - s.rowPitch / 2 + 0.5
         })
 
+    ;(function renderAlphanumericsAndFlag(root) {
+
+        bind(root, 'nameCell')
+            .entered
+            .classed('namesGroup', true)
+        bind(root['nameCell'], 'nameCellText', 'text')
+            .entered
+            .text(key)
+            .attr({
+                y: '0.5em'
+            })
+            .attr({
+                'transform': translateX(0)
+            })
+    })(row)
+
     var assignmentBandLine = bandLine()
         .bands(s.assignmentBands)
         .valueAccessor(property('assignmentScores'))
