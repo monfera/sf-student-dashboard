@@ -9,7 +9,6 @@
 
 var duration = 200
 var UNICODE_UP_DOWN_ARROW = '\u21d5'
-var layoutGray = 'rgb(231, 231, 233)'
 
 function renderPetiteHeader(root, vm, fontSize) {
     bind(root, 'petiteColumnHeader')
@@ -49,7 +48,6 @@ function render() {
 
     root
         .style({
-            'background-color': 'rgb(255, 255, 251)',
             width: '100%',
             height: '100%'
         })
@@ -194,7 +192,7 @@ function render() {
         .attr({'transform': rowTransform})
 
     bind(rowSelection, 'rowBackground', 'rect')
-        .attr('fill-opacity', function(d) {return dashboardSettings.table.studentSelection.selectedStudents[d.key] ? 0.05 : 0})
+        .attr('fill-opacity', function(d) {return dashboardSettings.table.studentSelection.selectedStudents[d.key] ? 0.025 : 0})
         .entered
         .attr({
             width: 1328 - 48,
