@@ -487,37 +487,5 @@ function calculateScales() {
         .domain([new Date('2012-01-09'), new Date('2012-05-25')])
         .range([0, 200])
 
-    var absentTardyDomain = [0, 5.0001]
-
-    var absentAbsoluteRange = 26
-
-    s.absentScale = d3.scale.linear()
-        .domain(absentTardyDomain)
-        .range([0, -absentAbsoluteRange])
-
-    s.tardyScale = d3.scale.linear()
-        .domain(absentTardyDomain)
-        .range([0, absentAbsoluteRange])
-
-    var histogramChartRangeX = [0, 98]
-    var boxplotChartRangeX = [0, 100]
-    var upperRightChartsRangeY = [0, -40]
-
-    s.histogramGradeScale = d3.scale.ordinal()
-        .domain(s.gradesDomain)
-        .rangePoints(histogramChartRangeX, 1)
-
-    s.histogramStudentCountScale = d3.scale.linear()
-        .domain([0, 13.0001])
-        .range(upperRightChartsRangeY)
-
-    s.boxplotScoreScale = d3.scale.linear()
-        .domain([0.4, 1.0001])
-        .range([boxplotChartRangeX[0], boxplotChartRangeX[1] - 5] /* pointRadius + 1 */)
-
-    s.boxplotAssignmentNumberScale = d3.scale.ordinal()
-        .domain([1, 2, 3, 4, 5])
-        .rangePoints(upperRightChartsRangeY, 1)
-
     return s
 }
