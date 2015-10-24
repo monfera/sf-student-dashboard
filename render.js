@@ -154,26 +154,15 @@ function render() {
 
     function offsetLegends(selection) {selection.entered.attr('transform', translate(2, -130))}
 
-    ;(function assignmentScoreLegends(group) {
+    bind(assignmentScoresGroup.legendGroup, 'groupLegends').call(offsetLegends)
+    renderPetiteHeader(assignmentScoresGroup.group, [
+        {key: 'YTD', value: -90, interactive: true},
+        {key: 'Spread', value: -21, interactive: true}
+    ])
 
-        var root = group.legendGroup
-
-        bind(root, 'groupLegends').call(offsetLegends)
-
-        renderPetiteHeader(group.group, [
-            {key: 'YTD', value: -90, interactive: true},
-            {key: 'Spread', value: -21, interactive: true}
-        ])
-
-    })(assignmentScoresGroup)
-
-    ;(function assessmentLegends(root) {
-
-        renderPetiteHeader(root, [
-            {key: 'Last 5', value: 12, interactive: true}
-        ])
-
-    })(assessmentScoresGroup.group)
+    renderPetiteHeader(assessmentScoresGroup.group, [
+        {key: 'Last 5', value: 12, interactive: true}
+    ])
 
 
     /**
@@ -233,10 +222,10 @@ function render() {
     bind(row, 'assignmentScoresVerticalCell')
         .entered
         .attr('transform', translateX(assignmentScoresGroupX + 86))
-    ;(function renderAssignmentScoresVertical(root) {
-        root.call(assignmentBandLine.renderSparkStrip)
 
-    })(row['assignmentScoresVerticalCell'].entered)
+    row['assignmentScoresVerticalCell']
+        .entered
+        .call(assignmentBandLine.renderSparkStrip)
 
     bind(row, 'assessmentScoresCell')
         .entered
@@ -249,10 +238,8 @@ function render() {
             .rScaleOfBandLine(s.bandLinePointRScale)
             .yRange(s.assessmentScoreScale.range())
             .yAxis(false)
-    ;(function renderAssessmentScores(root) {
-        root.call(assessmentBandLine.renderBandLine)
 
-    })(row['assessmentScoresCell'].entered)
+    row['assessmentScoresCell'].entered.call(assessmentBandLine.renderBandLine)
 
     ;(function renderAssignmentScoresAggregates(root) {
         bind(root, 'assignmentAggregateMetrics', 'g', function(d) {
