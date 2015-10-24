@@ -479,13 +479,6 @@ function calculateScales() {
         .domain(d3.range(6))
         .rangePoints([0, 100], 1)
 
-    s.studentRatioScale = d3.scale.linear()
-        .domain([0, 0.3001]) // 0 to 30%; the small increment is added as the interval is open on the right
-        .range([0, -42])
-
-    s.temporalScale = d3.time.scale()
-        .domain([new Date('2012-01-09'), new Date('2012-05-25')])
-        .range([0, 200])
 
     return s
 }
