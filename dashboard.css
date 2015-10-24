@@ -12,14 +12,6 @@ body, html {
     height: 100%;
 }
 
-html {
-    overflow: hidden
-}
-
-body {
-    margin: 0px;
-}
-
 text {
     cursor: default;
 }
