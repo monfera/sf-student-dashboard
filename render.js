@@ -61,32 +61,12 @@ function render() {
      * Headers
      */
 
-    function renderHeader(root, text, sortedByThis, aggregate) {
-
-        var header = bind(root, 'header')
-
-        bind(header, 'headerTitle', 'text')
-            .text(sortedByThis ? text + '' + UNICODE_UP_DOWN_ARROW : text)
-            .entered
-            .attr({
-                y: -6
-            })
-
-        return header
-    }
-
     function renderGroupHolder(selection, className, title, x, y, y2, aggregate) {
 
         var group = bind(selection, className)
         group
             .entered
             .attr('transform', translate(x, y))
-
-        var groupHeader = renderHeader(group, title, sortedByThis('groupAlias', className), aggregate)
-        groupHeader
-            .entered
-            .on('mousedown', setGroupHeaderTableSortOrder.bind(0, className))
-            .on('mouseup', resetTableSortOrder)
 
         var fullClassName = className + '_contents'
 
@@ -97,8 +77,7 @@ function render() {
 
         return {
             group: group[fullClassName],
-            className: className,
-            legendGroup: groupHeader
+            className: className
         }
     }
 
@@ -133,10 +112,6 @@ function render() {
     /**
      * Legends
      */
-
-    function offsetLegends(selection) {selection.entered.attr('transform', translate(2, -130))}
-
-    bind(assignmentScoresGroup.legendGroup, 'groupLegends').call(offsetLegends)
 
     renderPetiteHeader(namesGroup.group, [
         {key: 'Name', value: 0, interactive: true}
