@@ -4,19 +4,6 @@
  * Copyright Robert Monfera
  */
 
-function tupleSorter(t1, t2) {
-    var a = t1[0], b = t2[0]
-    return a < b ? -1 : a > b ? 1 : 0
-}
-
-function last(a) {
-    return a[a.length - 1]
-}
-
-function add(x, y) {
-    return x + y
-}
-
 function constant(value) {
     return function() {
         return value
@@ -72,18 +59,6 @@ function object(keyValuePairs) {
     return result
 }
 
-function pairs(object) {
-    var keys = Object.keys(object)
-    var result = []
-    var key
-    var i
-    for(i = 0; i < keys.length; i++) {
-        key = keys[i]
-        result.push([key, object[key]])
-    }
-    return result
-}
-
 function findWhere(key, value) {
     // works for objects now...
     return function(obj) {
@@ -112,26 +87,6 @@ function sortBy(obj, comparisonAccessor) {
         return a < b ? -1 : a > b ? 1 : left.index - right.index
     }).map(function(obj) {return obj.value})
 };
-
-function countBy(array, accessorFunction) {
-    var accessor = accessorFunction || identity
-    var result = {}
-    var value
-    var i
-    for(i = 0; i < array.length; i++) {
-        value = accessor(array[i])
-        if(result[value]) {
-            result[value]++
-        } else {
-            result[value] = 1
-        }
-    }
-    return result
-}
-
-function always() {
-    return true
-}
 
 function key(obj) {
     return obj.key
@@ -188,12 +143,6 @@ function bind(object, key) {
     return result
 }
 
-function bindd() {
-    var result = bind.apply(null, arguments)
-    du.pointMarker(result, [{key: 0}])
-    return result
-}
-
 function translate(funX, funY) {
     return function (d, i) {
         return 'translate(' + (typeof funX === 'function' ? funX(d, i) : funX) + ',' + (typeof funY === 'function' ? funY(d, i) : funY) + ')';
@@ -216,20 +165,5 @@ var du = {
 
     repeat: tuple(identity),
     descend: identity,
-    bind: bind,
-    pointMarker: function(selection, data) {
-        selection.each(function(d) {
-            var c = bind0(selection, 'point-marker-c', 'circle', data)
-            c.entered.attr({r: '10px', fill: 'red', 'opacity': 0.2})
-            c.exit().remove()
-
-            var h = bind0(selection, 'point-marker-h', 'line', data)
-            h.entered.attr({x1: -10000, x2: 10000, 'stroke-dasharray': '2 4', stroke: 'red', 'opacity': 0.5})
-            h.exit().remove()
-
-            var v = bind0(selection, 'point-marker-v', 'line', data)
-            v.entered.attr({y1: -10000, y2: 10000, 'stroke-dasharray': '2 4', stroke: 'red', 'opacity': 0.5})
-            v.exit().remove()
-        })
-    }
+    bind: bind
 }
