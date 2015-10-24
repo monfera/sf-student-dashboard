@@ -12,7 +12,6 @@ var UNICODE_UP_DOWN_ARROW = '\u21d5'
 var layoutGray = 'rgb(231, 231, 233)'
 var mainRectangleLeft = 48
 
-
 function renderPetiteHeader(root, vm, fontSize) {
     bind(root, 'petiteColumnHeader')
         .entered
