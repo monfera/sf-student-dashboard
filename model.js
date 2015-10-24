@@ -87,22 +87,6 @@ var dashboardVariables = {
         defaultOrder: 'ascending',
         plucker: function(student) {return d3.mean(student.standardScores)}
     },
-    specialEducation: {
-        key: 'specialEducation',
-        legendAlias: 'Special education',
-        dataType: 'boolean',
-        variableType: 'cardinal',
-        defaultOrder: 'descending',
-        plucker: function(student) {return student.special}
-    },
-    languageDifficulties: {
-        key: 'languageDifficulties',
-        legendAlias: 'Language difficulties',
-        dataType: 'boolean',
-        variableType: 'cardinal',
-        defaultOrder: 'descending',
-        plucker: function(student) {return !student.english}
-    },
     assignmentScoreTemplate: {
         key: 'assignmentScoreTemplate',
         axisAlias: 'assignmentScoresGroup',
