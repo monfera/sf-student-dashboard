@@ -8,7 +8,7 @@
  */
 
 var duration = 200
-var UNICODE_UP_DOWN_ARROW = ['\u2b0d', '\u21d5'][1]
+var UNICODE_UP_DOWN_ARROW = '\u21d5'
 
 var layoutGray = 'rgb(231, 231, 233)'
 
