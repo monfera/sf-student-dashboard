@@ -22,7 +22,6 @@ function renderHeader(root, vm) {
         .on('mousedown', function(d) {setHeaderTableSortOrder(d.key, d)})
         .on('mouseup', resetTableSortOrder)
         .attr('x', value)
-        .attr('opacity', 1)
 }
 
 var s = calculateScales()
