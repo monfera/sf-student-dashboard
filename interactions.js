@@ -10,7 +10,7 @@ function setTableSortOrder(sortVariable) {
         window.clearTimeout(sortSettings.lastTimedSort)
         sortSettings.lastTimedSort = null
     }
-    if(sortVariable && sortVariable !== sortSettings.sortVariable) { // fixme this doesn't detect identical sortings based on template based variables
+    if(sortVariable && sortVariable !== sortSettings.sortVariable) {
         sortSettings.sortVariable = sortVariable
         render()
         sortSettings.lastSortTime = new Date()
