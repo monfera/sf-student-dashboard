@@ -387,7 +387,7 @@ function render() {
     var helpText =
         'Row Sorting:\n' +
         '\u2022 Hover over headers for help text\n' +
-        '\u2022 Click on them for temporary sorting\n\n' +
+        '\u2022 Click and hold header for temporary sorting\n\n' +
         'Row Selections:\n' +
         '\u2022 Click and brush over rows\n' +
         '\u2022 Control/Command key for multiple selections\n\n' +
