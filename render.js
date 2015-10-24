@@ -509,7 +509,6 @@ function render() {
     var topGroups = bind(contents, 'topGroups')
 
     var courseGradesGroupX = 204.5
-    var courseGradeBulletOffsetX = 42
     var assignmentScoresGroupX = 408.5
     var topGroupContentsY = 38
     var tserOffsetX = 858
@@ -534,12 +533,7 @@ function render() {
         .entered
         .attr('transform', translate(0, aggregateGroupY))
 
-    var distributionsGroup = renderGroupHolder(sideGroups, 'distributionsGroup', 'Grade and Assignment Score Distribution', 204, 0, 0, true)
-    var tserGroup = renderGroupHolder(sideGroups, 'tserGroup', 'Attendance Problem Counts', tserOffsetX, 54 - 164, 90, true)
-    var benchmarkGroup = renderGroupHolder(sideGroups.entered, 'benchmarkGroup', 'Standardized Math Assessment Score Distribution', 730, -40 - 164, 205, true)
-    var medianGroup = renderGroupHolder(sideGroups.entered, 'medianGroup', 'Standardized Math Assessment Median Score', 0, 722, 34, true)
-    var behaviorAggregateGroup = renderGroupHolder(sideGroups.entered, 'behaviorAggregateGroup', '', 0, -42, 0, true)
-    var assignmentScoresAggregateGroup = renderGroupHolder(sideGroups, 'assignmentScoresAggregateGroup', '', 0, -21, 0, true)
+   var assignmentScoresAggregateGroup = renderGroupHolder(sideGroups, 'assignmentScoresAggregateGroup', '', 0, -21, 0, true)
 
 
     /**
