@@ -26,7 +26,6 @@ function calculateGlobals() {
         mainTitleDecoratorColor: layoutGray,
         mainTitleDecoratorHeight: layout.mainRectangleTop,
         mainTitleDecoratorY: -layout.mainRectangleTop,
-        mainTitleDecoratorStrokeWidth: 0
 
     }
 }
