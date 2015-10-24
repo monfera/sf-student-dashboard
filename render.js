@@ -868,46 +868,6 @@ function render() {
 
     })(row)
 
-
-    /**
-     * Row cells - composite
-     */
-
-    /* Grades */
-
-    ;(function renderGrades(root) {
-        bind(root, 'courseGradeBullet')
-            .classed('courseGradesGroup', true)
-            .entered
-            .attr('transform', translateX(courseGradesGroupX + courseGradeBulletOffsetX))
-        bind(root['courseGradeBullet'], 'courseGradeBackground1', 'rect', s.gradesDomain.map(function(g) {return {key: g}}))
-            .entered
-            .attr({
-                x: function(d) {return s.gradeScale(d.key) - 10},
-                width: s.gradeScale.range()[1] - s.gradeScale.range()[0],
-                height: s.rowBandRange,
-                y: -s.rowBandRange / 2,
-                opacity: function(d, i) {return palette.gradePalette[i]}
-            })
-        bind(root['courseGradeBullet'], 'courseGradeTargetLine')
-            .entered
-            .call(renderMarkerBar)
-            .attr('transform', translateX(function (d) {return s.gradeScale(d.grades.goal)}))
-
-        bind(root['courseGradeBullet'], 'priorGradeGroup')
-            .entered
-            .call(renderCross)
-            .attr({
-                transform: translateX(function(d) {return s.gradeScale(d.grades.previous)})
-            })
-
-        bind(root['courseGradeBullet'], 'courseGradeCurrentPoint')
-            .entered
-            .call(renderImpactfulPoint)
-            .attr('transform', translateX(function (d) {return s.gradeOverlayScale(d.meanAssignmentScore)}))
-
-    })(row)
-
     var assignmentBandLine = bandLine()
         .bands(s.assignmentBands)
         .valueAccessor(property('assignmentScores'))
@@ -947,67 +907,6 @@ function render() {
         root.call(assessmentBandLine.renderBandLine)
 
     })(row['assessmentScoresCell'].entered)
-
-    ;(function renderMeanAndLastAssignments(root) {
-
-        root
-            .entered
-            .attr({transform: translateX(560)})
-
-        bind(root, 'meanMarker')
-            .entered
-            .call(renderMeanLine)
-            .attr('transform', translateX(function (d) {return s.assignmentScoreHorizontalScale(d.meanAssignmentScore)}))
-
-        bind(root, 'last', 'circle')
-            .entered
-            .attr({
-                r: 3.75,
-                fill: palette.magenta
-            })
-            .attr({
-                cx: function(d) {return s.assignmentScoreHorizontalScale(last(d.assignmentScores))}
-            })
-    })(bind(row, 'meanAndLastAssignments'))
-
-    ;(function renderAttendanceTser(root) {
-
-        var xScale = s.temporalScale
-        var yScale1 = s.absentScale
-        var yScale2 = s.tardyScale
-
-        root
-            .entered
-            .attr('transform', translateX(tserOffsetX + 33))
-
-        bind(root, 'chartLine', 'g', function(d) {
-            return [d.absences, d.tardies]
-                .map(function(eventSet, i) {
-                    return {
-                        key: ['Absent', 'Tardy'][i],
-                        value: eventSet                    }
-                })})
-        bind(root['chartLine'], 'axis', 'line')
-            .entered
-            .attr({
-                stroke: 'lightgrey'
-            })
-            .attr({
-                x1: xScale.range()[0],
-                x2: xScale.range()[1]
-            })
-
-        bind(root['chartLine'], 'bar', 'line', function(d) {return d.value.map(function(e) {return {key: d.key + '|' + e, type: d.key, value: e}})})
-            .entered
-            .attr({
-                stroke: function(d) {return d.type === 'Absent' ? palette.magenta : 'grey'}
-            })
-            .attr({
-                x1: compose(xScale, property('value')),
-                x2: compose(xScale, property('value')),
-                y2: function(d) {return d.type === 'Absent' ? yScale1(1) : yScale2(1)}
-            })
-    })(bind(row, 'attendanceTser'))
 
     ;(function renderAssignmentScoresAggregates(root) {
         bind(root, 'assignmentAggregateMetrics', 'g', function(d) {
