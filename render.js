@@ -328,53 +328,6 @@ function render() {
             stroke: palette.layoutGray
         })
 
-    var mainTitle = bind(mainRectangleTopLeft, 'mainTitle')
-    mainTitle
-        .entered
-        .attr({transform: translate.apply(null, l.mainTitlePosition)})
-
-    bind(mainTitle, 'mainTitleText', 'text')
-        .entered
-        .text(l.mainTitleText)
-        .attr({
-            fill: l.titleTextColor,
-            'font-size': l.mainTitleFontSize,
-            'text-anchor': l.mainTitleAnchor,
-            'letter-spacing': l.mainTitleLetterSpacing
-        })
-
-
-    /**
-     * Dashboard date
-     */
-
-    var dateBlock = bind(mainRectangleTopLeft, 'dateBlock')
-    dateBlock
-        .entered
-        .attr({transform: translate(501, -10)})
-
-    bind(dateBlock, 'dateText', 'text')
-        .entered
-        .text(('As of ') + 'May 1, 2012' + (UNICODE_NO_BREAK_SPACE + UNICODE_NO_BREAK_SPACE + '(80% complete)'))
-        .attr({
-            x: 1,
-            'font-size': 14,
-            fill: l.titleTextColor
-        })
-
-
-    /**
-     * Upper right help elements
-     */
-
-    var mainRectangleTopRight = bind(mainRectangleTopLeft, 'mainRectangleTopRight', 'g')
-    mainRectangleTopRight
-        .entered
-        .attr({transform: translateX(l.mainRectangleWidth - 18)})
-
-
-
-
     /**
      * Headers
      */
