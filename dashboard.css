@@ -7,24 +7,13 @@
     user-select: none;
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-}
-
-text {
-    cursor: default;
-}
-
 rect.rowCaptureZone {
     stroke: none;
     fill: white;
     fill-opacity: 0.001;
 }
 
-/* Interactions */
-
-.row *, .headerTitle, .headerText.interactive {
+.row *, .headerText.interactive {
     cursor: pointer;
 }
 
