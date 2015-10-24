@@ -68,51 +68,6 @@ function render() {
 
 
     /**
-     * Dashboard title and date
-     */
-
-    var topOfRows = 45
-    var bottomOfRows = 896
-    var bottomOfReport = 986
-    var rightOfColumns = 1280
-
-    bind(mainRectangleTopLeft, 'verticalGridBars', 'line', [
-        {key: 'student', value: 0 , size: 2},
-        {key: 'special', value: 143, size: 1},
-        {key: 'grade', value: 194, size: 2},
-        {key: 'assignments', value: 392, size: 2},
-        {key: 'lastLeft', value: 560, size: 1},
-        {key: 'lastMiddle', value: 608, size: 0},
-        {key: 'lastRight', value: 658, size: 1},
-        {key: 'assessments', value: 726, size: 2},
-        {key: 'attendance', value: 868, size: 2},
-        {key: 'nowLine', value: 1055, size: 0},
-        {key: 'behavior', value: 1115, size: 2},
-        {key: 'rightEdge', value: rightOfColumns, size: 2}
-    ]).entered
-        .attr({
-            x1: value,
-            x2: value,
-            y1: function(d) {return d.size === 2 ? 0 : topOfRows},
-            y2: function(d) {return (d.size === 2 || d.key === 'nowLine' ? bottomOfReport : bottomOfRows)},
-            'stroke-width': function(d) {return [0.8, 2, 4][d.size]},
-            stroke: layoutGray
-        })
-
-    bind(mainRectangleTopLeft, 'horizontalGridBars', 'line', [
-        {key: 'topOfRows', value: topOfRows , size: 2},
-        {key: 'bottomOfRows', value: bottomOfRows, size: 2},
-        {key: 'bottomOfReport', value: bottomOfReport, size: 1}
-    ]).entered
-        .attr({
-            y1: value,
-            y2: value,
-            x2: rightOfColumns,
-            'stroke-width': function(d) {return [1, 2, 4][d.size]},
-            stroke: layoutGray
-        })
-
-    /**
      * Headers
      */
 

@@ -47,12 +47,6 @@ g.lastAssignmentScoresGroup {
 
 /* Rows */
 
-rect.rowBackground {
-    stroke: grey;
-    stroke-width: 2px;
-    stroke-opacity: 0.03;
-}
-
 rect.rowCaptureZone {
     stroke: none;
     fill: white;
