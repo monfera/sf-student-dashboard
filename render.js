@@ -700,56 +700,6 @@ function render() {
             y: - s.rowPitch / 2 + 0.5
         })
 
-    function renderBehaviorCounts(root) {
-        bind(root, 'refLastFlag')
-            .entered
-            .attr('transform', translateX(behaviorOffsetX))
-        bind(root['refLastFlag'], 'text', 'text')
-            .entered
-            .text(function (d) {return d.pastReferralCount || ''})
-            .attr({
-                y: '0.5em',
-                'text-anchor': 'end',
-                fill: palette.lineGray
-            })
-
-        bind(root, 'refCurrentFlag')
-            .entered
-            .attr('transform', translateX(behaviorOffsetX + 20))
-        bind(root['refCurrentFlag'], 'text', 'text')
-            .entered
-            .text(function (d) {return d.currentReferralCount || ''})
-            .attr({
-                y: '0.5em',
-                'text-anchor': 'end',
-                fill: palette.magenta
-            })
-
-        bind(root, 'detLastFlag')
-            .entered
-            .attr('transform', translateX(behaviorOffsetX + 50))
-        bind(root['detLastFlag'], 'text', 'text')
-            .entered
-            .text(function (d) {return d.pastDetentionCount || ''})
-            .attr({
-                y: '0.5em',
-                'text-anchor': 'end',
-                fill: palette.lineGray
-            })
-
-        bind(root, 'detCurrentFlag')
-            .entered
-            .attr('transform', translateX(behaviorOffsetX + 70))
-        bind(root['detCurrentFlag'], 'text', 'text')
-            .entered
-            .text(function (d) {return d.currentDetentionCount || ''})
-            .attr({
-                y: '0.5em',
-                'text-anchor': 'end',
-                fill: palette.magenta
-            })
-    }
-
     var assignmentBandLine = bandLine()
         .bands(s.assignmentBands)
         .valueAccessor(property('assignmentScores'))
