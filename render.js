@@ -9,8 +9,9 @@
 
 var duration = 200
 var UNICODE_UP_DOWN_ARROW = '\u21d5'
-
 var layoutGray = 'rgb(231, 231, 233)'
+var mainRectangleLeft = 48
+var mainRectangleWidth = 1260
 
 var layout, l
 
@@ -21,12 +22,6 @@ function calculateGlobals() {
     }
 
     l = {
-
-        mainRectangleLeft: 48,
-        mainRectangleWidth: 1260,
-
-        fontFamily: 'Arial, sans-serif',
-        basicFontSize: 14,
 
         titleTextColor: 'rgb(96, 96, 96)',
 
@@ -93,14 +88,7 @@ function render() {
         .attr({viewBox: [0, 0, svgWidth, svgHeight].join(' ')})
 
     var dashboard = bind(root, 'dashboard', 'g', [dashboardData])
-    dashboard
-        .entered
-        .attr({
-            'font-family': l.fontFamily
-        })
-        .attr({
-            'font-size': l.basicFontSize
-        })
+
 
     /**
      * Main dashboard rectangle
@@ -114,7 +102,7 @@ function render() {
     var mainRectangleTopLeft = bind(mainRectangleTop, 'mainRectangleTop', 'g')
     mainRectangleTopLeft
         .entered
-        .attr({transform: translateX(l.mainRectangleLeft)})
+        .attr({transform: translateX(mainRectangleLeft)})
 
 
     /**
@@ -124,9 +112,9 @@ function render() {
     bind(mainRectangleTopLeft, 'mainRectangleTopBar', 'rect')
         .entered
         .attr({
-            width: l.mainRectangleWidth + l.mainRectangleLeft - 24,
+            width: mainRectangleWidth + mainRectangleLeft - 24,
             height: l.mainTitleDecoratorHeight,
-            x: -l.mainRectangleLeft - 2,
+            x: -mainRectangleLeft - 2,
             y: l.mainTitleDecoratorY,
             stroke: l.mainTitleDecoratorColor,
             fill: l.mainTitleDecoratorColor,
@@ -136,7 +124,7 @@ function render() {
     var topOfRows = 45
     var bottomOfRows = 896
     var bottomOfReport = 986
-    var leftOfColumns =  -l.mainRectangleLeft
+    var leftOfColumns =  -mainRectangleLeft
     var rightOfColumns = 1280 + leftOfColumns
 
     bind(mainRectangleTopLeft, 'verticalGridBars', 'line', [
