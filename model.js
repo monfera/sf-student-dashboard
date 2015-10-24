@@ -305,56 +305,11 @@ function makeRowData(d) {
     var sortedRowData = needsToReverse ? ascendingRowData.reverse() : ascendingRowData
     d["Student Data"] = sortedRowData // this retains the stable sorting (sortBy is stable, but if we don't persist it, then it's just stable sorting relative to the original order, rather than the previous order
 
-    ;(function formBlocks() {
-        // fixme extract, break up, refactor etc. this monstrous block
-        var k, currentStudent, valueMaker, currentValue, prevValue = NaN, rowGroupOffsetCount = -1, groupable;
-        var quantiles = [0.2, 0.4, 0.6, 0.8];
-        if (sorter.variable.variableType === 'ordinal' || sorter.variable.dataType === 'boolean') {
-            groupable = true
-            valueMaker = sorter.variable.plucker
-        } else if (sorter.variable.variableType === 'cardinal') {
-            groupable = true
-            var rawValues = sortedRowData.map(sorter.variable.plucker)
-            if (Object.keys(countBy(rawValues, identity)).length <= 5) {
-                valueMaker = sorter.variable.plucker
-            } else {
-                var quantileValues = quantiles.map(function (p) {
-                    return d3.quantile(rawValues, p)
-                })
-                valueMaker = function (d) {
-                    var result = 0;
-                    for (var n = 0; n < quantileValues.length; n++) {
-                        if (sorter.variable.plucker(d) >= quantileValues[n]) {
-                            result = n + 1
-                        } else {
-                            break
-                        }
-                    }
-                    return result
-                }
-            }
-        }
-
-        for (k = 0; k < d["Student Data"].length; k++) {
-            currentStudent = d["Student Data"][k]
-            if (!groupable) {
-                currentStudent.rowGroupOffsetCount = 0
-                continue
-            }
-            currentValue = valueMaker(currentStudent)
-            if (currentValue !== prevValue) {
-                rowGroupOffsetCount++
-                prevValue = currentValue
-            }
-            currentStudent.rowGroupOffsetCount = rowGroupOffsetCount
-        }
-    })()
-
     return sortedRowData
 }
 
 /**
- * Scales: bridging the view / viewModel boundary
+ * Scales
  */
 
 function calculateScales() {
@@ -363,37 +318,6 @@ function calculateScales() {
 
     s.rowPitch = 28
     s.rowBandRange = s.rowPitch / 1.3
-
-    s.gradesDomain = ['F', 'D', 'C', 'B', 'A']
-
-    var shamiksCellWidthRange = [0, 104]
-
-    var gradesRange = [0, 80]
-    var gradesRangeExtent = gradesRange[1] - gradesRange[0]
-
-    s.gradeScale = d3.scale.ordinal()
-        .domain(s.gradesDomain)
-        .rangePoints(gradesRange)
-
-    s.scoreToGrade = function(d) {
-        return s.gradesDomain[Math.floor((d - 0.50001) / 0.1)]
-    }
-
-    s.gradeOverlayScale = d3.scale.linear()
-        .domain([0.5, 1])
-        .range([gradesRange[0] - gradesRangeExtent / 10, gradesRange[1] + gradesRangeExtent / 10])
-
-    s.violationDayScale = d3.scale.linear()
-        .domain([0, 20])
-        .range(shamiksCellWidthRange)
-
-    s.violationSeverityOpacityScale = d3.scale.linear()
-        .domain([0, 3])
-        .range([1, 0.1])
-
-    s.scoreTemporalScale = d3.scale.linear()
-        .domain([0, 9]) // fixme adapt the scale for the actual number of scores
-        .range(shamiksCellWidthRange)
 
     var bandThresholds = [0.4, 0.6, 0.7, 0.8, 0.9, 1]
 
