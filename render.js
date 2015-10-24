@@ -508,22 +508,16 @@ function render() {
 
     var topGroups = bind(contents, 'topGroups')
 
-    var courseGradesGroupX = 204.5
     var assignmentScoresGroupX = 408.5
     var topGroupContentsY = 38
     var tserOffsetX = 858
-    var behaviorOffsetX = 1140
-    var classAttendanceX = tserOffsetX + 300
     var classAssessmentGroupX = 747.5
     var namesGroup = renderGroupHolder(topGroups, 'namesGroup', 'Student', 0, 0, topGroupContentsY)
-    var courseGradesGroup = renderGroupHolder(topGroups, 'courseGradesGroup', 'Overall Course Grade' , courseGradesGroupX, 0, topGroupContentsY)
-    var classAttendanceGroup = renderGroupHolder(topGroups, 'classAttendanceGroup', 'Attendance', classAttendanceX + (90 - 300), 0, topGroupContentsY)
     var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', 'Assignments', classAssessmentGroupX - 230, 0, topGroupContentsY)
     var assessmentScoresGroup = renderGroupHolder(topGroups, 'assessmentScoresGroup', 'Assessments', classAssessmentGroupX, 0, topGroupContentsY)
-    var behaviorGroup = renderGroupHolder(topGroups, 'behaviorGroup', 'Behavior', behaviorOffsetX, 0, topGroupContentsY)
 
     /**
-     * Side header rows
+     * Aggregate row
      */
 
     var aggregateGroupY = 926
@@ -563,8 +557,6 @@ function render() {
         ])
 
     })(assessmentScoresGroup.group)
-
-    ;(behaviorGroup.group)
 
 
     /**
