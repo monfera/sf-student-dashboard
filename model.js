@@ -53,7 +53,6 @@ var dashboardVariables = {
     currentGrade: {
         key: 'currentGrade',
         groupAlias: 'courseGradesGroup',
-        petiteHeaderAlias: 'YTD',
         headerAlias: 'Overall Course Grade',
         helpText: 'Current course grade and score\n[Default sorting is by score]',
         legendAlias: 'Current',
@@ -116,6 +115,7 @@ var dashboardVariables = {
     },
     meanAssignmentScore: {
         key: 'meanAssignmentScore',
+        petiteHeaderAlias: 'YTD',
         headerAlias: 'Assignments',
         helpText: 'Year to date assignment scores\n[Click and hold for sorting based on the average score]',
         dataType: 'numeric',
@@ -254,7 +254,7 @@ var dashboardVariables = {
     }
 }
 
-var defaultSortVariable = dashboardVariables['currentGrade']
+var defaultSortVariable = dashboardVariables['meanAssignmentScore']
 
 var dashboardSettings = {
     variables: dashboardVariables,
