@@ -39,7 +39,7 @@ function pointData(valueAccessor, d) {
     return valueAccessor(d).map(function(value, i) {return {key: i, value: value, dd: d}}).filter(compose(defined, value))
 }
 
-function renderPoints(root, valueAccessor, pointStyleAccessor, xSpec, ySpec) {
+function renderPoints(root, valueAccessor, pointStyleAccessor, rScale, xSpec, ySpec) {
     bind(root, 'valuePoints', 'g', pointData.bind(0, valueAccessor))
         .entered
         .attr('transform', translate(xSpec, ySpec))
@@ -48,8 +48,7 @@ function renderPoints(root, valueAccessor, pointStyleAccessor, xSpec, ySpec) {
         .attr('transform', translate(xSpec, ySpec))
     bind(root['valuePoints'], 'point', 'circle')
         .attr('class', function(d) {return 'point ' + pointStyleAccessor(d.value)})
-        .entered
-        .attr('r', 1)
+        .attr('r', function(d) {return rScale(pointStyleAccessor(d.value))})
     root['valuePoints'].exit().remove()
 }
 
@@ -88,7 +87,7 @@ function renderAxis(root, yAxis, xScale, yScaler) {
 }
 
 function bandLine() {
-    function renderBandLine(root, vm) {
+    function renderBandLine(root) {
 
         var bandLine = bind(root, 'bandLine')
         renderBands(bandLine, _bands, _yScalerOfBandLine, constant(_xScaleOfBandLine.range()), function (d) {
@@ -96,19 +95,19 @@ function bandLine() {
         })
         renderValueLine(bandLine, _valueAccessor, _xScaleOfBandLine, _yScalerOfBandLine)
         renderAxis(bandLine, _yAxis, _xScaleOfBandLine, _yScalerOfBandLine)
-        renderPoints(bandLine, _valueAccessor, _pointStyleAccessor, compose(_xScaleOfBandLine, key), function (d) {
+        renderPoints(bandLine, _valueAccessor, _pointStyleAccessor, _rScaleOfBandLine, compose(_xScaleOfBandLine, key), function (d) {
             return _yScalerOfBandLine(d.dd)(d.value)
         })
     }
 
-    function renderSparkStrip(root, vm) {
+    function renderSparkStrip(root) {
 
         var sparkStrip = bind(root, 'sparkStrip')
         renderBands(sparkStrip, _bands, _yScalerOfSparkStrip, function (d) {
             return d.value.map(_xScaleOfSparkStrip)
         }, constant(_yRange))
         renderExtent(sparkStrip, _valueAccessor, _xScaleOfSparkStrip, _yRange)
-        renderPoints(sparkStrip, _valueAccessor, _pointStyleAccessor, compose(_xScaleOfSparkStrip, value), _yScalerOfSparkStrip())
+        renderPoints(sparkStrip, _valueAccessor, _pointStyleAccessor,  _rScaleOfSparkStrip, compose(_xScaleOfSparkStrip, value), _yScalerOfSparkStrip())
     }
 
     function yScalerOfBandLineCalc() {
@@ -158,6 +157,26 @@ function bandLine() {
         }
     }
 
+    var _rScaleOfBandLine = constant(2)
+    var rScaleOfBandLine = function(spec) {
+        if(spec !== void(0)) {
+            _rScaleOfBandLine = spec
+            return obj
+        } else {
+            return _rScaleOfBandLine
+        }
+    }
+
+    var _rScaleOfSparkStrip = constant(2)
+    var rScaleOfSparkStrip = function(spec) {
+        if(spec !== void(0)) {
+            _rScaleOfSparkStrip = spec
+            return obj
+        } else {
+            return _rScaleOfSparkStrip
+        }
+    }
+
     var _yRange = [0, 1]
     var _yScalerOfSparkStrip
     var _yScalerOfBandLine
@@ -199,6 +218,8 @@ function bandLine() {
         valueAccessor: valueAccessor,
         xScaleOfBandLine: xScaleOfBandLine,
         xScaleOfSparkStrip: xScaleOfSparkStrip,
+        rScaleOfBandLine: rScaleOfBandLine,
+        rScaleOfSparkStrip: rScaleOfSparkStrip,
         yRange: yRange,
         yAxis: yAxis,
         pointStyleAccessor: pointStyleAccessor

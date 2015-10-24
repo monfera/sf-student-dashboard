@@ -401,6 +401,11 @@ function calculateScales() {
         return population.filter(defined).sort(d3.ascending)
     }
 
+    var outlierClassifications = ['lowOutlier', 'normal', 'highOutlier']
+    var outlierClassificationIndex = function(classification) {
+        return outlierClassifications.indexOf(classification)
+    }
+
     function makeOutlierScale(population) {
         var iqrDistanceMultiplier = 1 // Stephen Few's Introduction of Bandlines requires a multiplier of 1.5; we deviate here to show outliers on the dashboard
         var values = sortedNumbers(population)
@@ -410,7 +415,7 @@ function calculateScales() {
             .domain([
                 iqr[0] - iqrDistanceMultiplier * midspread,
                 iqr[1] + iqrDistanceMultiplier * midspread ])
-            .range(['lowOutlier', 'normal', 'highOutlier'])
+            .range(outlierClassifications)
     }
 
     function medianLineBand(population) {
@@ -426,6 +431,13 @@ function calculateScales() {
 
     s.assignmentBands = window2(bandThresholds).concat([medianLineBand(assignmentScores)])
     s.assessmentBands = window2(bandThresholds).concat([medianLineBand(assessmentScores)])
+
+    s.bandLinePointRScale = function(classification) {
+        return [2.5, 1.5, 3][outlierClassificationIndex(classification)]
+    }
+    s.sparkStripPointRScale = function(classification) {
+        return 2 // r = 2 on the spark strip irrespective of possible outlier status
+    }
 
     var assignmentScoreVerticalDomain = d3.extent(bandThresholds) // fixme adapt the scale for the actual score domain
 

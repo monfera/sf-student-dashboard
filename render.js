@@ -914,6 +914,8 @@ function render() {
         .pointStyleAccessor(s.assignmentOutlierScale)
         .xScaleOfBandLine(s.assignmentScoreTemporalScale)
         .xScaleOfSparkStrip(s.assignmentScoreTemporalScale2)
+        .rScaleOfBandLine(s.bandLinePointRScale)
+        .rScaleOfSparkStrip(s.sparkStripPointRScale)
         .yRange(s.assignmentScoreVerticalScale.range())
         .yAxis(false)
 
@@ -938,6 +940,7 @@ function render() {
             .valueAccessor(property('standardScores'))
             .pointStyleAccessor(s.assessmentOutlierScale)
             .xScaleOfBandLine(s.assessmentScoreTemporalScale)
+            .rScaleOfBandLine(s.bandLinePointRScale)
             .yRange(s.assessmentScoreScale.range())
             .yAxis(false)
     ;(function renderAssessmentScores(root) {
@@ -1249,6 +1252,7 @@ function render() {
             .valueAccessor(property('assignmentScores'))
             .pointStyleAccessor(s.assignmentOutlierScale)
             .xScaleOfBandLine(s.assignmentScoreTemporalScale)
+            .rScaleOfBandLine(s.bandLinePointRScale)
             .yRange(s.assignmentScoreVerticalScaleLarge.range())
             .yAxis(d3.svg.axis().orient('right').ticks(4).tickFormat(d3.format('%')))
         root['assignmentAggregateMetrics'].call(aggregateAssignmentBandLine.renderBandLine)

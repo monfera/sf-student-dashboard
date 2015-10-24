@@ -46,24 +46,7 @@ g.bandLine .valuePoints {
     fill: rgb(226, 60, 180);
 }
 
-.valuePoints .point {
-    vector-effect: non-scaling-stroke;
-}
-
-g.sparkStrip .valuePoints .point {
-    transform: scale(2);
-}
-
-g.bandLine .valuePoints .point {
-    transform: scale(1.5);
-}
-
-g.bandLine .valuePoints .point.lowOutlier {
-    transform: scale(3);
-}
-
 g.bandLine .valuePoints .point.highOutlier {
-    transform: scale(2.5);
     fill: white;
     stroke: rgb(226, 60, 180);
 }
