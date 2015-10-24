@@ -372,66 +372,7 @@ function render() {
         .entered
         .attr({transform: translateX(l.mainRectangleWidth - 18)})
 
-    var helpSet = bind(mainRectangleTopRight, 'helpSet')
-        .entered
-        .attr({transform: translateY(-18)})
 
-    var noteBlock = bind(helpSet, 'noteBlock')
-        .entered
-        .attr({transform: translateX(-70 )})
-
-    var helpButtonWidth = 84
-    var helpButtonOffsetX = -30
-    var helpButtonHeight = 28
-
-    var helpText =
-        'Row Sorting:\n' +
-        '\u2022 Hover over headers for help text\n' +
-        '\u2022 Click and hold header for temporary sorting\n\n' +
-        'Row Selections:\n' +
-        '\u2022 Click and brush over rows\n' +
-        '\u2022 Control/Command key for multiple selections\n\n' +
-        '\u00a9 Design: Stephen Few, code: Robert Monfera\n' +
-        'Data visualization library: d3.js from M. Bostock'
-
-    var helpButton = bind(noteBlock, 'helpButton')
-    helpButton
-        .entered
-        .attr({transform: translateX(helpButtonOffsetX + helpButtonWidth / 2)})
-        .on('click', function() {window.alert(helpText)})
-
-    bind(helpButton, 'helpText', 'title')
-        .entered
-        .text(helpText)
-    bind(helpButton, 'helpButtonRectangle', 'rect')
-        .entered
-        .attr({
-            fill: 'rgb(217, 217, 217)',
-            stroke: 'rgb(167, 167, 167)',
-            'stroke-width': 2
-        })
-        .attr({
-            x: - helpButtonWidth / 2,
-            y: - helpButtonHeight / 2,
-            rx: 15,
-            ry: 15,
-            width: helpButtonWidth,
-            height: helpButtonHeight
-        })
-
-    bind(helpButton, 'helpButtonText', 'text')
-        .entered
-        .text('Help')
-        .attr({
-            x: 0,
-            y: '0.35em',
-            'text-anchor': 'middle',
-            'letter-spacing': 0.5,
-            fill: 'rgb(96, 96, 96)'
-        })
-        .attr({
-            'font-size': 14
-        })
 
 
     /**
@@ -510,7 +451,6 @@ function render() {
 
     var assignmentScoresGroupX = 408.5
     var topGroupContentsY = 38
-    var tserOffsetX = 858
     var classAssessmentGroupX = 747.5
     var namesGroup = renderGroupHolder(topGroups, 'namesGroup', 'Student', 0, 0, topGroupContentsY)
     var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', 'Assignments', classAssessmentGroupX - 230, 0, topGroupContentsY)
