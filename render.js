@@ -15,14 +15,8 @@ function renderPetiteHeader(root, vm) {
         .entered
         .attr('transform', translateY(-25))
     bind(root['petiteColumnHeader'], 'group', 'g', vm)
-    bind(root['petiteColumnHeader']['group'], 'helpText', 'title')
-        .entered
-        .text(function(d) {
-            var variable = findWhere('petiteHeaderAlias', d.key)(dashboardVariables)
-            return variable ? variable.helpText : ''
-        })
     bind(root['petiteColumnHeader']['group'], 'headerText', 'text')
-        .text(function(d) {return sortedByThis('petiteHeaderAlias', d.key) ? d.key + '' + UNICODE_UP_DOWN_ARROW : d.key})
+        .text(function(d) {return sortedByThis('key', d.key) ? d.key + '' + UNICODE_UP_DOWN_ARROW : d.key})
         .entered
         .classed('interactive', property('interactive'))
         .on('mousedown', function(d) {setPetiteHeaderTableSortOrder(d.key, d)})

@@ -29,7 +29,7 @@ function setGroupHeaderTableSortOrder(className, d) {
 }
 
 function setPetiteHeaderTableSortOrder(headerName, d) {
-    var variable = findWhere('petiteHeaderAlias', headerName)(dashboardSettings.variables)
+    var variable = findWhere('key', headerName)(dashboardSettings.variables)
     setDelayedTableSortOrder(variable, d)
 }
 

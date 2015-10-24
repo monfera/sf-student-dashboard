@@ -17,28 +17,28 @@ dashboardData['Student Data'] = dashboardData['Student Data']['Student Name'].ma
 
 var dashboardVariables = {
     name: {
-        key: 'name',
+        key: 'Name',
         petiteHeaderAlias: 'Name',
         variableType: 'nominal',
         defaultOrder: 'ascending',
         plucker: key
     },
     meanAssignmentScore: {
-        key: 'meanAssignmentScore',
+        key: 'YTD',
         petiteHeaderAlias: 'YTD',
         variableType: 'cardinal',
         defaultOrder: 'ascending',
         plucker: function(student) {return d3.mean(student.assignmentScores.filter(identity))}
     },
     assignmentSpread: {
-        key: 'assignmentSpread',
+        key: 'Spread',
         petiteHeaderAlias: 'Spread',
         variableType: 'cardinal',
         defaultOrder: 'descending',
         plucker: function(student) {return d3.deviation(student.assignmentScores.filter(identity))}
     },
     pastYearsMeanAssignmentScore: {
-        key: 'pastYearsMeanAssignmentScore',
+        key: 'Last 5',
         petiteHeaderAlias: 'Last 5',
         variableType: 'cardinal',
         defaultOrder: 'ascending',
