@@ -10,12 +10,7 @@
 var duration = 200
 var UNICODE_UP_DOWN_ARROW = ['\u2b0d', '\u21d5'][1]
 
-var palette = {
-    lineGray: 'rgb(166, 166, 166)',
-    layoutGray: 'rgb(231, 231, 233)',
-    magenta: 'rgb(226, 60, 180)',
-    gradePalette: [0.06, 0.1, 0.16, 0.22, 0.3]
-}
+var layoutGray = 'rgb(231, 231, 233)'
 
 var layout, l
 
@@ -41,7 +36,7 @@ function calculateGlobals() {
         mainTitleText: 'First Period: Algebra 1',
         mainTitleLetterSpacing: 0,
 
-        mainTitleDecoratorColor: palette.layoutGray,
+        mainTitleDecoratorColor: layoutGray,
         mainTitleDecoratorHeight: layout.mainRectangleTop,
         mainTitleDecoratorY: -layout.mainRectangleTop,
         mainTitleDecoratorStrokeWidth: 0,
@@ -164,7 +159,7 @@ function render() {
             y1: function(d) {return d.size === 2 ? 0 : topOfRows},
             y2: function(d) {return (d.size === 2 || d.key === 'nowLine' ? bottomOfReport : bottomOfRows)},
             'stroke-width': function(d) {return [0.8, 2, 4][d.size]},
-            stroke: palette.layoutGray
+            stroke: layoutGray
         })
 
     bind(mainRectangleTopLeft, 'horizontalGridBars', 'line', [
@@ -178,7 +173,7 @@ function render() {
             x1: leftOfColumns,
             x2: rightOfColumns,
             'stroke-width': function(d) {return [1, 2, 4][d.size]},
-            stroke: palette.layoutGray
+            stroke: layoutGray
         })
 
     /**
