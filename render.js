@@ -9,59 +9,12 @@
 
 var duration = 200
 var UNICODE_UP_DOWN_ARROW = ['\u2b0d', '\u21d5'][1]
-var UNICODE_NO_BREAK_SPACE = '\u00A0'
 
 var palette = {
     lineGray: 'rgb(166, 166, 166)',
     layoutGray: 'rgb(231, 231, 233)',
     magenta: 'rgb(226, 60, 180)',
     gradePalette: [0.06, 0.1, 0.16, 0.22, 0.3]
-}
-
-var benchmarkStyleSet = {
-    "District": {stroke: 'black', fill: 'black', opacity: 0.3, 'stroke-width': 1},
-    "School": {stroke: 'black', fill: 'black', opacity: 0.5, 'stroke-width': 1},
-    "Other Classes": {stroke: 'black', fill: 'black', opacity: 0.5, 'stroke-width': 2},
-    "This Class": {stroke: palette.magenta, fill: palette.magenta, 'stroke-width': 1.5}
-}
-
-function renderImpactfulPoint(root) {
-    bind(root, 'impactfulPointAes', 'circle')
-        .entered
-        .attr({
-            r: 3.75,
-            fill: palette.magenta,
-            stroke: 'black'
-        })
-}
-
-function renderPointLegendGrayBackground(root) {
-    bind(root, 'markerBar', 'rect')
-        .entered
-        .attr({
-            width: 10,
-            height: 18,
-            x: -5,
-            y: -9,
-            stroke: 'none',
-            fill: 'lightgrey'
-        })
-}
-
-function complexStyler(styleSet) {
-    // fixme generalise the attributes via just iterating over the key
-    return function(selection) {
-        selection.attr({
-            stroke: function(d) {return styleSet[d.key].stroke},
-            fill: function(d) {return styleSet[d.key].fill},
-            opacity: function(d) {return styleSet[d.key].opacity},
-            'stroke-width': function(d) {return styleSet[d.key]['stroke-width']}
-        })
-    }
-}
-
-function benchmarkStyler() {
-    return complexStyler(benchmarkStyleSet)
 }
 
 var layout, l
@@ -125,106 +78,6 @@ function renderPetiteHeader(root, vm, fontSize) {
 }
 
 function render() {
-
-    function renderCross(root) {
-        bind(root, 'cross', 'path')
-            .entered
-            .attr({
-                stroke: 'black',
-                'stroke-width': 0.7,
-                d: function () {
-                    var xo = s.rowPitch * 0.125
-                    var yo = xo * 1.8
-                    return [
-                        'M', -xo, -yo, 'L', xo, yo,
-                        'M', -xo, yo, 'L', xo, -yo
-                    ].join(' ')
-                }
-            })
-    }
-
-    function renderMarkerBar(root) {
-        bind(root, 'markerBar', 'line')
-            .entered
-            .attr({
-                y1: - s.rowPitch * 0.25,
-                y2: s.rowPitch * 0.25,
-                stroke: 'white',
-                'stroke-width': 2
-            })
-    }
-
-    function renderMeanLine(root) {
-        bind(root, 'mean', 'line')
-            .entered
-            .attr({
-                stroke: 'black'
-            })
-            .attr({
-                y1: -s.rowPitch / 4,
-                y2: s.rowPitch  / 4
-            })
-    }
-
-    function renderGradeHistogram(root, valueAccessor) {
-
-        var xScale = s.histogramGradeScale
-        var yScale = null;
-
-        bind(root, 'gradeHistogram', 'g', function(d) {
-            var currentGrades = keptStudentData(d).map(valueAccessor)
-            var countsPlusOne = countBy(currentGrades.concat(s.gradesDomain))
-            var counts = pairs(countsPlusOne).sort(tupleSorter).map(function(t) {return {key: t[0], value: t[1] - 1}}).reverse()
-            var domainBase = 0
-            yScale = d3.scale.linear().domain([domainBase, counts.reduce(function(prev, next) {return Math.max(prev, next.value)}, 0)]).range(s.histogramStudentCountScale.range())
-
-            return [{key: 0, value: counts}]
-        })
-            .entered
-            .attr('transform', translateX(33))
-
-        bind(root['gradeHistogram'], 'xAxis')
-            .entered
-            .call(d3.svg.axis().scale(xScale).orient('bottom'))
-        bind(root['gradeHistogram'], 'yAxis')
-            .transition().duration(duration)
-            .call(d3.svg.axis().scale(yScale).orient('left').ticks(3).tickFormat(function(d) {return d === Math.round(d) ? d : ''}))
-
-        // style the axis ticks
-        root.selectAll('g.tick text')
-            .attr('font-size', 10)
-
-        bind(root['gradeHistogram'], 'bars', 'g', property('value'))
-            .entered
-            .attr({transform: translateX(function(d) {return xScale(d.key)})})
-        bind(root['gradeHistogram'], 'lineAes', 'path')
-            .entered
-            .attr({
-                stroke: palette.magenta,
-                'stroke-width': 1.5
-            })
-        root['gradeHistogram']['lineAes']
-            .transition().duration(duration)
-            .attr({
-                d: function(d) {
-                    return d3.svg.line()
-                        .x(compose(xScale, key))
-                        .y(compose(yScale, value))
-                        .defined(always)(d.value)
-                }
-            })
-    }
-
-    var distributionStyleSet = [
-        {key: "Grade", renderer: renderImpactfulPoint},
-        {key: "Prior", renderer: renderCross},
-        {key: "Goal", renderer: renderMarkerBar, backgroundRenderer: renderPointLegendGrayBackground}
-    ]
-
-    var lastAssignmentDistributionStyleSet = [
-        {key: "Grade", renderer: renderImpactfulPoint},
-        {key: "Average", renderer: renderMeanLine}
-    ]
 
     var s = calculateScales()
     calculateGlobals()
