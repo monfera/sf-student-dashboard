@@ -18,11 +18,7 @@ dashboardData['Student Data'] = dashboardData['Student Data']['Student Name'].ma
 var dashboardVariables = {
     name: {
         key: 'name',
-        groupAlias: 'namesGroup',
         petiteHeaderAlias: 'Name',
-        headerAlias: 'Student',
-        helpText: 'Student name\n[Click and hold for sorting]',
-        smallHeaderAlias: 'Student name',
         dataType: 'string',
         variableType: 'nominal',
         defaultOrder: 'ascending',
@@ -31,8 +27,6 @@ var dashboardVariables = {
     meanAssignmentScore: {
         key: 'meanAssignmentScore',
         petiteHeaderAlias: 'YTD',
-        headerAlias: 'Assignments',
-        helpText: 'Year to date assignment scores\n[Click and hold for sorting based on the average score]',
         dataType: 'numeric',
         variableType: 'cardinal',
         defaultOrder: 'ascending',
@@ -41,7 +35,6 @@ var dashboardVariables = {
     assignmentSpread: {
         key: 'assignmentSpread',
         petiteHeaderAlias: 'Spread',
-        helpText: 'Spread of assignment scores\n[Click and hold for sorting based on the standard deviation]',
         dataType: 'numeric',
         variableType: 'cardinal',
         defaultOrder: 'descending',
@@ -49,21 +42,11 @@ var dashboardVariables = {
     },
     pastYearsMeanAssignmentScore: {
         key: 'pastYearsMeanAssignmentScore',
-        legendAlias: 'Assessments',
         petiteHeaderAlias: 'Last 5',
-        helpText: "Past 5 years' assignment scores\n[Click and hold for sorting based on the average]",
         dataType: 'numeric',
         variableType: 'cardinal',
         defaultOrder: 'ascending',
         plucker: function(student) {return d3.mean(student.standardScores)}
-    },
-    assignmentScoreTemplate: {
-        key: 'assignmentScoreTemplate',
-        axisAlias: 'assignmentScoresGroup',
-        dataType: 'numeric',
-        variableType: 'cardinal',
-        defaultOrder: 'ascending',
-        pluckerMaker: function(i) {return function(student) {return student.allScores[i]}}
     }
 }
 
