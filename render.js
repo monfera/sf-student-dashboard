@@ -90,7 +90,7 @@ function render() {
 
 
     /**
-     * Legends
+     * Headers
      */
 
     renderHeader(namesGroup.group, [
