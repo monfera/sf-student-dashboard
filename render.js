@@ -76,7 +76,7 @@ function render() {
         .attr('transform', translateY(38))
 
     /**
-     * Headers
+     * Columns
      */
 
     var topGroups = bind(dashboard, 'topGroups')
