@@ -90,8 +90,8 @@ function render() {
 
 
     renderHeader(assignmentScoresGroup.group, [
-        {key: 'YTD', value: -90, interactive: true},
-        {key: 'Spread', value: -21, interactive: true}
+        {key: 'YTD', value: 90, interactive: true},
+        {key: 'Spread', value: 160, interactive: true}
     ])
 
     renderHeader(assessmentScoresGroup.group, [
