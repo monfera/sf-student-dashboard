@@ -198,7 +198,7 @@ function render() {
         bind(row, 'rowCaptureZone', 'rect')
             .on(rowInteractions)
             .attr({
-                width: 1328 - 48,
+                width: 450,
                 height: s.rowPitch,
                 x: -46,
                 y: - s.rowPitch / 2
