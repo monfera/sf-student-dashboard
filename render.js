@@ -7,15 +7,13 @@
  * Copyright on the design of the Student Performance Dashboard: Stephen Few
  */
 
-var UNICODE_UP_DOWN_ARROW = '\u21d5'
-
 function renderHeader(root, vm) {
     bind(root, 'columnHeader')
         .entered
         .attr('transform', translateY(-25))
     bind(root['columnHeader'], 'group', 'g', vm)
     bind(root['columnHeader']['group'], 'headerText', 'text')
-        .text(function(d) {return sortedByThis('key', d.key) ? d.key + '' + UNICODE_UP_DOWN_ARROW : d.key})
+        .text(function(d) {return sortedByThis('key', d.key) ? d.key + '\u21d5' : d.key})
         .entered
         .classed('interactive', true)
         .on('mousedown', function(d) {setHeaderTableSortOrder(d.key, d)})
