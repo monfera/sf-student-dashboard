@@ -116,10 +116,9 @@ function render() {
 
     var rowsRoot = namesGroup.group
     var rowSelection = bind(rowsRoot, 'row', 'g', makeRowData)
-    var row = rowSelection.entered
     function rowTransform(d, i) {return translateY(i * s.rowPitch)()}
 
-    row
+    rowSelection.entered
         .attr('transform', rowTransform)
     rowSelection
         .transition().duration(1000)
@@ -134,10 +133,10 @@ function render() {
             y: - s.rowPitch / 2
         })
 
-    bind(row, 'nameCell')
+    bind(rowSelection.entered, 'nameCell')
         .entered
         .classed('namesGroup', true)
-    bind(row['nameCell'], 'nameCellText', 'text')
+    bind(rowSelection.entered['nameCell'], 'nameCellText', 'text')
         .entered
         .text(key)
         .attr('y', '0.5em')
@@ -152,18 +151,18 @@ function render() {
         .rScaleOfSparkStrip(s.sparkStripPointRScale)
         .yRange(s.assignmentScoreVerticalScale.range())
         .yAxis(false)
-    bind(row, 'assignmentScoresCell')
+    bind(rowSelection.entered, 'assignmentScoresCell')
         .entered
         .attr('transform', translateX(assignmentScoresGroupX))
-    row['assignmentScoresCell'].entered.call(assignmentBandLine.renderBandLine)
-    bind(row, 'assignmentScoresVerticalCell')
+    rowSelection.entered['assignmentScoresCell'].entered.call(assignmentBandLine.renderBandLine)
+    bind(rowSelection.entered, 'assignmentScoresVerticalCell')
         .entered
         .attr('transform', translateX(assignmentScoresGroupX + 86))
-    row['assignmentScoresVerticalCell']
+    rowSelection.entered['assignmentScoresVerticalCell']
         .entered
         .call(assignmentBandLine.renderSparkStrip)
 
-    bind(row, 'assessmentScoresCell')
+    bind(rowSelection.entered, 'assessmentScoresCell')
         .entered
         .attr('transform', translateX(classAssessmentGroupX))
     var assessmentBandLine = bandLine()
@@ -174,7 +173,7 @@ function render() {
         .rScaleOfBandLine(s.bandLinePointRScale)
         .yRange(s.assessmentScoreScale.range())
         .yAxis(false)
-    row['assessmentScoresCell'].entered.call(assessmentBandLine.renderBandLine)
+    rowSelection.entered['assessmentScoresCell'].entered.call(assessmentBandLine.renderBandLine)
 
     bind(assignmentScoresAggregateGroup.group, 'assignmentAggregateMetrics', 'g', aggregateAssignmentScores)
     var aggregateAssignmentBandLine = bandLine()
@@ -187,7 +186,7 @@ function render() {
         .yAxis(d3.svg.axis().orient('right').ticks(4).tickFormat(d3.format('%')))
     assignmentScoresAggregateGroup.group['assignmentAggregateMetrics'].call(aggregateAssignmentBandLine.renderBandLine)
 
-    bind(row, 'rowCaptureZone', 'rect')
+    bind(rowSelection.entered, 'rowCaptureZone', 'rect')
         .on(rowInteractions)
         .attr({
             width: 450,
