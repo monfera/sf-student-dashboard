@@ -23,6 +23,22 @@ function renderHeader(root, vm) {
         .attr('x', value)
 }
 
+function aggregateAssignmentScores(d) {
+    var students = keptStudentData(d)
+    var scores = pluck('assignmentScores')(students)
+    var totalsRow = {
+        key: 'totalsRow',
+        assignmentScores: [
+            d3.mean(pluck(0)(scores).filter(identity)),
+            d3.mean(pluck(1)(scores).filter(identity)),
+            d3.mean(pluck(2)(scores).filter(identity)),
+            d3.mean(pluck(3)(scores).filter(identity)),
+            d3.mean(pluck(4)(scores).filter(identity))
+        ]
+    }
+    return [totalsRow]
+}
+
 var s = calculateScales()
 
 function render() {
@@ -169,21 +185,7 @@ function render() {
     row['assessmentScoresCell'].entered.call(assessmentBandLine.renderBandLine)
 
     ;(function renderAssignmentScoresAggregates(root) {
-        bind(root, 'assignmentAggregateMetrics', 'g', function(d) {
-            var students = keptStudentData(d)
-            var scores = pluck('assignmentScores')(students)
-            var totalsRow = {
-                key: 'totalsRow',
-                assignmentScores: [
-                    d3.mean(pluck(0)(scores).filter(identity)),
-                    d3.mean(pluck(1)(scores).filter(identity)),
-                    d3.mean(pluck(2)(scores).filter(identity)),
-                    d3.mean(pluck(3)(scores).filter(identity)),
-                    d3.mean(pluck(4)(scores).filter(identity))
-                ]
-            }
-            return [totalsRow]
-        })
+        bind(root, 'assignmentAggregateMetrics', 'g', aggregateAssignmentScores)
 
         var aggregateAssignmentBandLine = bandLine()
             .bands(s.assignmentBands)
