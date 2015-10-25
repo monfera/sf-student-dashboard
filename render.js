@@ -46,7 +46,7 @@ function render() {
      * Headers
      */
 
-    function renderGroupHolder(selection, className, x, y, y2) {
+    function renderGroupHolder(selection, className, x, y) {
 
         var group = bind(selection, className)
         group
