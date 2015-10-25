@@ -39,6 +39,25 @@ function aggregateAssignmentScores(d) {
     return [totalsRow]
 }
 
+function renderGroupHolder(selection, className, x, y) {
+
+    var group = bind(selection, className)
+    group
+        .entered
+        .attr('transform', translate(x, y))
+
+    var fullClassName = className + '_contents'
+
+    bind(group, fullClassName)
+        .entered
+        .classed('groupContents', true)
+
+    return {
+        group: group[fullClassName],
+        className: className
+    }
+}
+
 var s = calculateScales()
 
 function render() {
@@ -60,29 +79,6 @@ function render() {
 
     /**
      * Headers
-     */
-
-    function renderGroupHolder(selection, className, x, y) {
-
-        var group = bind(selection, className)
-        group
-            .entered
-            .attr('transform', translate(x, y))
-
-        var fullClassName = className + '_contents'
-
-        bind(group, fullClassName)
-            .entered
-            .classed('groupContents', true)
-
-        return {
-            group: group[fullClassName],
-            className: className
-        }
-    }
-
-    /**
-     * Top header rows
      */
 
     var topGroups = bind(dashboard, 'topGroups')
