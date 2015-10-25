@@ -11,7 +11,7 @@ var dashboardVariables = {
         plucker: key
     },
     meanAssignmentScore: {
-        key: 'YTD',
+        key: 'Assignments',
         defaultOrder: 'ascending',
         plucker: function(student) {return d3.mean(student.assignmentScores.filter(identity))}
     },
@@ -21,7 +21,7 @@ var dashboardVariables = {
         plucker: function(student) {return d3.deviation(student.assignmentScores.filter(identity))}
     },
     pastYearsMeanAssignmentScore: {
-        key: 'Last 5',
+        key: 'Assessments',
         defaultOrder: 'ascending',
         plucker: function(student) {return d3.mean(student.standardScores)}
     }

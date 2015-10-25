@@ -7,7 +7,6 @@
  * Copyright on the design of the Student Performance Dashboard: Stephen Few
  */
 
-var duration = 200
 var UNICODE_UP_DOWN_ARROW = '\u21d5'
 
 function renderHeader(root, vm) {
@@ -18,7 +17,7 @@ function renderHeader(root, vm) {
     bind(root['columnHeader']['group'], 'headerText', 'text')
         .text(function(d) {return sortedByThis('key', d.key) ? d.key + '' + UNICODE_UP_DOWN_ARROW : d.key})
         .entered
-        .classed('interactive', property('interactive'))
+        .classed('interactive', true)
         .on('mousedown', function(d) {setHeaderTableSortOrder(d.key, d)})
         .on('mouseup', resetTableSortOrder)
         .attr('x', value)
@@ -85,17 +84,17 @@ function render() {
      */
 
     renderHeader(namesGroup.group, [
-        {key: 'Name', value: 0, interactive: true}
+        {key: 'Name', value: 0}
     ])
 
 
     renderHeader(assignmentScoresGroup.group, [
-        {key: 'YTD', value: 90, interactive: true},
-        {key: 'Spread', value: 160, interactive: true}
+        {key: 'Assignments', value: 60},
+        {key: 'Spread', value: 160}
     ])
 
     renderHeader(assessmentScoresGroup.group, [
-        {key: 'Last 5', value: 12, interactive: true}
+        {key: 'Assessments', value: -10}
     ])
 
 
@@ -111,7 +110,7 @@ function render() {
     row
         .attr('transform', rowTransform)
     rowSelection
-        .transition().duration(duration * 4)
+        .transition().duration(1000)
         .attr('transform', rowTransform)
 
     bind(rowSelection, 'rowBackground', 'rect')

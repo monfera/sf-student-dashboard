@@ -8,6 +8,8 @@
  * Design documentation: https://www.perceptualedge.com/articles/visual_business_intelligence/introducing_bandlines.pdf
  */
 
+var duration = 200
+
 function defined(x) {
     return !isNaN(x) && isFinite(x) && x !== null
 }
