@@ -195,14 +195,14 @@ function render() {
             .yAxis(d3.svg.axis().orient('right').ticks(4).tickFormat(d3.format('%')))
         root['assignmentAggregateMetrics'].call(aggregateAssignmentBandLine.renderBandLine)
 
-        bind(row, 'rowCaptureZone', 'rect')
-            .on(rowInteractions)
-            .attr({
-                width: 450,
-                height: s.rowPitch,
-                x: -46,
-                y: - s.rowPitch / 2
-            })
-
     })(assignmentScoresAggregateGroup.group)
+
+    bind(row, 'rowCaptureZone', 'rect')
+        .on(rowInteractions)
+        .attr({
+            width: 450,
+            height: s.rowPitch,
+            x: -46,
+            y: - s.rowPitch / 2
+        })
 }
