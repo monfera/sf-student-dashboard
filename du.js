@@ -62,13 +62,6 @@ function tuple(/*args*/) {
     }
 }
 
-function clamp(base, array) {
-    var min = base[0]
-    var max = base[1]
-    var result = array.map(function(d) {return Math.min(max, Math.max(min, d))})
-    return result
-}
-
 function bind0(rootSelection, cssClass, element, dataFlow) {
     cssClass = cssClass || 'boundingBox'
     element = element || 'g'
