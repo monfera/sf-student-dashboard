@@ -19,7 +19,7 @@ var outlierClassificationIndex = function(classification) {
 }
 
 function makeOutlierScale(population) {
-    var iqrDistanceMultiplier = 1 // Stephen Few's Introduction of Bandlines requires a multiplier of 1.5; we deviate here to show outliers on the dashboard
+    var iqrDistanceMultiplier = 0.6 // Stephen Few's Introduction of Bandlines requires a multiplier of 1.5; we deviate here to show outliers on the dashboard
     var values = sortedNumbers(population)
     var iqr = [d3.quantile(values, 0.25), d3.quantile(values, 0.75)]
     var midspread = iqr[1] - iqr[0]
@@ -42,7 +42,7 @@ var outlierScale = makeOutlierScale(values)
 var bands = window2(bandThresholds).concat([medianLineBand(values)])
 
 var bandLinePointRScale = function(classification) {
-    return [2.5, 1, 3][outlierClassificationIndex(classification)]
+    return [2, 0, 2][outlierClassificationIndex(classification)]
 }
 var sparkStripPointRScale = function(classification) {
     return 2 // r = 2 on the spark strip irrespective of possible outlier status

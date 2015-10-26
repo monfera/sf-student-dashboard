@@ -23,16 +23,16 @@ g.bands .band.s5 {stroke: white; stroke-width: 1px; fill: none;} /* for more pro
 g.bandLine .valueLine,
 g.sparkStrip .valueBox,
 g.sparkStrip .valuePoints {
-    stroke: rgb(226, 60, 180);
+    stroke: black; /*rgb(226, 60, 180);*/
     fill: none;
 }
 
 g.bandLine .valueLine {
-    stroke-width: 2;
+    stroke-width: 1;
 }
 g.sparkStrip .valueBox,
 g.sparkStrip .valuePoints {
-    stroke-width: 1;
+    stroke-width: 0.5;
 }
 
 g.sparkStrip .valueBox {
@@ -44,12 +44,12 @@ g.sparkStrip .valuePoints {
 }
 
 g.bandLine .valuePoints {
-    fill: rgb(226, 60, 180);
+    fill: black; /*rgb(226, 60, 180);*/
 }
 
 g.bandLine .valuePoints .point.highOutlier {
     fill: white;
-    stroke: rgb(226, 60, 180);
+    stroke: black; /*rgb(226, 60, 180);*/
 }
 
 .axes path.domain {
