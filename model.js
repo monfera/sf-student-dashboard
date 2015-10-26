@@ -41,10 +41,10 @@ var assignmentOutlierScale = makeOutlierScale(assignmentScores)
 
 var assignmentBands = window2(bandThresholds).concat([medianLineBand(assignmentScores)])
 
-bandLinePointRScale = function(classification) {
+var bandLinePointRScale = function(classification) {
     return [2.5, 1.5, 3][outlierClassificationIndex(classification)]
 }
-sparkStripPointRScale = function(classification) {
+var sparkStripPointRScale = function(classification) {
     return 2 // r = 2 on the spark strip irrespective of possible outlier status
 }
 
