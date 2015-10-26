@@ -55,11 +55,7 @@ function bind0(rootSelection, cssClass, element, dataFlow) {
     var classesToClassAttr = function (classNames) {
             return classNames.join(' ')
         },
-        classesToCssSelector = function (classNames) {
-            return (['']).concat(classNames).join(' .')
-        },
-        cssClasses = classesToCssSelector([cssClass]),
-        binding = rootSelection.selectAll(cssClasses).data(dataFlow, key)
+        binding = rootSelection.selectAll('.' + cssClass).data(dataFlow, key)
 
     binding.entered = binding.enter().append(element)
     binding.entered.attr('class', classesToClassAttr([cssClass]))
