@@ -59,21 +59,6 @@ function object(keyValuePairs) {
     return result
 }
 
-function sortBy(obj, comparisonAccessor) {
-    // stable sort inspired by the underscore.js implementation
-    return obj.map(function(element, index) {
-        return {
-            value: element,
-            index: index,
-            comparedValue: comparisonAccessor(element)
-        }
-    }).sort(function(left, right) {
-        var a = left.comparedValue
-        var b = right.comparedValue
-        return a < b ? -1 : a > b ? 1 : left.index - right.index
-    }).map(function(obj) {return obj.value})
-};
-
 function key(obj) {
     return obj.key
 }

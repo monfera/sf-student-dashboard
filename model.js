@@ -39,17 +39,6 @@ function rowSorter(sortSettings) {
 }
 
 
-function makeRowData(d) {
-    return d["Student Data"]
-    var rowData = d["Student Data"]
-    var sorter = rowSorter(dashboardSettings.table.sort)
-    var needsToReverse = sorter.order === 'descending'
-    var ascendingRowData = sortBy(needsToReverse ? rowData.reverse() : rowData, sorter.sorter)
-    var sortedRowData = needsToReverse ? ascendingRowData.reverse() : ascendingRowData
-    d["Student Data"] = sortedRowData // this retains the stable sorting (sortBy is stable, but if we don't persist it, then it's just stable sorting relative to the original order, rather than the previous order
-
-    return sortedRowData
-}
 
 /**
  * Scales

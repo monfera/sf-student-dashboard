@@ -110,7 +110,7 @@ function render() {
      */
 
     var rowsRoot = namesGroup.group
-    var row = bind(rowsRoot, 'row', 'g', makeRowData)
+    var row = bind(rowsRoot, 'row', 'g', property('Student Data'))
     function rowTransform(d, i) {return translateY(i * s.rowPitch)()}
 
     row.entered
