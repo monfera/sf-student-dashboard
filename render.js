@@ -90,7 +90,7 @@ function render() {
     var assignmentBandLine = bandLine()
         .bands(assignmentBands)
         .valueAccessor(property('value'))
-        .pointStyleAccessor(assignmentOutlierScale)
+        .pointStyleAccessor(outlierScale)
         .xScaleOfBandLine(assignmentScoreTemporalScale)
         .xScaleOfSparkStrip(assignmentScoreTemporalScale2)
         .rScaleOfBandLine(bandLinePointRScale)

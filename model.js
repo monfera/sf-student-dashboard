@@ -37,7 +37,7 @@ function medianLineBand(population) {
 
 var values = [].concat.apply([], members.map(value))
 
-var assignmentOutlierScale = makeOutlierScale(values)
+var outlierScale = makeOutlierScale(values)
 
 var assignmentBands = window2(bandThresholds).concat([medianLineBand(values)])
 
