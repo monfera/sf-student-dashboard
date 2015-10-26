@@ -100,23 +100,23 @@ function render() {
      */
 
     var assignmentBandLine = bandLine()
-        .bands(s.assignmentBands)
+        .bands(assignmentBands)
         .valueAccessor(property('assignmentScores'))
-        .pointStyleAccessor(s.assignmentOutlierScale)
-        .xScaleOfBandLine(s.assignmentScoreTemporalScale)
-        .xScaleOfSparkStrip(s.assignmentScoreTemporalScale2)
-        .rScaleOfBandLine(s.bandLinePointRScale)
-        .rScaleOfSparkStrip(s.sparkStripPointRScale)
-        .yRange(s.assignmentScoreVerticalScale.range())
+        .pointStyleAccessor(assignmentOutlierScale)
+        .xScaleOfBandLine(assignmentScoreTemporalScale)
+        .xScaleOfSparkStrip(assignmentScoreTemporalScale2)
+        .rScaleOfBandLine(bandLinePointRScale)
+        .rScaleOfSparkStrip(sparkStripPointRScale)
+        .yRange(assignmentScoreVerticalScale.range())
         .yAxis(false)
 
     var assessmentBandLine = bandLine()
-        .bands(s.assessmentBands)
+        .bands(assessmentBands)
         .valueAccessor(property('standardScores'))
-        .pointStyleAccessor(s.assessmentOutlierScale)
-        .xScaleOfBandLine(s.assessmentScoreTemporalScale)
-        .rScaleOfBandLine(s.bandLinePointRScale)
-        .yRange(s.assessmentScoreScale.range())
+        .pointStyleAccessor(assessmentOutlierScale)
+        .xScaleOfBandLine(assessmentScoreTemporalScale)
+        .rScaleOfBandLine(bandLinePointRScale)
+        .yRange(assessmentScoreScale.range())
         .yAxis(false)
 
 
@@ -129,7 +129,7 @@ function render() {
     var row = bind(rowsRoot, 'row', 'g', property('Student Data'))
 
     row.entered
-        .attr('transform', function rowTransform(d, i) {return translateY(i * s.rowPitch)()})
+        .attr('transform', function rowTransform(d, i) {return translateY(i * rowPitch)()})
 
     bind(row.entered, 'nameCell')
         .classed('namesGroup', true)
