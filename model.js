@@ -4,8 +4,8 @@
  * Copyright Robert Monfera
  */
 
-rowPitch = 28
-rowBandRange = rowPitch / 1.3
+var rowPitch = 28
+var rowBandRange = rowPitch / 1.3
 
 var bandThresholds = [0.4, 0.6, 0.7, 0.8, 0.9, 1]
 
