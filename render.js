@@ -126,21 +126,19 @@ function render() {
     row.entered
         .attr('transform', function rowTransform(d, i) {return translateY(i * rowPitch)()})
 
-    bind(row.entered, 'nameCell')
-        .classed('namesGroup', true)
-    bind(row.entered['nameCell'], 'nameCellText', 'text')
+    bind(row.entered, 'nameCellText', 'text')
         .text(key)
         .attr('y', '0.5em')
 
     bind(row.entered, 'assignmentScoresCell')
         .attr('transform', translateX(assignmentScoresGroupX))
-    row.entered['assignmentScoresCell'].call(assignmentBandLine.renderBandLine)
+        .call(assignmentBandLine.renderBandLine)
+
     bind(row.entered, 'assignmentScoresVerticalCell')
         .attr('transform', translateX(assignmentScoresGroupX + 86))
-    row.entered['assignmentScoresVerticalCell']
         .call(assignmentBandLine.renderSparkStrip)
 
     bind(row.entered, 'assessmentScoresCell')
         .attr('transform', translateX(classAssessmentGroupX))
-    row.entered['assessmentScoresCell'].call(assessmentBandLine.renderBandLine)
+        .call(assessmentBandLine.renderBandLine)
 }
