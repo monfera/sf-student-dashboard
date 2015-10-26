@@ -39,26 +39,6 @@ function property(key) {
     }
 }
 
-function pluck(key) {
-    return function(array) {
-        var i
-        var result = []
-        for(i = 0; i < array.length; i++) {
-            result.push(array[i][key])
-        }
-        return result
-    }
-}
-
-function object(keyValuePairs) {
-    var result = {}
-    var i
-    for(i = 0; i < keyValuePairs.length; i++) {
-        result[keyValuePairs[i][0]] = keyValuePairs[i][1]
-    }
-    return result
-}
-
 function key(obj) {
     return obj.key
 }
