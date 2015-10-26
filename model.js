@@ -36,13 +36,10 @@ function medianLineBand(population) {
 }
 
 var assignmentScores = [].concat.apply([], members.map(property('assignmentScores')))
-var assessmentScores = [].concat.apply([], members.map(property('standardScores')))
 
 var assignmentOutlierScale = makeOutlierScale(assignmentScores)
-var assessmentOutlierScale = makeOutlierScale(assessmentScores)
 
 var assignmentBands = window2(bandThresholds).concat([medianLineBand(assignmentScores)])
-var assessmentBands = window2(bandThresholds).concat([medianLineBand(assessmentScores)])
 
 bandLinePointRScale = function(classification) {
     return [2.5, 1.5, 3][outlierClassificationIndex(classification)]
@@ -65,15 +62,7 @@ var assignmentScoreTemporalScale2 = d3.scale.linear()
     .domain(assignmentScoreVerticalDomain)
     .range([2, 50])
 
-var assessmentScoreTemporalScale = d3.scale.linear()
-    .domain([0, 4]) // fixme adapt the scale for the actual number of scores
-    .range([0, 58])
-
 var scoreRange = [rowBandRange / 2 , -rowBandRange  / 2]
-
-var assessmentScoreScale = d3.scale.linear()
-    .domain([0.5, 1]) // fixme adapt the scale for the actual score domain
-    .range(scoreRange)
 
 var assignmentScoreVerticalScale = d3.scale.linear()
     .domain(assignmentScoreVerticalDomain)
