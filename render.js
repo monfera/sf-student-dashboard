@@ -49,14 +49,11 @@ function render() {
 
     var svg = d3.selectAll('svg')
 
-    var svgWidth = 1280
-    var svgHeight = 1025
-
-    svg//.attr({viewBox: [0, 0, svgWidth, svgHeight].join(' ')})
+    svg
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
 
-    var dashboard = bind(svg, 'dashboard', 'g', [dashboardData])
+    var dashboard = bind(svg, 'dashboard', 'g', [{key: 0}])
     dashboard.entered
         .attr('transform', translateY(38))
 
@@ -124,7 +121,7 @@ function render() {
 
     var rowsRoot = namesGroup.group
 
-    var row = bind(rowsRoot, 'row', 'g', property('Student Data'))
+    var row = bind(rowsRoot, 'row', 'g', members)
 
     row.entered
         .attr('transform', function rowTransform(d, i) {return translateY(i * rowPitch)()})

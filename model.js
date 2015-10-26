@@ -35,8 +35,8 @@ function medianLineBand(population) {
     return [median, median]
 }
 
-var assignmentScores = [].concat.apply([], dashboardData['Student Data'].map(property('assignmentScores')))
-var assessmentScores = [].concat.apply([], dashboardData['Student Data'].map(property('standardScores')))
+var assignmentScores = [].concat.apply([], members.map(property('assignmentScores')))
+var assessmentScores = [].concat.apply([], members.map(property('standardScores')))
 
 var assignmentOutlierScale = makeOutlierScale(assignmentScores)
 var assessmentOutlierScale = makeOutlierScale(assessmentScores)
