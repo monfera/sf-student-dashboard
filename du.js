@@ -10,10 +10,6 @@ function constant(value) {
     }
 }
 
-function identity(x) {
-    return x
-}
-
 function compose(fun1, fun2) {
     if(arguments.length === 2) {
         return function (/*args*/) {
@@ -51,15 +47,6 @@ function window2(a) {
     return a.map(function(value, index, array) {
         return [value, array[index + 1]]
     }).slice(0, a.length - 1)
-}
-
-function tuple(/*args*/) {
-    var functions = Array.prototype.slice.call(arguments)
-    return function (x) {
-        return functions.map(function (elem, i, funs) {
-            return funs[i](x)
-        })
-    }
 }
 
 function bind0(rootSelection, cssClass, element, dataFlow) {
