@@ -52,13 +52,10 @@ function window2(a) {
 function bind0(rootSelection, cssClass, element, dataFlow) {
     element = element || 'g'
     dataFlow = typeof dataFlow === 'function' ? dataFlow : (dataFlow === void(0) ? repeat : constant(dataFlow))
-    var classesToClassAttr = function (classNames) {
-            return classNames.join(' ')
-        },
-        binding = rootSelection.selectAll('.' + cssClass).data(dataFlow, key)
+    var binding = rootSelection.selectAll('.' + cssClass).data(dataFlow, key)
 
     binding.entered = binding.enter().append(element)
-    binding.entered.attr('class', classesToClassAttr([cssClass]))
+    binding.entered.classed(cssClass, true)
 
     return binding
 }
