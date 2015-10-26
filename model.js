@@ -38,11 +38,11 @@ function medianLineBand(population) {
 var assignmentScores = [].concat.apply([], dashboardData['Student Data'].map(property('assignmentScores')))
 var assessmentScores = [].concat.apply([], dashboardData['Student Data'].map(property('standardScores')))
 
-assignmentOutlierScale = makeOutlierScale(assignmentScores)
-assessmentOutlierScale = makeOutlierScale(assessmentScores)
+var assignmentOutlierScale = makeOutlierScale(assignmentScores)
+var assessmentOutlierScale = makeOutlierScale(assessmentScores)
 
-assignmentBands = window2(bandThresholds).concat([medianLineBand(assignmentScores)])
-assessmentBands = window2(bandThresholds).concat([medianLineBand(assessmentScores)])
+var assignmentBands = window2(bandThresholds).concat([medianLineBand(assignmentScores)])
+var assessmentBands = window2(bandThresholds).concat([medianLineBand(assessmentScores)])
 
 bandLinePointRScale = function(classification) {
     return [2.5, 1.5, 3][outlierClassificationIndex(classification)]
@@ -57,36 +57,24 @@ var assignmentScoreCount = 7 //  5 past assignments and 2 future assignments
 
 var assignmentScoreDomain = [0, assignmentScoreCount - 1]
 
-assignmentScoreTemporalScale = d3.scale.linear()
+var assignmentScoreTemporalScale = d3.scale.linear()
     .domain(assignmentScoreDomain) // fixme adapt the scale for the actual number of scores
     .range([2, 74])
 
-assignmentScoreTemporalScale2 = d3.scale.linear()
+var assignmentScoreTemporalScale2 = d3.scale.linear()
     .domain(assignmentScoreVerticalDomain)
     .range([2, 50])
 
-assessmentScoreTemporalScale = d3.scale.linear()
+var assessmentScoreTemporalScale = d3.scale.linear()
     .domain([0, 4]) // fixme adapt the scale for the actual number of scores
     .range([0, 58])
 
 var scoreRange = [rowBandRange / 2 , -rowBandRange  / 2]
 
-assessmentScoreScale = d3.scale.linear()
+var assessmentScoreScale = d3.scale.linear()
     .domain([0.5, 1]) // fixme adapt the scale for the actual score domain
     .range(scoreRange)
 
-assignmentScoreVerticalScale = d3.scale.linear()
+var assignmentScoreVerticalScale = d3.scale.linear()
     .domain(assignmentScoreVerticalDomain)
     .range(scoreRange)
-
-assignmentScoreVerticalScaleLarge = d3.scale.linear()
-    .domain(assignmentScoreVerticalDomain)
-    .range([rowBandRange * 2 , -rowBandRange])
-
-assignmentScoreHorizontalScale = d3.scale.linear()
-    .domain(assignmentScoreVerticalDomain)
-    .range([0, 98])
-
-scoreBandScale = d3.scale.ordinal()
-    .domain(d3.range(6))
-    .rangePoints([0, 100], 1)
