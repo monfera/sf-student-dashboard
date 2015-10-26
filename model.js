@@ -39,7 +39,7 @@ var values = [].concat.apply([], members.map(value))
 
 var outlierScale = makeOutlierScale(values)
 
-var assignmentBands = window2(bandThresholds).concat([medianLineBand(values)])
+var bands = window2(bandThresholds).concat([medianLineBand(values)])
 
 var bandLinePointRScale = function(classification) {
     return [2.5, 1.5, 3][outlierClassificationIndex(classification)]

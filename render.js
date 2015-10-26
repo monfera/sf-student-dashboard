@@ -88,7 +88,7 @@ function render() {
      */
 
     var assignmentBandLine = bandLine()
-        .bands(assignmentBands)
+        .bands(bands)
         .valueAccessor(property('value'))
         .pointStyleAccessor(outlierScale)
         .xScaleOfBandLine(assignmentScoreTemporalScale)
