@@ -78,7 +78,7 @@ function renderValueLine(root, valueAccessor, xScale, yScaler) {
 }
 
 function renderAxis(root, yAxis, xScale, yScaler) {
-    bind(root, 'axes', 'g', yAxis ? du.repeat : [])
+    bind(root, 'axes', 'g', yAxis ? repeat : [])
         .each(function(d) {
             yAxis.scale(yScaler(d))(d3.select(this).transition())
         })

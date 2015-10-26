@@ -65,7 +65,7 @@ function tuple(/*args*/) {
 function bind0(rootSelection, cssClass, element, dataFlow) {
     cssClass = cssClass || 'boundingBox'
     element = element || 'g'
-    dataFlow = typeof dataFlow === 'function' ? dataFlow : (dataFlow === void(0) ? du.repeat : constant(dataFlow))
+    dataFlow = typeof dataFlow === 'function' ? dataFlow : (dataFlow === void(0) ? repeat : constant(dataFlow))
     var classesToClassAttr = function (classNames) {
             return classNames.join(' ')
         },
@@ -105,9 +105,6 @@ function translateY(funY) {
     }
 }
 
-var du = {
-
-    repeat: tuple(identity),
-    descend: identity,
-    bind: bind
+function repeat(x) {
+    return [x]
 }
