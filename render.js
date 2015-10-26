@@ -91,11 +91,11 @@ function render() {
         .bands(bands)
         .valueAccessor(property('value'))
         .pointStyleAccessor(outlierScale)
-        .xScaleOfBandLine(assignmentScoreTemporalScale)
-        .xScaleOfSparkStrip(assignmentScoreTemporalScale2)
+        .xScaleOfBandLine(temporalScale)
+        .xScaleOfSparkStrip(temporalScale2)
         .rScaleOfBandLine(bandLinePointRScale)
         .rScaleOfSparkStrip(sparkStripPointRScale)
-        .yRange(assignmentScoreVerticalScale.range())
+        .yRange(valueRange)
 
 
     /**

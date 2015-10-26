@@ -48,22 +48,18 @@ var sparkStripPointRScale = function(classification) {
     return 2 // r = 2 on the spark strip irrespective of possible outlier status
 }
 
-var assignmentScoreVerticalDomain = d3.extent(bandThresholds) // fixme adapt the scale for the actual score domain
+var valueVerticalDomain = d3.extent(bandThresholds) // fixme adapt the scale for the actual score domain
 
-var assignmentScoreCount = 7 //  5 past assignments and 2 future assignments
+var valueCount = 7 //  5 past assignments and 2 future assignments
 
-var assignmentScoreDomain = [0, assignmentScoreCount - 1]
+var valueDomain = [0, valueCount - 1]
 
-var assignmentScoreTemporalScale = d3.scale.linear()
-    .domain(assignmentScoreDomain) // fixme adapt the scale for the actual number of scores
+var temporalScale = d3.scale.linear()
+    .domain(valueDomain) // fixme adapt the scale for the actual number of scores
     .range([2, 74])
 
-var assignmentScoreTemporalScale2 = d3.scale.linear()
-    .domain(assignmentScoreVerticalDomain)
+var temporalScale2 = d3.scale.linear()
+    .domain(valueVerticalDomain)
     .range([2, 50])
 
-var scoreRange = [rowBandRange / 2 , -rowBandRange  / 2]
-
-var assignmentScoreVerticalScale = d3.scale.linear()
-    .domain(assignmentScoreVerticalDomain)
-    .range(scoreRange)
+var valueRange = [rowBandRange / 2 , -rowBandRange  / 2]
