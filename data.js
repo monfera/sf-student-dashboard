@@ -27,6 +27,23 @@ var dashboardData = {
             ]
         },
         {
+            "key": "Frederick Chandler",
+            "assignmentScores": [
+                0.71,
+                0.65,
+                0.4,
+                0.6,
+                0.68
+            ],
+            "standardScores": [
+                0.51,
+                0.67,
+                0.64,
+                0.62,
+                0.41
+            ]
+        },
+        {
             "key": "Fiona Reeves",
             "assignmentScores": [
                 0.61,
@@ -58,23 +75,6 @@ var dashboardData = {
                 0.71,
                 0.66,
                 0.67
-            ]
-        },
-        {
-            "key": "Frederick Chandler",
-            "assignmentScores": [
-                0.71,
-                0.65,
-                null,
-                0.6,
-                0.68
-            ],
-            "standardScores": [
-                0.51,
-                0.67,
-                0.64,
-                0.62,
-                0.41
             ]
         },
         {

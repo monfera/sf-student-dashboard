@@ -10,7 +10,7 @@ rowBandRange = rowPitch / 1.3
 var bandThresholds = [0.4, 0.6, 0.7, 0.8, 0.9, 1]
 
 function sortedNumbers(population) {
-    return population.filter(defined).sort(d3.ascending)
+    return population.slice().sort(d3.ascending)
 }
 
 var outlierClassifications = ['lowOutlier', 'normal', 'highOutlier']
