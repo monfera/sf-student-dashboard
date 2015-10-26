@@ -35,11 +35,11 @@ function medianLineBand(population) {
     return [median, median]
 }
 
-var assignmentScores = [].concat.apply([], members.map(property('assignmentScores')))
+var values = [].concat.apply([], members.map(value))
 
-var assignmentOutlierScale = makeOutlierScale(assignmentScores)
+var assignmentOutlierScale = makeOutlierScale(values)
 
-var assignmentBands = window2(bandThresholds).concat([medianLineBand(assignmentScores)])
+var assignmentBands = window2(bandThresholds).concat([medianLineBand(values)])
 
 var bandLinePointRScale = function(classification) {
     return [2.5, 1.5, 3][outlierClassificationIndex(classification)]

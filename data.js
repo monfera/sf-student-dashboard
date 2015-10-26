@@ -9,7 +9,7 @@
 var members = [
     {
         "key": "Bae Kim",
-        "assignmentScores": [
+        "value": [
             0.46,
             0.68,
             0.71,
@@ -19,7 +19,7 @@ var members = [
     },
     {
         "key": "Frederick Chandler",
-        "assignmentScores": [
+        "value": [
             0.71,
             0.65,
             0.4,
@@ -29,7 +29,7 @@ var members = [
     },
     {
         "key": "Fiona Reeves",
-        "assignmentScores": [
+        "value": [
             0.61,
             0.69,
             0.54,
@@ -39,7 +39,7 @@ var members = [
     },
     {
         "key": "Brian Francis",
-        "assignmentScores": [
+        "value": [
             0.57,
             0.66,
             0.7,
@@ -49,7 +49,7 @@ var members = [
     },
     {
         "key": "Anthony Harper",
-        "assignmentScores": [
+        "value": [
             0.65,
             0.79,
             0.55,
@@ -59,7 +59,7 @@ var members = [
     },
     {
         "key": "Christopher Murphy",
-        "assignmentScores": [
+        "value": [
             0.55,
             0.73,
             0.7,
@@ -69,7 +69,7 @@ var members = [
     },
     {
         "key": "Kirsten Holmes",
-        "assignmentScores": [
+        "value": [
             0.79,
             0.7,
             0.66,
@@ -79,7 +79,7 @@ var members = [
     },
     {
         "key": "Roshawn Dawson",
-        "assignmentScores": [
+        "value": [
             0.64,
             0.71,
             0.75,
@@ -89,7 +89,7 @@ var members = [
     },
     {
         "key": "Nikolas Mikhailovich",
-        "assignmentScores": [
+        "value": [
             0.66,
             0.71,
             0.73,
@@ -99,7 +99,7 @@ var members = [
     },
     {
         "key": "James Martin",
-        "assignmentScores": [
+        "value": [
             0.71,
             0.74,
             0.69,
@@ -109,7 +109,7 @@ var members = [
     },
     {
         "key": "Blaine Harper",
-        "assignmentScores": [
+        "value": [
             0.69,
             0.73,
             0.77,
@@ -119,7 +119,7 @@ var members = [
     },
     {
         "key": "George Smith",
-        "assignmentScores": [
+        "value": [
             0.78,
             null,
             0.81,
@@ -129,7 +129,7 @@ var members = [
     },
     {
         "key": "Regan Potrero",
-        "assignmentScores": [
+        "value": [
             0.76,
             0.79,
             0.78,
@@ -139,7 +139,7 @@ var members = [
     },
     {
         "key": "Britta Jones",
-        "assignmentScores": [
+        "value": [
             0.81,
             0.87,
             0.79,
@@ -149,7 +149,7 @@ var members = [
     },
     {
         "key": "Scott Ortiz",
-        "assignmentScores": [
+        "value": [
             0.89,
             0.78,
             0.84,
@@ -159,7 +159,7 @@ var members = [
     },
     {
         "key": "Xu Mei",
-        "assignmentScores": [
+        "value": [
             0.92,
             0.87,
             0.65,
@@ -169,7 +169,7 @@ var members = [
     },
     {
         "key": "Jaime Goss",
-        "assignmentScores": [
+        "value": [
             0.88,
             0.81,
             0.78,
@@ -179,7 +179,7 @@ var members = [
     },
     {
         "key": "Samuel Miller",
-        "assignmentScores": [
+        "value": [
             0.81,
             0.88,
             0.77,
@@ -189,7 +189,7 @@ var members = [
     },
     {
         "key": "Maria Garcia",
-        "assignmentScores": [
+        "value": [
             0.9,
             0.81,
             0.89,
@@ -199,7 +199,7 @@ var members = [
     },
     {
         "key": "Jose Domingo",
-        "assignmentScores": [
+        "value": [
             0.87,
             0.84,
             0.89,
@@ -209,7 +209,7 @@ var members = [
     },
     {
         "key": "Lawrence Parker",
-        "assignmentScores": [
+        "value": [
             0.81,
             0.84,
             0.88,
@@ -219,7 +219,7 @@ var members = [
     },
     {
         "key": "Fariah Jackson",
-        "assignmentScores": [
+        "value": [
             0.89,
             0.92,
             0.85,
@@ -229,7 +229,7 @@ var members = [
     },
     {
         "key": "Sarah Jameson",
-        "assignmentScores": [
+        "value": [
             0.87,
             0.83,
             0.92,
@@ -239,7 +239,7 @@ var members = [
     },
     {
         "key": "David Chenowith",
-        "assignmentScores": [
+        "value": [
             0.81,
             0.88,
             0.92,
@@ -249,7 +249,7 @@ var members = [
     },
     {
         "key": "Alison Perry",
-        "assignmentScores": [
+        "value": [
             0.87,
             0.91,
             0.98,
@@ -259,7 +259,7 @@ var members = [
     },
     {
         "key": "Amala Singh",
-        "assignmentScores": [
+        "value": [
             0.9,
             0.87,
             0.93,
@@ -269,7 +269,7 @@ var members = [
     },
     {
         "key": "James Snow",
-        "assignmentScores": [
+        "value": [
             0.91,
             0.94,
             0.89,
@@ -279,7 +279,7 @@ var members = [
     },
     {
         "key": "Hannah Li",
-        "assignmentScores": [
+        "value": [
             0.91,
             0.93,
             0.98,
@@ -289,7 +289,7 @@ var members = [
     },
     {
         "key": "Donald Chase",
-        "assignmentScores": [
+        "value": [
             0.97,
             0.93,
             0.9,
@@ -299,7 +299,7 @@ var members = [
     },
     {
         "key": "Holly Norton",
-        "assignmentScores": [
+        "value": [
             0.98,
             1,
             0.97,
