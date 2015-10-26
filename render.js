@@ -103,7 +103,6 @@ function render() {
         .rScaleOfBandLine(bandLinePointRScale)
         .rScaleOfSparkStrip(sparkStripPointRScale)
         .yRange(assignmentScoreVerticalScale.range())
-        .yAxis(false)
 
     var assessmentBandLine = bandLine()
         .bands(assessmentBands)
@@ -112,7 +111,6 @@ function render() {
         .xScaleOfBandLine(assessmentScoreTemporalScale)
         .rScaleOfBandLine(bandLinePointRScale)
         .yRange(assessmentScoreScale.range())
-        .yAxis(false)
 
 
     /**
