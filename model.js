@@ -23,22 +23,21 @@ var dashboardVariables = {
     }
 }
 
-var dashboardSettings = {
-    variables: dashboardVariables
-}
-
-function rowSorter(sortSettings) {
-    var v = sortSettings.sortVariable
-    var order = v.defaultOrder
-    var plucker = v.sorter || v.plucker
-    return {
-        sorter: function rowSorterClosure(d) {return plucker(d)},
-        variable: v,
-        order: order
+function aggregateAssignmentScores(d) {
+    var students = d["Student Data"]
+    var scores = pluck('assignmentScores')(students)
+    var totalsRow = {
+        key: 'totalsRow',
+        assignmentScores: [
+            d3.mean(pluck(0)(scores).filter(identity)),
+            d3.mean(pluck(1)(scores).filter(identity)),
+            d3.mean(pluck(2)(scores).filter(identity)),
+            d3.mean(pluck(3)(scores).filter(identity)),
+            d3.mean(pluck(4)(scores).filter(identity))
+        ]
     }
+    return [totalsRow]
 }
-
-
 
 /**
  * Scales

@@ -18,22 +18,6 @@ function renderHeader(root, vm) {
         .attr('x', value)
 }
 
-function aggregateAssignmentScores(d) {
-    var students = d["Student Data"]
-    var scores = pluck('assignmentScores')(students)
-    var totalsRow = {
-        key: 'totalsRow',
-        assignmentScores: [
-            d3.mean(pluck(0)(scores).filter(identity)),
-            d3.mean(pluck(1)(scores).filter(identity)),
-            d3.mean(pluck(2)(scores).filter(identity)),
-            d3.mean(pluck(3)(scores).filter(identity)),
-            d3.mean(pluck(4)(scores).filter(identity))
-        ]
-    }
-    return [totalsRow]
-}
-
 function renderGroupHolder(selection, className, x, y) {
 
     var group = bind(selection, className)
@@ -104,13 +88,48 @@ function render() {
         {key: 'Assessments', value: -10}
     ])
 
+    /**
+     * Bandline generators
+     */
+
+    var assignmentBandLine = bandLine()
+        .bands(s.assignmentBands)
+        .valueAccessor(property('assignmentScores'))
+        .pointStyleAccessor(s.assignmentOutlierScale)
+        .xScaleOfBandLine(s.assignmentScoreTemporalScale)
+        .xScaleOfSparkStrip(s.assignmentScoreTemporalScale2)
+        .rScaleOfBandLine(s.bandLinePointRScale)
+        .rScaleOfSparkStrip(s.sparkStripPointRScale)
+        .yRange(s.assignmentScoreVerticalScale.range())
+        .yAxis(false)
+
+    var assessmentBandLine = bandLine()
+        .bands(s.assessmentBands)
+        .valueAccessor(property('standardScores'))
+        .pointStyleAccessor(s.assessmentOutlierScale)
+        .xScaleOfBandLine(s.assessmentScoreTemporalScale)
+        .rScaleOfBandLine(s.bandLinePointRScale)
+        .yRange(s.assessmentScoreScale.range())
+        .yAxis(false)
+
+    var aggregateAssignmentBandLine = bandLine()
+        .bands(s.assignmentBands)
+        .valueAccessor(property('assignmentScores'))
+        .pointStyleAccessor(s.assignmentOutlierScale)
+        .xScaleOfBandLine(s.assignmentScoreTemporalScale)
+        .rScaleOfBandLine(s.bandLinePointRScale)
+        .yRange(s.assignmentScoreVerticalScaleLarge.range())
+        .yAxis(d3.svg.axis().orient('right').ticks(4).tickFormat(d3.format('%')))
+
 
     /**
      * Rows
      */
 
     var rowsRoot = namesGroup.group
+
     var row = bind(rowsRoot, 'row', 'g', property('Student Data'))
+
     function rowTransform(d, i) {return translateY(i * s.rowPitch)()}
 
     row.entered
@@ -125,16 +144,6 @@ function render() {
         .text(key)
         .attr('y', '0.5em')
 
-    var assignmentBandLine = bandLine()
-        .bands(s.assignmentBands)
-        .valueAccessor(property('assignmentScores'))
-        .pointStyleAccessor(s.assignmentOutlierScale)
-        .xScaleOfBandLine(s.assignmentScoreTemporalScale)
-        .xScaleOfSparkStrip(s.assignmentScoreTemporalScale2)
-        .rScaleOfBandLine(s.bandLinePointRScale)
-        .rScaleOfSparkStrip(s.sparkStripPointRScale)
-        .yRange(s.assignmentScoreVerticalScale.range())
-        .yAxis(false)
     bind(row.entered, 'assignmentScoresCell')
         .attr('transform', translateX(assignmentScoresGroupX))
     row.entered['assignmentScoresCell'].call(assignmentBandLine.renderBandLine)
@@ -145,24 +154,8 @@ function render() {
 
     bind(row.entered, 'assessmentScoresCell')
         .attr('transform', translateX(classAssessmentGroupX))
-    var assessmentBandLine = bandLine()
-        .bands(s.assessmentBands)
-        .valueAccessor(property('standardScores'))
-        .pointStyleAccessor(s.assessmentOutlierScale)
-        .xScaleOfBandLine(s.assessmentScoreTemporalScale)
-        .rScaleOfBandLine(s.bandLinePointRScale)
-        .yRange(s.assessmentScoreScale.range())
-        .yAxis(false)
     row.entered['assessmentScoresCell'].call(assessmentBandLine.renderBandLine)
 
     bind(assignmentScoresAggregateGroup.group, 'assignmentAggregateMetrics', 'g', aggregateAssignmentScores)
-    var aggregateAssignmentBandLine = bandLine()
-        .bands(s.assignmentBands)
-        .valueAccessor(property('assignmentScores'))
-        .pointStyleAccessor(s.assignmentOutlierScale)
-        .xScaleOfBandLine(s.assignmentScoreTemporalScale)
-        .rScaleOfBandLine(s.bandLinePointRScale)
-        .yRange(s.assignmentScoreVerticalScaleLarge.range())
-        .yAxis(d3.svg.axis().orient('right').ticks(4).tickFormat(d3.format('%')))
     assignmentScoresAggregateGroup.group['assignmentAggregateMetrics'].call(aggregateAssignmentBandLine.renderBandLine)
 }
