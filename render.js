@@ -13,11 +13,8 @@ function renderHeader(root, vm) {
         .attr('transform', translateY(-25))
     bind(root['columnHeader'], 'group', 'g', vm)
     bind(root['columnHeader']['group'], 'headerText', 'text')
-        .text(function(d) {return sortedByThis('key', d.key) ? d.key + '\u21d5' : d.key})
         .entered
-        .classed('interactive', true)
-        .on('mousedown', function(d) {setHeaderTableSortOrder(d.key, d)})
-        .on('mouseup', resetTableSortOrder)
+        .text(key)
         .attr('x', value)
 }
 
@@ -177,13 +174,4 @@ function render() {
         .yRange(s.assignmentScoreVerticalScaleLarge.range())
         .yAxis(d3.svg.axis().orient('right').ticks(4).tickFormat(d3.format('%')))
     assignmentScoresAggregateGroup.group['assignmentAggregateMetrics'].call(aggregateAssignmentBandLine.renderBandLine)
-
-    bind(row.entered, 'rowCaptureZone', 'rect')
-        .on(rowInteractions)
-        .attr({
-            width: 450,
-            height: s.rowPitch,
-            x: -46,
-            y: - s.rowPitch / 2
-        })
 }

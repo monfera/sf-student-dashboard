@@ -59,20 +59,6 @@ function object(keyValuePairs) {
     return result
 }
 
-function findWhere(key, value) {
-    // works for objects now...
-    return function(obj) {
-        var keys = Object.keys(obj)
-        var i
-        for(i = 0; i < keys.length; i++) {
-            if(obj[[keys[i]]][key] === value) {
-                return obj[keys[i]]
-            }
-        }
-        return void(0)
-    }
-}
-
 function sortBy(obj, comparisonAccessor) {
     // stable sort inspired by the underscore.js implementation
     return obj.map(function(element, index) {

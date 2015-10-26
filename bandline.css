@@ -8,6 +8,11 @@
  * Design documentation: https://www.perceptualedge.com/articles/visual_business_intelligence/introducing_bandlines.pdf
  */
 
+g.dashboard {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
 g.bandLine .band,
 g.sparkStrip .band {
     fill: black
