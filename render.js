@@ -7,6 +7,10 @@
  * Copyright on the design of the Student Performance Dashboard: Stephen Few
  */
 
+var margin = {top: 5, right: 40, bottom: 20, left: 120},
+    width = 960 - margin.left - margin.right,
+    height = 960 - margin.top - margin.bottom;
+
 function renderHeader(root, vm) {
     bind(root, 'columnHeader')
         .entered
@@ -45,14 +49,16 @@ function render() {
      * Root
      */
 
-    var root = d3.selectAll('svg')
+    var svg = d3.selectAll('svg')
 
     var svgWidth = 1280
     var svgHeight = 1025
 
-    root.attr({viewBox: [0, 0, svgWidth, svgHeight].join(' ')})
+    svg//.attr({viewBox: [0, 0, svgWidth, svgHeight].join(' ')})
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
 
-    var dashboard = bind(root, 'dashboard', 'g', [dashboardData])
+    var dashboard = bind(svg, 'dashboard', 'g', [dashboardData])
     dashboard.entered
         .attr('transform', translateY(38))
 
