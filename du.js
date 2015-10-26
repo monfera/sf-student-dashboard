@@ -50,7 +50,6 @@ function window2(a) {
 }
 
 function bind0(rootSelection, cssClass, element, dataFlow) {
-    cssClass = cssClass || 'boundingBox'
     element = element || 'g'
     dataFlow = typeof dataFlow === 'function' ? dataFlow : (dataFlow === void(0) ? repeat : constant(dataFlow))
     var classesToClassAttr = function (classNames) {
@@ -76,7 +75,7 @@ function bind(object, key) {
 
 function translate(funX, funY) {
     return function (d, i) {
-        return 'translate(' + (typeof funX === 'function' ? funX(d, i) : funX) + ',' + (typeof funY === 'function' ? funY(d, i) : funY) + ')';
+        return 'translate(' + (typeof funX === 'function' ? funX(d, i) : funX) + ',' + (typeof funY === 'function' ? funY(d, i) : funY) + ')'
     }
 }
 
