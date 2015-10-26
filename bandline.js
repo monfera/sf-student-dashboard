@@ -8,8 +8,6 @@
  * Design documentation: https://www.perceptualedge.com/articles/visual_business_intelligence/introducing_bandlines.pdf
  */
 
-var duration = 200
-
 function defined(x) {
     return !isNaN(x) && isFinite(x) && x !== null
 }
@@ -32,7 +30,7 @@ function bandData(bands, yScaler, d) {
 
 function renderBands(root, bands, yScaler, xRanger, yRanger) {
     bind(bind(root, 'bands'), 'band', 'path', bandData.bind(0, bands, yScaler))
-        .transition().duration(duration)
+        .transition()
         .attr('class', function(d, i) {return 'band s' + i})
         .attr('d', function(d) {return rectanglePath(xRanger(d), yRanger(d))})
 }
@@ -46,7 +44,7 @@ function renderPoints(root, valueAccessor, pointStyleAccessor, rScale, xSpec, yS
         .entered
         .attr('transform', translate(xSpec, ySpec))
     root['valuePoints']
-        .transition().duration(duration)
+        .transition()
         .attr('transform', translate(xSpec, ySpec))
     bind(root['valuePoints'], 'point', 'circle')
         .attr('class', function(d) {return 'point ' + pointStyleAccessor(d.value)})
@@ -69,20 +67,20 @@ function sparkStripBoxPath(valueAccessor, xScale, yRange, d) {
 
 function renderExtent(root, valueAccessor, xScale, yRange) {
     bind(root, 'valueBox', 'path')
-        .transition().duration(duration)
+        .transition()
         .attr('d', sparkStripBoxPath.bind(0, valueAccessor, xScale, yRange))
 }
 
 function renderValueLine(root, valueAccessor, xScale, yScaler) {
     bind(root, 'valueLine', 'path')
-        .transition().duration(duration)
+        .transition()
         .attr('d', bandLinePath.bind(0, valueAccessor, xScale, yScaler))
 }
 
 function renderAxis(root, yAxis, xScale, yScaler) {
     bind(root, 'axes', 'g', yAxis ? du.repeat : [])
         .each(function(d) {
-            yAxis.scale(yScaler(d))(d3.select(this).transition().duration(duration))
+            yAxis.scale(yScaler(d))(d3.select(this).transition())
         })
         .entered
         .attr('transform', translateX(xScale.range()[['left', 'right'].indexOf(yAxis && yAxis.orient())]))

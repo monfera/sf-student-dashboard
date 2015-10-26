@@ -130,13 +130,8 @@ function render() {
 
     var row = bind(rowsRoot, 'row', 'g', property('Student Data'))
 
-    function rowTransform(d, i) {return translateY(i * s.rowPitch)()}
-
     row.entered
-        .attr('transform', rowTransform)
-    row
-        .transition().duration(1000)
-        .attr('transform', rowTransform)
+        .attr('transform', function rowTransform(d, i) {return translateY(i * s.rowPitch)()})
 
     bind(row.entered, 'nameCell')
         .classed('namesGroup', true)
