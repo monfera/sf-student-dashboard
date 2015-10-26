@@ -41,8 +41,6 @@ function renderGroupHolder(selection, className, x, y) {
     }
 }
 
-var s = calculateScales()
-
 function render() {
 
     /**
