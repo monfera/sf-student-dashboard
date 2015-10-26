@@ -64,11 +64,8 @@ function render() {
     var topGroups = bind(dashboard, 'topGroups')
 
     var assignmentScoresGroupX = 200
-    var classAssessmentGroupX = 360
     var namesGroup = renderGroupHolder(topGroups, 'namesGroup', 0, 0)
-    var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', classAssessmentGroupX - 230, 0)
-    var assessmentScoresGroup = renderGroupHolder(topGroups, 'assessmentScoresGroup', classAssessmentGroupX, 0)
-    var assignmentScoresAggregateGroup = renderGroupHolder(topGroups, 'assignmentScoresAggregateGroup', assignmentScoresGroupX, 866)
+    var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', 130, 0)
 
 
     /**
@@ -85,10 +82,6 @@ function render() {
         {key: 'Spread', value: 160}
     ])
 
-    renderHeader(assessmentScoresGroup.group, [
-        {key: 'Assessments', value: -10}
-    ])
-
 
     /**
      * Bandline generators
@@ -103,14 +96,6 @@ function render() {
         .rScaleOfBandLine(bandLinePointRScale)
         .rScaleOfSparkStrip(sparkStripPointRScale)
         .yRange(assignmentScoreVerticalScale.range())
-
-    var assessmentBandLine = bandLine()
-        .bands(assessmentBands)
-        .valueAccessor(property('standardScores'))
-        .pointStyleAccessor(assessmentOutlierScale)
-        .xScaleOfBandLine(assessmentScoreTemporalScale)
-        .rScaleOfBandLine(bandLinePointRScale)
-        .yRange(assessmentScoreScale.range())
 
 
     /**
@@ -135,8 +120,4 @@ function render() {
     bind(row.entered, 'assignmentScoresVerticalCell')
         .attr('transform', translateX(assignmentScoresGroupX + 86))
         .call(assignmentBandLine.renderSparkStrip)
-
-    bind(row.entered, 'assessmentScoresCell')
-        .attr('transform', translateX(classAssessmentGroupX))
-        .call(assessmentBandLine.renderBandLine)
 }
