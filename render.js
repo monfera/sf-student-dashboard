@@ -19,7 +19,7 @@ function renderHeader(root, vm) {
 }
 
 function aggregateAssignmentScores(d) {
-    var students = keptStudentData(d)
+    var students = d["Student Data"]
     var scores = pluck('assignmentScores')(students)
     var totalsRow = {
         key: 'totalsRow',
@@ -118,15 +118,6 @@ function render() {
     row
         .transition().duration(1000)
         .attr('transform', rowTransform)
-
-    bind(row, 'rowBackground', 'rect')
-        .attr('fill-opacity', function(d) {return dashboardSettings.table.studentSelection.selectedStudents[d.key] ? 0.025 : 0})
-        .entered
-        .attr({
-            width: 450,
-            height: s.rowPitch,
-            y: - s.rowPitch / 2
-        })
 
     bind(row.entered, 'nameCell')
         .classed('namesGroup', true)

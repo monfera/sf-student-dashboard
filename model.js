@@ -7,47 +7,24 @@
 var dashboardVariables = {
     name: {
         key: 'Name',
-        defaultOrder: 'ascending',
         plucker: key
     },
     meanAssignmentScore: {
         key: 'Assignments',
-        defaultOrder: 'ascending',
         plucker: function(student) {return d3.mean(student.assignmentScores.filter(identity))}
     },
     assignmentSpread: {
         key: 'Spread',
-        defaultOrder: 'descending',
         plucker: function(student) {return d3.deviation(student.assignmentScores.filter(identity))}
     },
     pastYearsMeanAssignmentScore: {
         key: 'Assessments',
-        defaultOrder: 'ascending',
         plucker: function(student) {return d3.mean(student.standardScores)}
     }
 }
 
-var defaultSortVariable = dashboardVariables['meanAssignmentScore']
-
 var dashboardSettings = {
-    variables: dashboardVariables,
-    table: {
-        sort: {
-            sortVariable: defaultSortVariable
-        },
-        studentSelection: {
-            selectedStudents: {},
-            brushable: false,
-            brushInProgress: false
-        }
-    }
-
-}
-
-function sortedByThis(identifierType, identifier) {
-    var sortSettings = dashboardSettings.table.sort
-    var sortVariable = sortSettings.sortVariable
-    return sortVariable && sortVariable[identifierType] === identifier
+    variables: dashboardVariables
 }
 
 function rowSorter(sortSettings) {
@@ -61,16 +38,9 @@ function rowSorter(sortSettings) {
     }
 }
 
-function keptStudentFilterFunction(d) {
-    var selectedStudents = dashboardSettings.table.studentSelection.selectedStudents
-    return selectedStudents[d] || !Object.keys(selectedStudents).length
-}
-
-function keptStudentData(d) {
-    return d['Student Data'].filter(function(student) {return keptStudentFilterFunction(student.key)})
-}
 
 function makeRowData(d) {
+    return d["Student Data"]
     var rowData = d["Student Data"]
     var sorter = rowSorter(dashboardSettings.table.sort)
     var needsToReverse = sorter.order === 'descending'
