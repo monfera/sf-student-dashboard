@@ -42,7 +42,7 @@ var outlierScale = makeOutlierScale(values)
 var bands = window2(bandThresholds).concat([medianLineBand(values)])
 
 var bandLinePointRScale = function(classification) {
-    return [2, 0, 2][outlierClassificationIndex(classification)]
+    return [2, 1, 2][outlierClassificationIndex(classification)]
 }
 var sparkStripPointRScale = function(classification) {
     return 2 // r = 2 on the spark strip irrespective of possible outlier status
