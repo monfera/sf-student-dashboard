@@ -51,7 +51,7 @@ function render() {
      * Headers
      */
 
-    bind(dashboard, 'header', 'text', [{key: 'Name'}, {key: 'Assignments'}, {key: 'Spread'}])
+    bind(dashboard, 'header', 'text', [{key: 'Name'}, {key: 'Tser'}, {key: 'Spread'}])
         .entered
         .text(key)
         .attr('transform', translate(function(d, i) {return [0, nameColumnWidth + cellPadding, nameColumnWidth + cellPadding + temporalScale.range()[1] + cellPadding][i]}, rowPitch))
