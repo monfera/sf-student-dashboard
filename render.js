@@ -22,25 +22,6 @@ function renderHeader(root, vm) {
         .attr('x', value)
 }
 
-function renderGroupHolder(selection, className, x, y) {
-
-    var group = bind(selection, className)
-    group
-        .entered
-        .attr('transform', translate(x, y))
-
-    var fullClassName = className + '_contents'
-
-    bind(group, fullClassName)
-        .entered
-        .classed('groupContents', true)
-
-    return {
-        group: group[fullClassName],
-        className: className
-    }
-}
-
 function render() {
 
     /**
@@ -58,33 +39,14 @@ function render() {
         .attr('transform', translateY(38))
 
     /**
-     * Columns
+     * Column headers
      */
 
-    var topGroups = bind(dashboard, 'topGroups')
-
-    var assignmentScoresGroupX = 200
-    var namesGroup = renderGroupHolder(topGroups, 'namesGroup', 0, 0)
-    var assignmentScoresGroup = renderGroupHolder(topGroups, 'assignmentScoresGroup', 130, 0)
-
+    var nameColumnWidth = 150
+    var cellPadding = 10
 
     /**
-     * Headers
-     */
-
-    renderHeader(namesGroup.group, [
-        {key: 'Name', value: 0}
-    ])
-
-
-    renderHeader(assignmentScoresGroup.group, [
-        {key: 'Assignments', value: 60},
-        {key: 'Spread', value: 160}
-    ])
-
-
-    /**
-     * Bandline generators
+     * Bandline generator
      */
 
     var assignmentBandLine = bandLine()
@@ -102,9 +64,7 @@ function render() {
      * Rows
      */
 
-    var rowsRoot = namesGroup.group
-
-    var row = bind(rowsRoot, 'row', 'g', members)
+    var row = bind(dashboard, 'row', 'g', members)
 
     row.entered
         .attr('transform', function rowTransform(d, i) {return translateY(i * rowPitch)()})
@@ -114,10 +74,10 @@ function render() {
         .attr('y', '0.5em')
 
     bind(row.entered, 'assignmentScoresCell')
-        .attr('transform', translateX(assignmentScoresGroupX))
+        .attr('transform', translateX(nameColumnWidth + cellPadding))
         .call(assignmentBandLine.renderBandLine)
 
     bind(row.entered, 'assignmentScoresVerticalCell')
-        .attr('transform', translateX(assignmentScoresGroupX + 86))
+        .attr('transform', translateX(nameColumnWidth + cellPadding + temporalScale.range()[1] + cellPadding))
         .call(assignmentBandLine.renderSparkStrip)
 }
