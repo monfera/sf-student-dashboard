@@ -4,24 +4,20 @@
  * Copyright Robert Monfera
  */
 
-var rowPitch = 28
+var allValuesSorted = [].concat.apply([], tsers.map(value)).sort(d3.ascending)
+var bandThresholds = [d3.min(allValuesSorted), d3.quantile(allValuesSorted, 0.25), d3.quantile(allValuesSorted, 0.75), d3.max(allValuesSorted)]
+
+var rowPitch = 40
 var rowBandRange = rowPitch / 1.3
-
-var bandThresholds = [0.4, 0.6, 0.7, 0.8, 0.9, 1]
-
-function sortedNumbers(population) {
-    return population.slice().sort(d3.ascending)
-}
 
 var outlierClassifications = ['lowOutlier', 'normal', 'highOutlier']
 var outlierClassificationIndex = function(classification) {
     return outlierClassifications.indexOf(classification)
 }
 
-function makeOutlierScale(population) {
-    var iqrDistanceMultiplier = 0.6 // Stephen Few's Introduction of Bandlines requires a multiplier of 1.5; we deviate here to show outliers on the dashboard
-    var values = sortedNumbers(population)
-    var iqr = [d3.quantile(values, 0.25), d3.quantile(values, 0.75)]
+function makeOutlierScale(sortedValues) {
+    var iqrDistanceMultiplier = 1.5 // As per Stephen Few's specification
+    var iqr = [d3.quantile(sortedValues, 0.25), d3.quantile(sortedValues, 0.75)]
     var midspread = iqr[1] - iqr[0]
     return d3.scale.threshold()
         .domain([
@@ -30,16 +26,14 @@ function makeOutlierScale(population) {
         .range(outlierClassifications)
 }
 
-function medianLineBand(population) {
-    var median = d3.median(population)
+function medianLineBand(sortedValues) {
+    var median = d3.median(sortedValues)
     return [median, median]
 }
 
-var values = [].concat.apply([], members.map(value))
+var outlierScale = makeOutlierScale(allValuesSorted)
 
-var outlierScale = makeOutlierScale(values)
-
-var bands = window2(bandThresholds).concat([medianLineBand(values)])
+var bands = window2(bandThresholds).concat([medianLineBand(allValuesSorted)])
 
 var bandLinePointRScale = function(classification) {
     return [2, 1, 2][outlierClassificationIndex(classification)]
@@ -50,16 +44,16 @@ var sparkStripPointRScale = function(classification) {
 
 var valueVerticalDomain = d3.extent(bandThresholds) // fixme adapt the scale for the actual score domain
 
-var valueCount = 7 //  5 past assignments and 2 future assignments
+var valueCount = d3.max(tsers.map(compose(property('length'), property('value'))))
 
 var valueDomain = [0, valueCount - 1]
 
 var temporalScale = d3.scale.linear()
     .domain(valueDomain) // fixme adapt the scale for the actual number of scores
-    .range([2, 74])
+    .range([0, 100])
 
 var horizontalValueScale = d3.scale.linear()
     .domain(valueVerticalDomain)
-    .range([2, 50])
+    .range([2, 100 / 1.614])
 
 var valueRange = [rowBandRange / 2 , -rowBandRange  / 2]

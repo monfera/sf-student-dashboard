@@ -61,7 +61,7 @@ function render() {
      * Rows
      */
 
-    var enteredRow = bind(dashboard, 'row', 'g', members).entered
+    var enteredRow = bind(dashboard, 'row', 'g', tsers).entered
 
     enteredRow.attr('transform', function rowTransform(d, i) {return translateY((i + 2) * rowPitch)()})
 

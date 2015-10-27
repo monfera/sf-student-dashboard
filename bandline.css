@@ -13,12 +13,10 @@ g.sparkStrip .band {
     fill: black
 }
 
-g.bands .band.s0 {fill-opacity: 0.06}
-g.bands .band.s1 {fill-opacity: 0.1}
-g.bands .band.s2 {fill-opacity: 0.16}
-g.bands .band.s3 {fill-opacity: 0.22}
-g.bands .band.s4 {fill-opacity: 0.3}
-g.bands .band.s5 {stroke: white; stroke-width: 1px; fill: none;} /* for more prominent color: hsl(120, 100%, 38%) */
+g.bands .band.s0 {fill: rgb(188, 189, 192)}
+g.bands .band.s1 {fill: rgb(224, 225, 227)}
+g.bands .band.s2 {fill: rgb(247, 247, 248)}
+g.bands .band.s3 {stroke: white; stroke-width: 1px; fill: none;} /* for more prominent color: hsl(120, 100%, 38%) */
 
 g.bandLine,
 g.sparkStrip {
