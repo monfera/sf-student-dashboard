@@ -58,7 +58,7 @@ var temporalScale = d3.scale.linear()
     .domain(valueDomain) // fixme adapt the scale for the actual number of scores
     .range([2, 74])
 
-var temporalScale2 = d3.scale.linear()
+var horizontalValueScale = d3.scale.linear()
     .domain(valueVerticalDomain)
     .range([2, 50])
 

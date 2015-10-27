@@ -11,17 +11,6 @@ var margin = {top: 5, right: 40, bottom: 20, left: 120},
     width = 960 - margin.left - margin.right,
     height = 960 - margin.top - margin.bottom;
 
-function renderHeader(root, vm) {
-    bind(root, 'columnHeader')
-        .entered
-        .attr('transform', translateY(-25))
-    bind(root['columnHeader'], 'group', 'g', vm)
-    bind(root['columnHeader']['group'], 'headerText', 'text')
-        .entered
-        .text(key)
-        .attr('x', value)
-}
-
 function render() {
 
     /**
@@ -35,8 +24,6 @@ function render() {
         .attr("height", height + margin.top + margin.bottom)
 
     var dashboard = bind(svg, 'dashboard', 'g', [{key: 0}])
-    dashboard.entered
-        .attr('transform', translateY(38))
 
     /**
      * Column headers
@@ -54,30 +41,39 @@ function render() {
         .valueAccessor(property('value'))
         .pointStyleAccessor(outlierScale)
         .xScaleOfBandLine(temporalScale)
-        .xScaleOfSparkStrip(temporalScale2)
+        .xScaleOfSparkStrip(horizontalValueScale)
         .rScaleOfBandLine(bandLinePointRScale)
         .rScaleOfSparkStrip(sparkStripPointRScale)
         .yRange(valueRange)
 
 
     /**
+     * Headers
+     */
+
+    bind(dashboard, 'header', 'text', [{key: 'Name'}, {key: 'Assignments'}, {key: 'Spread'}])
+        .entered
+        .text(key)
+        .attr('transform', translate(function(d, i) {return [0, nameColumnWidth + cellPadding, nameColumnWidth + cellPadding + temporalScale.range()[1] + cellPadding][i]}, rowPitch))
+
+
+    /**
      * Rows
      */
 
-    var row = bind(dashboard, 'row', 'g', members)
+    var enteredRow = bind(dashboard, 'row', 'g', members).entered
 
-    row.entered
-        .attr('transform', function rowTransform(d, i) {return translateY(i * rowPitch)()})
+    enteredRow.attr('transform', function rowTransform(d, i) {return translateY((i + 2) * rowPitch)()})
 
-    bind(row.entered, 'nameCellText', 'text')
+    bind(enteredRow, 'nameCellText', 'text')
         .text(key)
         .attr('y', '0.5em')
 
-    bind(row.entered, 'assignmentScoresCell')
+    bind(enteredRow, 'assignmentScoresCell')
         .attr('transform', translateX(nameColumnWidth + cellPadding))
         .call(assignmentBandLine.renderBandLine)
 
-    bind(row.entered, 'assignmentScoresVerticalCell')
+    bind(enteredRow, 'assignmentScoresVerticalCell')
         .attr('transform', translateX(nameColumnWidth + cellPadding + temporalScale.range()[1] + cellPadding))
         .call(assignmentBandLine.renderSparkStrip)
 }
