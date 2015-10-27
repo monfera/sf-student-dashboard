@@ -29,7 +29,7 @@ function render() {
      * Column headers
      */
 
-    var nameColumnWidth = 150
+    var nameColumnWidth = 160
     var cellPadding = 10
 
     /**

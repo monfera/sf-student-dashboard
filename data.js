@@ -10,11 +10,12 @@ var tserLength = 10
 
 var range = Array.apply(Array, Array(tserLength))
 
-var tsers = ['A', 'B', 'C', 'D'].map(function(d) {
+var tsers = ['Insulin-like growth factor', 'Von Willebrand Factor', 'C-reactive protein', 'Voltage-gated 6T & 1P', 'Mechanosensitive ion ch.'].map(function(d) {
     return {
-        key: 'Gaussian Time Series ' + d,
+        key: d,
         value: range.map(function() {
-            return (Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) / 6 - 0.5
+            return (Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random()
+                +   Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) / 12 - 0.5
         })
     }
 })

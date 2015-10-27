@@ -54,6 +54,6 @@ var temporalScale = d3.scale.linear()
 
 var horizontalValueScale = d3.scale.linear()
     .domain(valueVerticalDomain)
-    .range([2, 100 / 1.614])
+    .range([2, 50])
 
 var valueRange = [rowBandRange / 2 , -rowBandRange  / 2]
