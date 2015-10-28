@@ -9,7 +9,7 @@
 
 var margin = {top: 5, right: 40, bottom: 20, left: 120},
     width = 960 - margin.left - margin.right,
-    height = 960 - margin.top - margin.bottom;
+    height = 480 - margin.top - margin.bottom;
 
 function render() {
 
