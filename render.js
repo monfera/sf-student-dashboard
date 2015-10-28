@@ -48,10 +48,20 @@ function render() {
 
 
     /**
+     * Update button
+     */
+
+    d3.selectAll("button").on("click", function() {
+        randomize()
+        updateModel()
+        render()
+    });
+
+    /**
      * Headers
      */
 
-    bind(dashboard, 'header', 'text', [{key: 'Name'}, {key: 'Tser'}, {key: 'Spread'}])
+    bind(dashboard, 'header', 'text', [{key: 'Name'}, {key: 'Time Series'}, {key: 'Spread'}])
         .entered
         .text(key)
         .attr('transform', translate(function(d, i) {return [0, nameColumnWidth + cellPadding, nameColumnWidth + cellPadding + temporalScale.range()[1] + cellPadding][i]}, rowPitch))
@@ -61,19 +71,19 @@ function render() {
      * Rows
      */
 
-    var enteredRow = bind(dashboard, 'row', 'g', tsers).entered
+    var row = bind(dashboard, 'row', 'g', tsers)
 
-    enteredRow.attr('transform', function rowTransform(d, i) {return translateY((i + 2) * rowPitch)()})
+    row.attr('transform', function rowTransform(d, i) {return translateY((i + 2) * rowPitch)()})
 
-    bind(enteredRow, 'nameCellText', 'text')
+    bind(row, 'nameCellText', 'text')
         .text(key)
         .attr('y', '0.5em')
 
-    bind(enteredRow, 'assignmentScoresCell')
+    bind(row, 'assignmentScoresCell')
         .attr('transform', translateX(nameColumnWidth + cellPadding))
         .call(assignmentBandLine.renderBandLine)
 
-    bind(enteredRow, 'assignmentScoresVerticalCell')
+    bind(row, 'assignmentScoresVerticalCell')
         .attr('transform', translateX(nameColumnWidth + cellPadding + temporalScale.range()[1] + cellPadding))
         .call(assignmentBandLine.renderSparkStrip)
 }
