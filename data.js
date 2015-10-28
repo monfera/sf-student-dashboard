@@ -10,7 +10,7 @@ var tserLength = 10
 
 var range = Array.apply(Array, Array(tserLength))
 
-var tsers = ['Insulin-like growth factor', 'Von Willebrand Factor', 'C-reactive protein', 'Voltage-gated 6T & 1P', 'Mechanosensitive ion ch.'].map(function(d) {
+var tsers = ['Insulin-like growth factor', 'Von Willebrand Factor', 'Voltage-gated 6T & 1P', 'Mechanosensitive ion ch.'].map(function(d) {
     return {
         key: d,
         value: range.map(function() {
