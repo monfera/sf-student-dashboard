@@ -12,12 +12,24 @@ function sampleAndRender() {
 
 function render(curriedBandLine, tsers) {
 
-    var bandLineWidth = 100;
+    // Column widths
+    var nameColumnWidth = 160
+    var bandLineWidth = 100
+    var sparkStripWidth = 50
+    var columnSeparation = 10
 
-    var bandLine = curriedBandLine //.copy()
 
     // The bandline gets augmented with the View specific settings (screen widths etc.)
-    bandLine.xScaleOfBandLine().range([0, bandLineWidth]);
+    var bandLine = curriedBandLine //.copy()
+
+    // Augment partially set up elements
+    bandLine.xScaleOfBandLine().range([0, bandLineWidth])
+    bandLine.xScaleOfSparkStrip().range([0, sparkStripWidth])
+
+    // Add new elements
+    bandLine
+        .rScaleOfSparkStrip(function() {return 2})
+        .yRange([rowBandRange / 2 , -rowBandRange  / 2])
 
     /**
      * Root
@@ -35,8 +47,6 @@ function render(curriedBandLine, tsers) {
      * Column headers
      */
 
-    var nameColumnWidth = 160
-    var cellPadding = 10
 
     /**
      * Update button
@@ -51,7 +61,7 @@ function render(curriedBandLine, tsers) {
     bind(dashboard, 'header', 'text', [{key: 'Name'}, {key: 'Time Series'}, {key: 'Spread'}])
         .entered
         .text(key)
-        .attr('transform', translate(function(d, i) {return [0, nameColumnWidth + cellPadding, nameColumnWidth + cellPadding + bandLineWidth + cellPadding][i]}, rowPitch))
+        .attr('transform', translate(function(d, i) {return [0, nameColumnWidth + columnSeparation, nameColumnWidth + columnSeparation + bandLineWidth + columnSeparation][i]}, rowPitch))
 
 
     /**
@@ -67,10 +77,10 @@ function render(curriedBandLine, tsers) {
         .attr('y', '0.5em')
 
     bind(row, 'assignmentScoresCell')
-        .attr('transform', translateX(nameColumnWidth + cellPadding))
+        .attr('transform', translateX(nameColumnWidth + columnSeparation))
         .call(bandLine.renderBandLine)
 
     bind(row, 'assignmentScoresVerticalCell')
-        .attr('transform', translateX(nameColumnWidth + cellPadding + bandLineWidth + cellPadding))
+        .attr('transform', translateX(nameColumnWidth + columnSeparation + bandLineWidth + columnSeparation))
         .call(bandLine.renderSparkStrip)
 }
