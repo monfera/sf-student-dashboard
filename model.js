@@ -23,40 +23,13 @@ function setupBandline(tsers) {
         return [median, median]
     }
 
-    var outlierScale = makeOutlierScale(allValuesSorted)
-
-    var bands = window2(bandThresholds).concat([medianLineBand(allValuesSorted)])
-
-    var bandLinePointRScale = function(classification) {
-        return [2, 0, 2][outlierClassificationIndex(classification)]
-    }
-    var sparkStripPointRScale = function(classification) {
-        return 2 // r = 2 on the spark strip irrespective of possible outlier status
-    }
-
-    var valueVerticalDomain = d3.extent(bandThresholds) // fixme adapt the scale for the actual score domain
-
-    var valueCount = d3.max(tsers.map(compose(property('length'), property('value'))))
-
-    var valueDomain = [0, valueCount - 1]
-
-    var temporalScale = d3.scale.linear()
-        .domain(valueDomain) // fixme adapt the scale for the actual number of scores
-        .range([0, 100])
-
-    var horizontalValueScale = d3.scale.linear()
-        .domain(valueVerticalDomain)
-        .range([2, 50])
-
-    var valueRange = [rowBandRange / 2 , -rowBandRange  / 2]
-
     return bandLine()
-        .bands(bands)
+        .bands(window2(bandThresholds).concat([medianLineBand(allValuesSorted)]))
         .valueAccessor(property('value'))
-        .pointStyleAccessor(outlierScale)
-        .xScaleOfBandLine(temporalScale)
-        .xScaleOfSparkStrip(horizontalValueScale)
-        .rScaleOfBandLine(bandLinePointRScale)
-        .rScaleOfSparkStrip(sparkStripPointRScale)
-        .yRange(valueRange)
+        .pointStyleAccessor(makeOutlierScale(allValuesSorted))
+        .xScaleOfBandLine(d3.scale.linear().domain([0, d3.max(tsers.map(compose(property('length'), property('value')))) - 1]).range([0, 100]))
+        .xScaleOfSparkStrip(d3.scale.linear().domain(d3.extent(bandThresholds)).range([2, 50]))
+        .rScaleOfBandLine(function(classification) {return [2, 0, 2][outlierClassificationIndex(classification)]})
+        .rScaleOfSparkStrip(function() {return 2})
+        .yRange([rowBandRange / 2 , -rowBandRange  / 2])
 }
