@@ -1,5 +1,4 @@
-# sf-student-dashboard
-Implementation of Stephen Few's Student Dashboard with Bandlines in d3.js
+Implementation of Stephen Few's Bandlines in d3.js
 
 Article: http://www.perceptualedge.com/blog/?p=2138
 

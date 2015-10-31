@@ -1,12 +1,3 @@
-/**
- * Dashboard renderer
- *
- * Implementation of Stephen Few's Student Performance Dashboard with Mike Bostock's d3.js library
- *
- * Copyright Robert Monfera
- * Copyright on the design of the Student Performance Dashboard: Stephen Few
- */
-
 var margin = {top: 5, right: 40, bottom: 20, left: 120},
     width = 960 - margin.left - margin.right,
     height = 480 - margin.top - margin.bottom;
@@ -19,11 +10,6 @@ function sampleAndRender() {
     render(setupBandline(tsers), tsers)
 }
 
-/**
- * render the example
- *
- * @param Object vm the view model for rendering
- */
 function render(bandLine, tsers) {
 
     /**
