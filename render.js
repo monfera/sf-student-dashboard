@@ -32,6 +32,7 @@ function render(curriedBandLine, tsers) {
         .rScaleOfSparkStrip(constant(2))
         .yRange([rowBandRange / 2 , -rowBandRange  / 2])
 
+
     /**
      * Root
      */
@@ -43,17 +44,6 @@ function render(curriedBandLine, tsers) {
         .attr("height", height + margin.top + margin.bottom)
 
     var dashboard = bind(svg, 'dashboard', 'g', [{key: 0}])
-
-    /**
-     * Column headers
-     */
-
-
-    /**
-     * Update button
-     */
-
-    d3.selectAll("button").on("click", sampleAndRender);
 
     /**
      * Headers
