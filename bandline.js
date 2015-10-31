@@ -48,7 +48,6 @@ function renderPoints(root, valueAccessor, pointStyleAccessor, rScale, xSpec, yS
         .attr('transform', translate(xSpec, ySpec))
     bind(root['valuePoints'], 'point', 'circle')
         .attr('class', function(d) {return 'point ' + pointStyleAccessor(d.value)})
-        .transition()
         .attr('r', function(d) {return rScale(pointStyleAccessor(d.value))})
     root['valuePoints'].exit().remove()
 }

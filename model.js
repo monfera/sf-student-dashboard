@@ -18,7 +18,7 @@ function setupBandline(tsers) {
     }
 
     function medianLineBand(sortedValues) {
-        // The median line is approximated as a band of 0 extent (CSS styling is via 'strike').
+        // The median line is approximated as a band of 0 extent (CSS styling is via 'stroke').
         // This 'band' is to be tacked on last so it isn't occluded by other bands (SVG uses the painter's algo for Z)
         var median = d3.median(sortedValues)
         return [median, median]

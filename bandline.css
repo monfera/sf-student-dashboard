@@ -30,9 +30,8 @@ g.bandLine .valuePoints .point.highOutlier {
     stroke: black; /*rgb(226, 60, 180);*/
 }
 
-g.bandLine .valuePoints {
+g.bandLine .valuePoints .point {
     fill: black; /*rgb(226, 60, 180);*/
-    transition: fill 250ms ease-in-out;
 }
 
 g.bandLine .valueLine {
