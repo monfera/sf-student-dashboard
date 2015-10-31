@@ -2,8 +2,12 @@ Invented by Stephen Few, "Bandlines use horizontal bands of color in the backgro
 
 [**Introducing Bandlines by Stephen Few**](https://www.perceptualedge.com/articles/visual_business_intelligence/introducing_bandlines.pdf)
 
+[Interactive example](http://bl.ocks.org/monfera/8dbaabf493fbc0c4ae0c)
+
 [Larger dashboard example with article](https://www.perceptualedge.com/blog/?p=2138)
 
 The example tser sampler generates a lot of outliers on purpose - to make them appear regularly, and to illustrate how outliers effect the bands.
+
+[Source code](https://github.com/monfera/sf-student-dashboard/tree/bandline)
 
 [License](https://opensource.org/licenses/BSD-3-Clause)
