@@ -18,9 +18,8 @@ function render(curriedBandLine, tsers) {
     var sparkStripWidth = 50
     var columnSeparation = 10
 
-
     // The bandline gets augmented with the View specific settings (screen widths etc.)
-    var bandLine = curriedBandLine //.copy()
+    var bandLine = curriedBandLine // fixme implement bandline .copy
 
     // Augment partially set up elements
     bandLine.xScaleOfBandLine().range([0, bandLineWidth])
@@ -45,6 +44,7 @@ function render(curriedBandLine, tsers) {
 
     var dashboard = bind(svg, 'dashboard', 'g', [{key: 0}])
 
+
     /**
      * Headers
      */
@@ -52,7 +52,9 @@ function render(curriedBandLine, tsers) {
     bind(dashboard, 'header', 'text', [{key: 'Name'}, {key: 'Time Series'}, {key: 'Spread'}])
         .entered
         .text(key)
-        .attr('transform', translate(function(d, i) {return [0, nameColumnWidth + columnSeparation, nameColumnWidth + columnSeparation + bandLineWidth + columnSeparation][i]}, rowPitch))
+        .attr('transform', translate(function(d, i) {
+            return [0, nameColumnWidth + columnSeparation, nameColumnWidth + columnSeparation + bandLineWidth + columnSeparation][i]
+        }, rowPitch))
 
 
     /**
