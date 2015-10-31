@@ -32,5 +32,5 @@ function setupBandline(tsers) {
         .pointStyleAccessor(makeOutlierScale(allValuesSorted))
         .xScaleOfBandLine(d3.scale.linear().domain([0, d3.max(tsers.map(compose(property('length'), property('value')))) - 1]))
         .xScaleOfSparkStrip(d3.scale.linear().domain(d3.extent(bandThresholds)))
-        .rScaleOfBandLine(d3.scale.ordinal().domain(outlierClassifications).range([2, 0, 2]))
+        .rScaleOfBandLine(d3.scale.ordinal().domain(outlierClassifications))
 }

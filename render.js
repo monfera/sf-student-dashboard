@@ -25,10 +25,11 @@ function render(curriedBandLine, tsers) {
     // Augment partially set up elements
     bandLine.xScaleOfBandLine().range([0, bandLineWidth])
     bandLine.xScaleOfSparkStrip().range([0, sparkStripWidth])
+    bandLine.rScaleOfBandLine().range([2, 0, 2])
 
     // Add new elements
     bandLine
-        .rScaleOfSparkStrip(function() {return 2})
+        .rScaleOfSparkStrip(constant(2))
         .yRange([rowBandRange / 2 , -rowBandRange  / 2])
 
     /**
