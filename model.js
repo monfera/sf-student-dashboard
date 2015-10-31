@@ -14,7 +14,8 @@ function setupBandline(tsers) {
         return d3.scale.threshold()
             .domain([
                 iqr[0] - iqrDistanceMultiplier * midspread,
-                iqr[1] + iqrDistanceMultiplier * midspread ])
+                iqr[1] + iqrDistanceMultiplier * midspread
+            ])
             .range(outlierClassifications)
     }
 
