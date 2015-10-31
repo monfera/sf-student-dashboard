@@ -51,7 +51,7 @@ function window2(a) {
 
 function bind0(rootSelection, cssClass, element, dataFlow) {
     element = element || 'g' // fixme switch from variadic to curried
-    dataFlow = typeof dataFlow === 'function' ? dataFlow : (dataFlow === void(0) ? repeat : constant(dataFlow))
+    dataFlow = typeof dataFlow === 'function' ? dataFlow : (dataFlow === void(0) ? function(d) {return [d]} : constant(dataFlow))
     var binding = rootSelection.selectAll('.' + cssClass).data(dataFlow, key)
 
     binding.entered = binding.enter().append(element)
@@ -82,8 +82,4 @@ function translateY(funY) {
     return function (d, i) {
         return 'translate(0, ' + (typeof funY === 'function' ? funY(d, i) : funY) + ')'
     }
-}
-
-function repeat(x) {
-    return [x]
 }
