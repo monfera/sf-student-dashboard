@@ -11,7 +11,20 @@ var margin = {top: 5, right: 40, bottom: 20, left: 120},
     width = 960 - margin.left - margin.right,
     height = 480 - margin.top - margin.bottom;
 
-function render() {
+var rowPitch = 40
+var rowBandRange = rowPitch / 1.3
+
+function sampleAndRender() {
+    var tsers = sample()
+    render(setupBandline(tsers), tsers)
+}
+
+/**
+ * render the example
+ *
+ * @param Object vm the view model for rendering
+ */
+function render(bandLine, tsers) {
 
     /**
      * Root
@@ -33,29 +46,10 @@ function render() {
     var cellPadding = 10
 
     /**
-     * Bandline generator
-     */
-
-    var assignmentBandLine = bandLine()
-        .bands(bands)
-        .valueAccessor(property('value'))
-        .pointStyleAccessor(outlierScale)
-        .xScaleOfBandLine(temporalScale)
-        .xScaleOfSparkStrip(horizontalValueScale)
-        .rScaleOfBandLine(bandLinePointRScale)
-        .rScaleOfSparkStrip(sparkStripPointRScale)
-        .yRange(valueRange)
-
-
-    /**
      * Update button
      */
 
-    d3.selectAll("button").on("click", function() {
-        randomize()
-        updateModel()
-        render()
-    });
+    d3.selectAll("button").on("click", sampleAndRender);
 
     /**
      * Headers
@@ -64,7 +58,7 @@ function render() {
     bind(dashboard, 'header', 'text', [{key: 'Name'}, {key: 'Time Series'}, {key: 'Spread'}])
         .entered
         .text(key)
-        .attr('transform', translate(function(d, i) {return [0, nameColumnWidth + cellPadding, nameColumnWidth + cellPadding + temporalScale.range()[1] + cellPadding][i]}, rowPitch))
+        .attr('transform', translate(function(d, i) {return [0, nameColumnWidth + cellPadding, nameColumnWidth + cellPadding + 100 + cellPadding][i]}, rowPitch))
 
 
     /**
@@ -81,9 +75,9 @@ function render() {
 
     bind(row, 'assignmentScoresCell')
         .attr('transform', translateX(nameColumnWidth + cellPadding))
-        .call(assignmentBandLine.renderBandLine)
+        .call(bandLine.renderBandLine)
 
     bind(row, 'assignmentScoresVerticalCell')
-        .attr('transform', translateX(nameColumnWidth + cellPadding + temporalScale.range()[1] + cellPadding))
-        .call(assignmentBandLine.renderSparkStrip)
+        .attr('transform', translateX(nameColumnWidth + cellPadding + 100 + cellPadding))
+        .call(bandLine.renderSparkStrip)
 }

@@ -1,15 +1,4 @@
-/**
- * Dashboard model - data reshaping, variables, scales and configuration
- *
- * Copyright Robert Monfera
- */
-
-var rowPitch = 40
-var rowBandRange = rowPitch / 1.3
-
-var bands, outlierScale, temporalScale, horizontalValueScale, bandLinePointRScale, sparkStripPointRScale, valueRange
-
-function updateModel() {
+function setupBandline(tsers) {
     var allValuesSorted = [].concat.apply([], tsers.map(value)).sort(d3.ascending)
     var bandThresholds = [d3.min(allValuesSorted), d3.quantile(allValuesSorted, 0.25), d3.quantile(allValuesSorted, 0.75), d3.max(allValuesSorted)]
 
@@ -34,14 +23,14 @@ function updateModel() {
         return [median, median]
     }
 
-    outlierScale = makeOutlierScale(allValuesSorted)
+    var outlierScale = makeOutlierScale(allValuesSorted)
 
-    bands = window2(bandThresholds).concat([medianLineBand(allValuesSorted)])
+    var bands = window2(bandThresholds).concat([medianLineBand(allValuesSorted)])
 
-    bandLinePointRScale = function(classification) {
+    var bandLinePointRScale = function(classification) {
         return [2, 0, 2][outlierClassificationIndex(classification)]
     }
-    sparkStripPointRScale = function(classification) {
+    var sparkStripPointRScale = function(classification) {
         return 2 // r = 2 on the spark strip irrespective of possible outlier status
     }
 
@@ -51,15 +40,23 @@ function updateModel() {
 
     var valueDomain = [0, valueCount - 1]
 
-    temporalScale = d3.scale.linear()
+    var temporalScale = d3.scale.linear()
         .domain(valueDomain) // fixme adapt the scale for the actual number of scores
         .range([0, 100])
 
-    horizontalValueScale = d3.scale.linear()
+    var horizontalValueScale = d3.scale.linear()
         .domain(valueVerticalDomain)
         .range([2, 50])
 
-    valueRange = [rowBandRange / 2 , -rowBandRange  / 2]
-}
+    var valueRange = [rowBandRange / 2 , -rowBandRange  / 2]
 
-updateModel()
+    return bandLine()
+        .bands(bands)
+        .valueAccessor(property('value'))
+        .pointStyleAccessor(outlierScale)
+        .xScaleOfBandLine(temporalScale)
+        .xScaleOfSparkStrip(horizontalValueScale)
+        .rScaleOfBandLine(bandLinePointRScale)
+        .rScaleOfSparkStrip(sparkStripPointRScale)
+        .yRange(valueRange)
+}
