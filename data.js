@@ -16,7 +16,7 @@ function randomize() {
         return {
             key: d,
             value: range.map(function () {
-                return (Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) / 6 - 0.5
+                return Math.pow((Math.random() + Math.random() + Math.random() + Math.random() + Math.random() + Math.random() - 3) / 3, 3)
             })
         }
     })
