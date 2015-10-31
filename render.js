@@ -10,7 +10,14 @@ function sampleAndRender() {
     render(setupBandline(tsers), tsers)
 }
 
-function render(bandLine, tsers) {
+function render(curriedBandLine, tsers) {
+
+    var bandLineWidth = 100;
+
+    var bandLine = curriedBandLine //.copy()
+
+    // The bandline gets augmented with the View specific settings (screen widths etc.)
+    bandLine.xScaleOfBandLine().range([0, bandLineWidth]);
 
     /**
      * Root
@@ -44,7 +51,7 @@ function render(bandLine, tsers) {
     bind(dashboard, 'header', 'text', [{key: 'Name'}, {key: 'Time Series'}, {key: 'Spread'}])
         .entered
         .text(key)
-        .attr('transform', translate(function(d, i) {return [0, nameColumnWidth + cellPadding, nameColumnWidth + cellPadding + 100 + cellPadding][i]}, rowPitch))
+        .attr('transform', translate(function(d, i) {return [0, nameColumnWidth + cellPadding, nameColumnWidth + cellPadding + bandLineWidth + cellPadding][i]}, rowPitch))
 
 
     /**
@@ -64,6 +71,6 @@ function render(bandLine, tsers) {
         .call(bandLine.renderBandLine)
 
     bind(row, 'assignmentScoresVerticalCell')
-        .attr('transform', translateX(nameColumnWidth + cellPadding + 100 + cellPadding))
+        .attr('transform', translateX(nameColumnWidth + cellPadding + bandLineWidth + cellPadding))
         .call(bandLine.renderSparkStrip)
 }

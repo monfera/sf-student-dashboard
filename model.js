@@ -24,11 +24,12 @@ function setupBandline(tsers) {
         return [median, median]
     }
 
+    // Setting up the bandLine with the domain dependent values only (curry style)
     return bandLine()
         .bands(window2(bandThresholds).concat([medianLineBand(allValuesSorted)]))
         .valueAccessor(property('value'))
         .pointStyleAccessor(makeOutlierScale(allValuesSorted))
-        .xScaleOfBandLine(d3.scale.linear().domain([0, d3.max(tsers.map(compose(property('length'), property('value')))) - 1]).range([0, 100]))
+        .xScaleOfBandLine(d3.scale.linear().domain([0, d3.max(tsers.map(compose(property('length'), property('value')))) - 1]))
         .xScaleOfSparkStrip(d3.scale.linear().domain(d3.extent(bandThresholds)).range([2, 50]))
         .rScaleOfBandLine(function(classification) {return [2, 0, 2][outlierClassificationIndex(classification)]})
         .rScaleOfSparkStrip(function() {return 2})
