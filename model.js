@@ -3,9 +3,6 @@ function setupBandline(tsers) {
     var bandThresholds = [d3.min(allValuesSorted), d3.quantile(allValuesSorted, 0.25), d3.quantile(allValuesSorted, 0.75), d3.max(allValuesSorted)]
 
     var outlierClassifications = ['lowOutlier', 'normal', 'highOutlier']
-    var outlierClassificationIndex = function(classification) {
-        return outlierClassifications.indexOf(classification)
-    }
 
     function makeOutlierScale(sortedValues) {
         var iqrDistanceMultiplier = 1.5 // As per Stephen Few's specification
@@ -20,6 +17,8 @@ function setupBandline(tsers) {
     }
 
     function medianLineBand(sortedValues) {
+        // The median line is approximated as a band of 0 extent (CSS styling is via 'strike').
+        // This 'band' is to be tacked on last so it isn't occluded by other bands (SVG uses the painter's algo for Z)
         var median = d3.median(sortedValues)
         return [median, median]
     }

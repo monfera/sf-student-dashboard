@@ -50,7 +50,7 @@ function window2(a) {
 }
 
 function bind0(rootSelection, cssClass, element, dataFlow) {
-    element = element || 'g'
+    element = element || 'g' // fixme switch from variadic to curried
     dataFlow = typeof dataFlow === 'function' ? dataFlow : (dataFlow === void(0) ? repeat : constant(dataFlow))
     var binding = rootSelection.selectAll('.' + cssClass).data(dataFlow, key)
 
