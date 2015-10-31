@@ -1,4 +1,5 @@
 function setupBandline(tsers) {
+
     var allValuesSorted = [].concat.apply([], tsers.map(value)).sort(d3.ascending)
     var bandThresholds = [d3.min(allValuesSorted), d3.quantile(allValuesSorted, 0.25), d3.quantile(allValuesSorted, 0.75), d3.max(allValuesSorted)]
 

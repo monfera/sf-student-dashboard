@@ -1,16 +1,16 @@
-var margin = {top: 5, right: 40, bottom: 20, left: 120},
-    width = 960 - margin.left - margin.right,
-    height = 480 - margin.top - margin.bottom;
-
-var rowPitch = 40
-var rowBandRange = rowPitch / 1.3
-
 function sampleAndRender() {
     var tsers = sample()
     render(setupBandline(tsers), tsers)
 }
 
 function render(curriedBandLine, tsers) {
+
+    var margin = {top: 5, right: 40, bottom: 20, left: 120}
+    var width = 960 - margin.left - margin.right
+    var height = 240 - margin.top - margin.bottom
+
+    var rowPitch = 40
+    var rowBandRange = rowPitch / 1.3
 
     // Column widths
     var nameColumnWidth = 160
